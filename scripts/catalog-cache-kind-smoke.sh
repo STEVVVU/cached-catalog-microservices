@@ -53,6 +53,7 @@ cleanup() {
   exit "$status"
 }
 trap cleanup EXIT
+trap 'printf "line=%s command=%s\n" "$LINENO" "$BASH_COMMAND" >"$evidence_dir/failure.txt"' ERR
 
 curl --fail --location --silent --show-error \
   "https://github.com/kubernetes-sigs/kind/releases/download/${kind_version}/kind-linux-amd64" \
@@ -209,7 +210,7 @@ persisted_revision="$("$work_dir/catalogctl" revision | jq -er '.revision')"
 [[ "$(kubectl -n "$namespace" get pvc catalogdb-data -o jsonpath='{.metadata.uid}')" == "$catalog_pvc_uid" ]]
 metrics="$(curl --fail --silent "$CATALOGCTL_ADMIN_URL/metrics")"
 printf '%s\n' "$metrics" >"$evidence_dir/metrics.txt"
-grep -q '^catalog_requests_started ' <<<"$metrics"
+grep -q '^catalog_requests_started_total ' <<<"$metrics"
 
 if [[ -n "${GITHUB_STEP_SUMMARY:-}" ]]; then
   {
