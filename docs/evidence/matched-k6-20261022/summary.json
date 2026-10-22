@@ -1,0 +1,511 @@
+{
+  "run_id": "39769299508",
+  "source_sha": "261efc6f92d6dd846c0dbe7bf899ca7f7057b9b9",
+  "result_sha256": "5ba051ba84957d6994b0dcb1975cd86bc043510f1b9b02cf45a93f6c78aaa207",
+  "source_comparison": {
+    "baseline_sha": "a0bd7a086fab59c81b73c00e4c3b8d0d62129a7c",
+    "archive_sha256": "07da0548b10e519b422ec76880fc5987a84e62479d76ffc8d6177c1476edb228",
+    "binary_sha256": {
+      "baseline": "923139146d8484587b4cda45764a78bf1d1b013711fd4894ebc75427cd48132b",
+      "candidate": "79f1cea1f436fb05f6269b9be032cf1a2b0ac2d97fbe1221bb50229830540fcf"
+    },
+    "runtime_source_sha256": {
+      "baseline": {
+        "benchmark_profile.go": "63f98bf62e244daf584a221db57a6f1f6b3c3b858fc5dd41c87e92044215a1ca",
+        "catalog_admin_http.go": "0926ce5300fddc46a03a47ce566c35613ab0b0d43cf451197d2770ff56bbd8c8",
+        "catalog_cache.go": "fc42a46a4662dbc5ea0c343aa1739c9aaa6a3cfb965d5b05e3369facb6f528a6",
+        "catalog_gateway.go": "bd10eefc87b7c9aaa8da6e9e97c1298e0987999885484851be26619400e998ad",
+        "catalog_loader.go": "5fd3f8f01641acf9e3fd3c03790b1665dc90dd6d6c14d9917794e588464aca96",
+        "catalog_signal_unix.go": "b8cc684d6fa7e0a04cfae6c713ef5a230c70b13ee3817c92754406e4b922ea96",
+        "catalog_signal_windows.go": "b33cc3ffd55339940aa9903f12b842ca478ae05afd0d4965838abf182c21eac7",
+        "catalog_store.go": "9125d15972f4d7f3f1438b9e830c4e055e5634131ad9815d9389d035005ab999",
+        "catalogdb_service.go": "9f917e8468e511be74b5cdbc1e834ac98e1da05b864a1bd82b487df3b38c5f64",
+        "cmd/catalogctl/load.go": "aef487aa5fa40c98d07038c581be9e2f65e20ed454c1da3959872a1e66300a6b",
+        "cmd/catalogctl/main.go": "5d4c9778c9f89b1bac872d9369d6bc21e1752344d843f201feedee9b60288485",
+        "genproto/catalog_admin.pb.go": "2b2bfac98045a464e82b5fa7a0cae3625ccd8ae8bceafdb35fc59729f103f964",
+        "genproto/catalog_admin_grpc.pb.go": "4f152dc17ea896dfbd1a431c40a1ac1c7a01fcb1a088dc4e81abeddf55750c4b",
+        "genproto/demo.pb.go": "799971d468d1e66e0d7fce8930ce74f8f1c894bf8425c50cad44c2a9b40cd9af",
+        "genproto/demo_grpc.pb.go": "70bb93b42e93399bf30d9971b6568244d0fa2eb1cb4757f967354810601dc916",
+        "product_catalog.go": "0ad7a92ba93945f53e0d647e0da9140d18e2137170c16b208f3ffc8aaafdb40c",
+        "server.go": "3c058594132ad66928be8a89cb2e9adbfceb9bae77092915236305d1cbe399e2"
+      },
+      "candidate": {
+        "benchmark_profile.go": "63f98bf62e244daf584a221db57a6f1f6b3c3b858fc5dd41c87e92044215a1ca",
+        "catalog_admin_http.go": "0926ce5300fddc46a03a47ce566c35613ab0b0d43cf451197d2770ff56bbd8c8",
+        "catalog_cache.go": "c62171d91876c3af0ee09d29cbd973fd43790dba68934b2d6b9023703f9d3505",
+        "catalog_gateway.go": "bd10eefc87b7c9aaa8da6e9e97c1298e0987999885484851be26619400e998ad",
+        "catalog_loader.go": "5fd3f8f01641acf9e3fd3c03790b1665dc90dd6d6c14d9917794e588464aca96",
+        "catalog_signal_unix.go": "b8cc684d6fa7e0a04cfae6c713ef5a230c70b13ee3817c92754406e4b922ea96",
+        "catalog_signal_windows.go": "b33cc3ffd55339940aa9903f12b842ca478ae05afd0d4965838abf182c21eac7",
+        "catalog_store.go": "9125d15972f4d7f3f1438b9e830c4e055e5634131ad9815d9389d035005ab999",
+        "catalogdb_service.go": "9f917e8468e511be74b5cdbc1e834ac98e1da05b864a1bd82b487df3b38c5f64",
+        "cmd/catalogctl/load.go": "aef487aa5fa40c98d07038c581be9e2f65e20ed454c1da3959872a1e66300a6b",
+        "cmd/catalogctl/main.go": "5d4c9778c9f89b1bac872d9369d6bc21e1752344d843f201feedee9b60288485",
+        "genproto/catalog_admin.pb.go": "2b2bfac98045a464e82b5fa7a0cae3625ccd8ae8bceafdb35fc59729f103f964",
+        "genproto/catalog_admin_grpc.pb.go": "4f152dc17ea896dfbd1a431c40a1ac1c7a01fcb1a088dc4e81abeddf55750c4b",
+        "genproto/demo.pb.go": "799971d468d1e66e0d7fce8930ce74f8f1c894bf8425c50cad44c2a9b40cd9af",
+        "genproto/demo_grpc.pb.go": "70bb93b42e93399bf30d9971b6568244d0fa2eb1cb4757f967354810601dc916",
+        "product_catalog.go": "0ad7a92ba93945f53e0d647e0da9140d18e2137170c16b208f3ffc8aaafdb40c",
+        "server.go": "3c058594132ad66928be8a89cb2e9adbfceb9bae77092915236305d1cbe399e2"
+      }
+    },
+    "fixed_input_sha256": {
+      "src/productcatalogservice/go.mod": "1dcd102acfbc1e360c15afd8233f813d481f0628de51f81c254bf9bbd3749568",
+      "src/productcatalogservice/go.sum": "98fdfa35f6d2a5cc77c9cca946ffd85d5825b02ac27eb8cf5d3281e5a72f8cfd",
+      "src/productcatalogservice/products.json": "766cd816fb1721ec0ce8d9261214fb5e10f6b89ce70600e2d20f149c7b5afffa",
+      "protos/demo.proto": "b1f2fa42c0a9305211bf51fba7d8b5832cd3defd7b8855c327ebd5b1f0f86884",
+      "scripts/catalog-k6.js": "c6f423792a097de012be3daa5bfc7d637a95bf2758146359d67f4a65fc38a5e1",
+      "scripts/catalog-oracle.mjs": "f8697f2f365659294bff0f918c9d6e8261588fc89d1ee449c802fbe09360c25b"
+    },
+    "go_version": "go version go1.27.3 linux/amd64",
+    "build_info": {
+      "baseline": "/home/runner/work/_temp/catalog-binaries/baseline: go1.27.3\n\tpath\tgithub.com/GoogleCloudPlatform/microservices-demo/src/productcatalogservice\n\tmod\tgithub.com/GoogleCloudPlatform/microservices-demo/src/productcatalogservice\t(devel)\t\n\tdep\tcloud.google.com/go\tv0.123.0\th1:2NAUJwPR47q+E35uaJeYoNhuNEM9kM8SjgRgdeOJUSE=\n\tdep\tcloud.google.com/go/alloydb\tv1.26.0\th1:UTzyumJ8tEo0CqwzLkV4WMGnCxvvhw3BDy1nXfCt9KE=\n\tdep\tcloud.google.com/go/alloydbconn\tv1.19.1\th1:trZK0OtIC4RlFNiaPaX+dTC1Zl4EMC9lOeOxzUsw98w=\n\tdep\tcloud.google.com/go/auth\tv0.20.0\th1:kXTssoVb4azsVDoUiF8KvxAqrsQcQtB53DcSgta74CA=\n\tdep\tcloud.google.com/go/auth/oauth2adapt\tv0.2.8\th1:keo8NaayQZ6wimpNSmW5OPc283g65QNIiLpZnkHRbnc=\n\tdep\tcloud.google.com/go/compute/metadata\tv0.9.0\th1:pDUj4QMoPejqq20dK0Pg2N4yG9zIkYGdBtwLoEkH9Zs=\n\tdep\tcloud.google.com/go/iam\tv1.11.0\th1:KieQ9Pb+LLPak1O3Rv3GgCxhnmkYf7Xyh0P5HfF1jFM=\n\tdep\tcloud.google.com/go/longrunning\tv0.9.0\th1:0EzbDEGsAvOZNbqXopgniY0w0a1phvu5IdUFq8grmqY=\n\tdep\tcloud.google.com/go/monitoring\tv1.29.0\th1:AHhDsFaSax1/4k+qlIDX/SDGe6hggnfXJ9dkgD9qBPY=\n\tdep\tcloud.google.com/go/profiler\tv0.6.0\th1:Vwxqgnp8CQwBNcKjO8luwLCh7qblEkcZCtMUvhU9Yik=\n\tdep\tcloud.google.com/go/secretmanager\tv1.21.0\th1:e56QQaKWRyzBdUz40AeZaio/ZHAl268cFx3QFAAw9CY=\n\tdep\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric\tv0.56.0\th1:O2sXMyJh8b7devAGdE+163xtRurt0RVpB6DIzX5vGfg=\n\tdep\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping\tv0.56.0\th1:0YP0+/ixwu+Uqeu/FGiBZNQ19huiUxxiPXIc9WsLKuQ=\n\tdep\tgithub.com/cenkalti/backoff/v5\tv5.0.3\th1:ZN+IMa753KfX5hd8vVaMixjnqRZ3y8CuJKRKj1xcsSM=\n\tdep\tgithub.com/cespare/xxhash/v2\tv2.3.0\th1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=\n\tdep\tgithub.com/felixge/httpsnoop\tv1.1.0\th1:3YtUj32ZZkqZtt3sZZsClsymw/QDuVfpNhoA31zeORc=\n\tdep\tgithub.com/go-logr/logr\tv1.4.4\th1:tG4xh9yMsRCAiodLVTxyrkzSZ9+o0L1Kg/+cPVcbP/8=\n\tdep\tgithub.com/go-logr/stdr\tv1.2.2\th1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=\n\tdep\tgithub.com/golang/groupcache\tv0.0.0-20241129210726-2c02b8208cf8\th1:f+oWsMOmNPc8JmEHVZIycC7hBoQxHH9pNKQORJNozsQ=\n\tdep\tgithub.com/golang/protobuf\tv1.5.4\th1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek=\n\tdep\tgithub.com/google/pprof\tv0.0.0-20260402051712-545e8a4df936\th1:EwtI+Al+DeppwYX2oXJCETMO23COyaKGP6fHVpkpWpg=\n\tdep\tgithub.com/google/s2a-go\tv0.1.9\th1:LGD7gtMgezd8a/Xak7mEWL0PjoTQFvpRudN895yqKW0=\n\tdep\tgithub.com/google/uuid\tv1.6.0\th1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=\n\tdep\tgithub.com/googleapis/enterprise-certificate-proxy\tv0.3.17\th1:73NfMHdiqo9JFU9+7a5ExpVa10/R29pXfZIaW559nrg=\n\tdep\tgithub.com/googleapis/gax-go/v2\tv2.23.0\th1:Tchl7qkvE7Ip3y+ztvNufYFvkfqTe7NfLTYGIdJRLuE=\n\tdep\tgithub.com/grpc-ecosystem/grpc-gateway/v2\tv2.30.0\th1:/Tnpcb2E0Pz/tN9s3bfEY2Q8ePCEX9iuS+cneUwncnw=\n\tdep\tgithub.com/jackc/pgpassfile\tv1.0.0\th1:/6Hmqy13Ss2zCq62VdNG8tM1wchn8zjSGOBJ6icpsIM=\n\tdep\tgithub.com/jackc/pgservicefile\tv0.0.0-20240606120523-5a60cdf6a761\th1:iCEnooe7UlwOQYpKFhBabPMi4aNAfoODPEFNiAnClxo=\n\tdep\tgithub.com/jackc/pgx/v5\tv5.11.0\th1:IzBBtyK9AHqf98cctWFifYSci2hgQR/cd56wB4p+ogg=\n\tdep\tgithub.com/jackc/puddle/v2\tv2.2.2\th1:PR8nw+E/1w0GLuRFSmiioY6UooMp6KJv0/61nB7icHo=\n\tdep\tgithub.com/pkg/errors\tv0.9.1\th1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=\n\tdep\tgithub.com/sirupsen/logrus\tv1.10.2\th1:G2SED73/qrAu6YwbdxOD6peLkCBI3z7L+ykJFTXJBBo=\n\tdep\tgo.etcd.io/bbolt\tv1.4.3\th1:dEadXpI6G79deX5prL3QRNP6JB8UxVkqo4UPnHaNXJo=\n\tdep\tgo.opencensus.io\tv0.24.0\th1:y73uSU6J157QMP2kn2r30vwW1A2W2WFwSCGnAVxeaD0=\n\tdep\tgo.opentelemetry.io/auto/sdk\tv1.2.1\th1:jXsnJ4Lmnqd11kwkBV2LgLoFMZKizbCi5fNZ/ipaZ64=\n\tdep\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc\tv0.71.0\th1:B2h3uqicet1CT2N5TOFhS+Gq++9i0/CLmaxvhmhtP5s=\n\tdep\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp\tv0.70.0\th1:LMuyCAyfalSjDyjdC65nK6N0zoTT63+E/u95X0JovZI=\n\tdep\tgo.opentelemetry.io/otel\tv1.46.0\th1:FHt5/CDyVxi/8IM1CH7VE/rRgq3kLHa2mSTVMO8AWyc=\n\tdep\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace\tv1.46.0\th1:OFnwLJr+pF3iHrlGSzbxyuo6/6HyBlnlN1CWEJmBVcw=\n\tdep\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc\tv1.46.0\th1:w53CDeOA/Kurp7yRsegSr6pbbr759dOvJ+yNmWM6Hxs=\n\tdep\tgo.opentelemetry.io/otel/metric\tv1.46.0\th1:yBnkXvgV7AXFILZc5K6IZe/CBFF3OS7BJ8ov6/lj0K8=\n\tdep\tgo.opentelemetry.io/otel/sdk\tv1.46.0\th1:h5CNQQjEbuQXY/JfZtgt3i7HVFV3aHPO2OAwO2eTYPI=\n\tdep\tgo.opentelemetry.io/otel/sdk/metric\tv1.46.0\th1:0piZ26EG4RBfebb2jhDH6ERCYHoVWduc3kLgPCwSnSE=\n\tdep\tgo.opentelemetry.io/otel/trace\tv1.46.0\th1:OULy7ccdJnZtJ0UDYFOIGaCmiWzJ8Vi2G/Rsu60qs1c=\n\tdep\tgo.opentelemetry.io/proto/otlp\tv1.11.0\th1:5rrYs0Ykyj50sdU/JU0x8etU+LubXWb+gED6TbEdMIk=\n\tdep\tgolang.org/x/crypto\tv0.55.0\th1:+KWHjbgOaAQ66dh/YlkZKHlz9ZUlq61AFirAR9ntP8M=\n\tdep\tgolang.org/x/net\tv0.58.0\th1:ynWG7rqYi4ccpTEuPZ2QGWHktVEM9DMCj9yzDE0Q7To=\n\tdep\tgolang.org/x/oauth2\tv0.36.0\th1:peZ/1z27fi9hUOFCAZaHyrpWG5lwe0RJEEEeH0ThlIs=\n\tdep\tgolang.org/x/sync\tv0.22.0\th1:SZjpbeLmrCk4xhRSZFNZW5gFUeCeFgjekvI/+gfScek=\n\tdep\tgolang.org/x/sys\tv0.47.0\th1:o7XGOvZQCADBQQ4Y7VNq2dRWQR7JmOUW8Kxx4ZsNgWs=\n\tdep\tgolang.org/x/text\tv0.41.0\th1:vz/seA0lnX87Othu2f/0L24RcgrXD9/YFTSuGjj3rH8=\n\tdep\tgolang.org/x/time\tv0.15.0\th1:bbrp8t3bGUeFOx08pvsMYRTCVSMk89u4tKbNOZbp88U=\n\tdep\tgoogle.golang.org/api\tv0.287.1\th1:LiyJx32VU3cwQfLchn/513qKhc25hq0pEANYJoWNnnI=\n\tdep\tgoogle.golang.org/genproto\tv0.0.0-20260319201613-d00831a3d3e7\th1:XzmzkmB14QhVhgnawEVsOn6OFsnpyxNPRY9QV01dNB0=\n\tdep\tgoogle.golang.org/genproto/googleapis/api\tv0.0.0-20260819154853-08b0e4226688\th1:ax2KzoSRIZU/M0cIxri3pKxy99vniH1PVxWC6si/eZI=\n\tdep\tgoogle.golang.org/genproto/googleapis/rpc\tv0.0.0-20260825221802-da73d73af1c5\th1:1VUiZAXyC+zmiFYi+WLtBzr68Cj8wOofHjjrA/kkizc=\n\tdep\tgoogle.golang.org/grpc\tv1.83.2\th1:EManeRomTObA0BU7I8vXgg/78uE5MJ9M8B39EX2WscU=\n\tdep\tgoogle.golang.org/protobuf\tv1.36.12\th1:pJOKDDOyeXErUroCihFAd5LQuwXBSpVnKGrj5o/fwxc=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tDefaultGODEBUG=cryptocustomrand=1,httpservecontentmaxranges=1,tlssecpmlkem=0,tracebacklabels=0,urlstrictcolons=0,x509sslcertoverrideplatform=0\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n",
+      "candidate": "/home/runner/work/_temp/catalog-binaries/candidate: go1.27.3\n\tpath\tgithub.com/GoogleCloudPlatform/microservices-demo/src/productcatalogservice\n\tmod\tgithub.com/GoogleCloudPlatform/microservices-demo/src/productcatalogservice\t(devel)\t\n\tdep\tcloud.google.com/go\tv0.123.0\th1:2NAUJwPR47q+E35uaJeYoNhuNEM9kM8SjgRgdeOJUSE=\n\tdep\tcloud.google.com/go/alloydb\tv1.26.0\th1:UTzyumJ8tEo0CqwzLkV4WMGnCxvvhw3BDy1nXfCt9KE=\n\tdep\tcloud.google.com/go/alloydbconn\tv1.19.1\th1:trZK0OtIC4RlFNiaPaX+dTC1Zl4EMC9lOeOxzUsw98w=\n\tdep\tcloud.google.com/go/auth\tv0.20.0\th1:kXTssoVb4azsVDoUiF8KvxAqrsQcQtB53DcSgta74CA=\n\tdep\tcloud.google.com/go/auth/oauth2adapt\tv0.2.8\th1:keo8NaayQZ6wimpNSmW5OPc283g65QNIiLpZnkHRbnc=\n\tdep\tcloud.google.com/go/compute/metadata\tv0.9.0\th1:pDUj4QMoPejqq20dK0Pg2N4yG9zIkYGdBtwLoEkH9Zs=\n\tdep\tcloud.google.com/go/iam\tv1.11.0\th1:KieQ9Pb+LLPak1O3Rv3GgCxhnmkYf7Xyh0P5HfF1jFM=\n\tdep\tcloud.google.com/go/longrunning\tv0.9.0\th1:0EzbDEGsAvOZNbqXopgniY0w0a1phvu5IdUFq8grmqY=\n\tdep\tcloud.google.com/go/monitoring\tv1.29.0\th1:AHhDsFaSax1/4k+qlIDX/SDGe6hggnfXJ9dkgD9qBPY=\n\tdep\tcloud.google.com/go/profiler\tv0.6.0\th1:Vwxqgnp8CQwBNcKjO8luwLCh7qblEkcZCtMUvhU9Yik=\n\tdep\tcloud.google.com/go/secretmanager\tv1.21.0\th1:e56QQaKWRyzBdUz40AeZaio/ZHAl268cFx3QFAAw9CY=\n\tdep\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric\tv0.56.0\th1:O2sXMyJh8b7devAGdE+163xtRurt0RVpB6DIzX5vGfg=\n\tdep\tgithub.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping\tv0.56.0\th1:0YP0+/ixwu+Uqeu/FGiBZNQ19huiUxxiPXIc9WsLKuQ=\n\tdep\tgithub.com/cenkalti/backoff/v5\tv5.0.3\th1:ZN+IMa753KfX5hd8vVaMixjnqRZ3y8CuJKRKj1xcsSM=\n\tdep\tgithub.com/cespare/xxhash/v2\tv2.3.0\th1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=\n\tdep\tgithub.com/felixge/httpsnoop\tv1.1.0\th1:3YtUj32ZZkqZtt3sZZsClsymw/QDuVfpNhoA31zeORc=\n\tdep\tgithub.com/go-logr/logr\tv1.4.4\th1:tG4xh9yMsRCAiodLVTxyrkzSZ9+o0L1Kg/+cPVcbP/8=\n\tdep\tgithub.com/go-logr/stdr\tv1.2.2\th1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=\n\tdep\tgithub.com/golang/groupcache\tv0.0.0-20241129210726-2c02b8208cf8\th1:f+oWsMOmNPc8JmEHVZIycC7hBoQxHH9pNKQORJNozsQ=\n\tdep\tgithub.com/golang/protobuf\tv1.5.4\th1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek=\n\tdep\tgithub.com/google/pprof\tv0.0.0-20260402051712-545e8a4df936\th1:EwtI+Al+DeppwYX2oXJCETMO23COyaKGP6fHVpkpWpg=\n\tdep\tgithub.com/google/s2a-go\tv0.1.9\th1:LGD7gtMgezd8a/Xak7mEWL0PjoTQFvpRudN895yqKW0=\n\tdep\tgithub.com/google/uuid\tv1.6.0\th1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=\n\tdep\tgithub.com/googleapis/enterprise-certificate-proxy\tv0.3.17\th1:73NfMHdiqo9JFU9+7a5ExpVa10/R29pXfZIaW559nrg=\n\tdep\tgithub.com/googleapis/gax-go/v2\tv2.23.0\th1:Tchl7qkvE7Ip3y+ztvNufYFvkfqTe7NfLTYGIdJRLuE=\n\tdep\tgithub.com/grpc-ecosystem/grpc-gateway/v2\tv2.30.0\th1:/Tnpcb2E0Pz/tN9s3bfEY2Q8ePCEX9iuS+cneUwncnw=\n\tdep\tgithub.com/jackc/pgpassfile\tv1.0.0\th1:/6Hmqy13Ss2zCq62VdNG8tM1wchn8zjSGOBJ6icpsIM=\n\tdep\tgithub.com/jackc/pgservicefile\tv0.0.0-20240606120523-5a60cdf6a761\th1:iCEnooe7UlwOQYpKFhBabPMi4aNAfoODPEFNiAnClxo=\n\tdep\tgithub.com/jackc/pgx/v5\tv5.11.0\th1:IzBBtyK9AHqf98cctWFifYSci2hgQR/cd56wB4p+ogg=\n\tdep\tgithub.com/jackc/puddle/v2\tv2.2.2\th1:PR8nw+E/1w0GLuRFSmiioY6UooMp6KJv0/61nB7icHo=\n\tdep\tgithub.com/pkg/errors\tv0.9.1\th1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=\n\tdep\tgithub.com/sirupsen/logrus\tv1.10.2\th1:G2SED73/qrAu6YwbdxOD6peLkCBI3z7L+ykJFTXJBBo=\n\tdep\tgo.etcd.io/bbolt\tv1.4.3\th1:dEadXpI6G79deX5prL3QRNP6JB8UxVkqo4UPnHaNXJo=\n\tdep\tgo.opencensus.io\tv0.24.0\th1:y73uSU6J157QMP2kn2r30vwW1A2W2WFwSCGnAVxeaD0=\n\tdep\tgo.opentelemetry.io/auto/sdk\tv1.2.1\th1:jXsnJ4Lmnqd11kwkBV2LgLoFMZKizbCi5fNZ/ipaZ64=\n\tdep\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc\tv0.71.0\th1:B2h3uqicet1CT2N5TOFhS+Gq++9i0/CLmaxvhmhtP5s=\n\tdep\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp\tv0.70.0\th1:LMuyCAyfalSjDyjdC65nK6N0zoTT63+E/u95X0JovZI=\n\tdep\tgo.opentelemetry.io/otel\tv1.46.0\th1:FHt5/CDyVxi/8IM1CH7VE/rRgq3kLHa2mSTVMO8AWyc=\n\tdep\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace\tv1.46.0\th1:OFnwLJr+pF3iHrlGSzbxyuo6/6HyBlnlN1CWEJmBVcw=\n\tdep\tgo.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc\tv1.46.0\th1:w53CDeOA/Kurp7yRsegSr6pbbr759dOvJ+yNmWM6Hxs=\n\tdep\tgo.opentelemetry.io/otel/metric\tv1.46.0\th1:yBnkXvgV7AXFILZc5K6IZe/CBFF3OS7BJ8ov6/lj0K8=\n\tdep\tgo.opentelemetry.io/otel/sdk\tv1.46.0\th1:h5CNQQjEbuQXY/JfZtgt3i7HVFV3aHPO2OAwO2eTYPI=\n\tdep\tgo.opentelemetry.io/otel/sdk/metric\tv1.46.0\th1:0piZ26EG4RBfebb2jhDH6ERCYHoVWduc3kLgPCwSnSE=\n\tdep\tgo.opentelemetry.io/otel/trace\tv1.46.0\th1:OULy7ccdJnZtJ0UDYFOIGaCmiWzJ8Vi2G/Rsu60qs1c=\n\tdep\tgo.opentelemetry.io/proto/otlp\tv1.11.0\th1:5rrYs0Ykyj50sdU/JU0x8etU+LubXWb+gED6TbEdMIk=\n\tdep\tgolang.org/x/crypto\tv0.55.0\th1:+KWHjbgOaAQ66dh/YlkZKHlz9ZUlq61AFirAR9ntP8M=\n\tdep\tgolang.org/x/net\tv0.58.0\th1:ynWG7rqYi4ccpTEuPZ2QGWHktVEM9DMCj9yzDE0Q7To=\n\tdep\tgolang.org/x/oauth2\tv0.36.0\th1:peZ/1z27fi9hUOFCAZaHyrpWG5lwe0RJEEEeH0ThlIs=\n\tdep\tgolang.org/x/sync\tv0.22.0\th1:SZjpbeLmrCk4xhRSZFNZW5gFUeCeFgjekvI/+gfScek=\n\tdep\tgolang.org/x/sys\tv0.47.0\th1:o7XGOvZQCADBQQ4Y7VNq2dRWQR7JmOUW8Kxx4ZsNgWs=\n\tdep\tgolang.org/x/text\tv0.41.0\th1:vz/seA0lnX87Othu2f/0L24RcgrXD9/YFTSuGjj3rH8=\n\tdep\tgolang.org/x/time\tv0.15.0\th1:bbrp8t3bGUeFOx08pvsMYRTCVSMk89u4tKbNOZbp88U=\n\tdep\tgoogle.golang.org/api\tv0.287.1\th1:LiyJx32VU3cwQfLchn/513qKhc25hq0pEANYJoWNnnI=\n\tdep\tgoogle.golang.org/genproto\tv0.0.0-20260319201613-d00831a3d3e7\th1:XzmzkmB14QhVhgnawEVsOn6OFsnpyxNPRY9QV01dNB0=\n\tdep\tgoogle.golang.org/genproto/googleapis/api\tv0.0.0-20260819154853-08b0e4226688\th1:ax2KzoSRIZU/M0cIxri3pKxy99vniH1PVxWC6si/eZI=\n\tdep\tgoogle.golang.org/genproto/googleapis/rpc\tv0.0.0-20260825221802-da73d73af1c5\th1:1VUiZAXyC+zmiFYi+WLtBzr68Cj8wOofHjjrA/kkizc=\n\tdep\tgoogle.golang.org/grpc\tv1.83.2\th1:EManeRomTObA0BU7I8vXgg/78uE5MJ9M8B39EX2WscU=\n\tdep\tgoogle.golang.org/protobuf\tv1.36.12\th1:pJOKDDOyeXErUroCihFAd5LQuwXBSpVnKGrj5o/fwxc=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\t-trimpath=true\n\tbuild\tDefaultGODEBUG=cryptocustomrand=1,httpservecontentmaxranges=1,tlssecpmlkem=0,tracebacklabels=0,urlstrictcolons=0,x509sslcertoverrideplatform=0\n\tbuild\tCGO_ENABLED=1\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n"
+    },
+    "common_arguments": [
+      "build",
+      "-trimpath",
+      "-buildvcs=false"
+    ],
+    "policy": "Same host, independent baseline/candidate normal builds and fresh owned service/database lifecycle per arm; original full native k6 matrix, five reversed rounds, oracle before each trial. Instrumentation disabled."
+  },
+  "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "cpu_count": 4,
+  "initial_load": [
+    6.23095703125,
+    2.3974609375,
+    0.8916015625
+  ],
+  "cleanup": {
+    "owned_processes_stopped": true,
+    "scratch_removed": true
+  },
+  "restart_events": [
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-none-baseline",
+      "action": "gateway-restart",
+      "at_s": 15.043776518999948,
+      "ready_at_s": 15.103881254999578
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-none-baseline",
+      "action": "durable-db-restart",
+      "at_s": 30.157496382998943,
+      "ready_at_s": 30.2271840229987
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-none-candidate",
+      "action": "gateway-restart",
+      "at_s": 15.044209941999725,
+      "ready_at_s": 15.233225094998488
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-none-candidate",
+      "action": "durable-db-restart",
+      "at_s": 30.275177507999615,
+      "ready_at_s": 30.42766360099995
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-ttl-baseline",
+      "action": "gateway-restart",
+      "at_s": 15.039576615999977,
+      "ready_at_s": 15.227898187000392
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-ttl-baseline",
+      "action": "durable-db-restart",
+      "at_s": 30.269598484999733,
+      "ready_at_s": 30.42119614799958
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-ttl-candidate",
+      "action": "gateway-restart",
+      "at_s": 15.046142281000357,
+      "ready_at_s": 15.228398069999457
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-ttl-candidate",
+      "action": "durable-db-restart",
+      "at_s": 30.262933366999277,
+      "ready_at_s": 30.412155779000386
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-lease-baseline",
+      "action": "gateway-restart",
+      "at_s": 15.040924337999968,
+      "ready_at_s": 15.191414659999282
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-lease-baseline",
+      "action": "durable-db-restart",
+      "at_s": 30.22989711199989,
+      "ready_at_s": 30.373532310999508
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-lease-candidate",
+      "action": "gateway-restart",
+      "at_s": 15.037771690998852,
+      "ready_at_s": 15.215677123000205
+    },
+    {
+      "label": "n500-r3-ttl50ms-rate1000-rep0-lease-candidate",
+      "action": "durable-db-restart",
+      "at_s": 30.256606834000195,
+      "ready_at_s": 30.306308160999833
+    }
+  ],
+  "totals": {
+    "baseline": {
+      "planned_offers": 6768000,
+      "offered": 6766718,
+      "started": 2660513,
+      "successful": 2657306,
+      "failed": 3207,
+      "dropped_iterations": 4106205,
+      "timeouts": 163,
+      "correctness_errors": 0,
+      "interrupted": 0,
+      "native_status_zero_count": 2657292
+    },
+    "candidate": {
+      "planned_offers": 6768000,
+      "offered": 6768289,
+      "started": 2664847,
+      "successful": 2661921,
+      "failed": 2926,
+      "dropped_iterations": 4103442,
+      "timeouts": 156,
+      "correctness_errors": 0,
+      "interrupted": 0,
+      "native_status_zero_count": 2661898
+    }
+  },
+  "latency_coverage_gaps": [
+    {
+      "label": "n5000-r1-ttl60s-rate100-rep1-lease-baseline",
+      "build": "baseline",
+      "successful": 320,
+      "native_status_zero_count": 319,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl60s-rate100-rep4-lease-candidate",
+      "build": "candidate",
+      "successful": 362,
+      "native_status_zero_count": 361,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl60s-rate1000-rep0-none-baseline",
+      "build": "baseline",
+      "successful": 320,
+      "native_status_zero_count": 319,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl60s-rate1000-rep1-lease-candidate",
+      "build": "candidate",
+      "successful": 366,
+      "native_status_zero_count": 365,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl60s-rate1000-rep2-lease-candidate",
+      "build": "candidate",
+      "successful": 332,
+      "native_status_zero_count": 331,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl60s-rate1000-rep3-ttl-baseline",
+      "build": "baseline",
+      "successful": 348,
+      "native_status_zero_count": 347,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl60s-rate1000-rep4-none-candidate",
+      "build": "candidate",
+      "successful": 322,
+      "native_status_zero_count": 321,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate100-rep1-ttl-candidate",
+      "build": "candidate",
+      "successful": 284,
+      "native_status_zero_count": 283,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate100-rep2-lease-candidate",
+      "build": "candidate",
+      "successful": 303,
+      "native_status_zero_count": 302,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep0-lease-candidate",
+      "build": "candidate",
+      "successful": 352,
+      "native_status_zero_count": 351,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep1-ttl-candidate",
+      "build": "candidate",
+      "successful": 310,
+      "native_status_zero_count": 309,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep1-ttl-baseline",
+      "build": "baseline",
+      "successful": 316,
+      "native_status_zero_count": 315,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep1-none-candidate",
+      "build": "candidate",
+      "successful": 327,
+      "native_status_zero_count": 326,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep2-lease-baseline",
+      "build": "baseline",
+      "successful": 320,
+      "native_status_zero_count": 319,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep2-lease-candidate",
+      "build": "candidate",
+      "successful": 327,
+      "native_status_zero_count": 326,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep3-ttl-candidate",
+      "build": "candidate",
+      "successful": 308,
+      "native_status_zero_count": 307,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep3-ttl-baseline",
+      "build": "baseline",
+      "successful": 289,
+      "native_status_zero_count": 288,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep3-none-candidate",
+      "build": "candidate",
+      "successful": 321,
+      "native_status_zero_count": 320,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep4-lease-baseline",
+      "build": "baseline",
+      "successful": 322,
+      "native_status_zero_count": 320,
+      "missing": 2
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate1000-rep4-lease-candidate",
+      "build": "candidate",
+      "successful": 327,
+      "native_status_zero_count": 326,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate5000-rep0-lease-baseline",
+      "build": "baseline",
+      "successful": 337,
+      "native_status_zero_count": 336,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate5000-rep1-lease-baseline",
+      "build": "baseline",
+      "successful": 325,
+      "native_status_zero_count": 324,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r1-ttl1ms-rate5000-rep4-ttl-baseline",
+      "build": "baseline",
+      "successful": 297,
+      "native_status_zero_count": 296,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl60s-rate100-rep2-lease-candidate",
+      "build": "candidate",
+      "successful": 361,
+      "native_status_zero_count": 360,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl60s-rate100-rep3-ttl-baseline",
+      "build": "baseline",
+      "successful": 360,
+      "native_status_zero_count": 359,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl60s-rate1000-rep1-lease-candidate",
+      "build": "candidate",
+      "successful": 350,
+      "native_status_zero_count": 349,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl60s-rate5000-rep2-none-baseline",
+      "build": "baseline",
+      "successful": 313,
+      "native_status_zero_count": 312,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl60s-rate5000-rep2-none-candidate",
+      "build": "candidate",
+      "successful": 323,
+      "native_status_zero_count": 322,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl60s-rate5000-rep2-ttl-candidate",
+      "build": "candidate",
+      "successful": 341,
+      "native_status_zero_count": 340,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl60s-rate5000-rep3-none-candidate",
+      "build": "candidate",
+      "successful": 309,
+      "native_status_zero_count": 308,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl1ms-rate100-rep3-lease-candidate",
+      "build": "candidate",
+      "successful": 328,
+      "native_status_zero_count": 327,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl1ms-rate1000-rep1-none-candidate",
+      "build": "candidate",
+      "successful": 336,
+      "native_status_zero_count": 335,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl1ms-rate1000-rep2-none-baseline",
+      "build": "baseline",
+      "successful": 348,
+      "native_status_zero_count": 347,
+      "missing": 1
+    },
+    {
+      "label": "n5000-r3-ttl1ms-rate1000-rep2-none-candidate",
+      "build": "candidate",
+      "successful": 322,
+      "native_status_zero_count": 320,
+      "missing": 2
+    },
+    {
+      "label": "n5000-r3-ttl1ms-rate5000-rep4-ttl-candidate",
+      "build": "candidate",
+      "successful": 301,
+      "native_status_zero_count": 300,
+      "missing": 1
+    }
+  ],
+  "source_blob_verification": {
+    "runtime_files": 34,
+    "fixed_inputs": 6,
+    "method": "SHA256 checked against git show of exact measured candidate/baseline commits, avoiding checkout line-ending differences."
+  },
+  "post_campaign_mapping_checks": 1086,
+  "verdict": "Inconclusive for optimization, regression or catalog service-capacity claims. Full campaign and recorded-native-sample reconciliation completed; all failures, dropped offers and telemetry omissions are retained.",
+  "scope": {
+    "ordinary_trials": 1080,
+    "stability_trials": 6,
+    "trials_per_build": 543,
+    "ordinary_configurations_per_build": 108,
+    "repeats_per_ordinary_configuration": 5,
+    "sizes": [
+      9,
+      500,
+      5000
+    ],
+    "gateways": [
+      1,
+      3
+    ],
+    "ordinary_ttl": [
+      "60s",
+      "1ms"
+    ],
+    "offered_rates": [
+      100,
+      1000,
+      5000
+    ],
+    "mix": "50% List, 40% Get, 10% Search among started iterations",
+    "vus": 64,
+    "protocol": "Actual gRPC over loopback; generator, gateways and durable database co-located on one hosted VM."
+  },
+  "host": {
+    "cpu_model": "AMD EPYC 9V45 96-Core Processor",
+    "logical_cpus_exposed": 4,
+    "virtualization": "Microsoft",
+    "ram_bytes": 16760344576,
+    "native_k6": "2.3.0 e088784614 go1.26.8",
+    "application_go": "1.27.3",
+    "kernel": "7.0.0-1017-azure"
+  },
+  "artifact": {
+    "id": 12431234223,
+    "name": "catalog-compare-39769299508",
+    "size_bytes": 646228813,
+    "github_published_zip_sha256": "3258231ae0e6f8fb7d6756cb1dda41be7a93f0de96975892953cdbd12ef522e1",
+    "zip_hash_policy": "Digest is GitHub API metadata; local gh download extracted it. Extracted receipt hashes and gzip CRC/content were independently checked."
+  },
+  "audit": {
+    "complete_gzip_files_read_crc_checked": 1086,
+    "native_summary_and_oracle_pairs_checked": 1086,
+    "native_trend_quantiles_recomputed": [
+      "p50",
+      "p95",
+      "p99"
+    ],
+    "runtime_source_blobs_checked": 34,
+    "fixed_input_blobs_checked": 6,
+    "script_sha256": "67e2090ac537a156a5055cf600cb0f7e7ca7771645a754229975bc4ed97c9a46"
+  },
+  "limitations": [
+    "No successful-request latency is invented for the 37 absent native status-zero duration samples.",
+    "Recorded successful-RPC tails exclude failures, dropped offers, connection and validation duration.",
+    "Native iteration duration and validation-group duration remain separately retained.",
+    "Planned rate*duration offers differ from native actual started+dropped; both are retained.",
+    "The co-located fixed-64-VU setup did not sustain high offered rates; limiting component is not isolated.",
+    "Earlier native profiling used a different host and instrumented binary and is diagnostic only.",
+    "Role CPU samples are first-to-last observed ticks per PID and role RSS is sampled maximum single-process RSS, not peak tree or isolated process cost.",
+    "Two build totals across heterogeneous workloads are accounting totals, not pooled performance percentiles or a throughput comparison.",
+    "The full eleven-service storefront or six-service autoscaling was not measured.",
+    "The desired 1200RPS/186-to-104ms and 52% six-service throughput claims remain unverified."
+  ],
+  "post_measurement_driver_change": "The Python result mapper now exposes native_status_zero_count and native_duration_gap after each k6 trial. Both mappings were checked against all 1,086 retained native summaries; generation, workload, timing and product code are unchanged.",
+  "retained_file_sha256": {
+    "trials.json": "51bf323f0619df1cc15d6059b2d728d2fda7ad728f5f891c52cd5868b3b244e8",
+    "groups.json": "c0b022ab76761024be1fbf10b0b377dddb6ce04f67de58ed540d0f7bebc2a1ee",
+    "receipt-hashes.json": "665da8d2989308feaac45f69103200129c4c28f6ebd9f9ebad402e23bf9aadfe"
+  }
+}

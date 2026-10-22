@@ -1,0 +1,9770 @@
+[
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.603545,
+      "min": 0.42133,
+      "max": 0.640807
+    },
+    "p95_ms": {
+      "median": 0.745239,
+      "min": 0.5951985999999999,
+      "max": 0.9172096499999995
+    },
+    "p99_ms": {
+      "median": 1.450964,
+      "min": 0.9789622199999998,
+      "max": 1.594602
+    },
+    "successful_per_s": {
+      "median": 100.13181587159575,
+      "min": 99.98331103568019,
+      "max": 100.14181976208246
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.592705,
+      "min": 0.416178,
+      "max": 0.624008
+    },
+    "p95_ms": {
+      "median": 0.717703,
+      "min": 0.664228,
+      "max": 0.7770479
+    },
+    "p99_ms": {
+      "median": 1.3505670099999993,
+      "min": 1.096743,
+      "max": 1.575586
+    },
+    "successful_per_s": {
+      "median": 100.13582314751756,
+      "min": 99.99244507081268,
+      "max": 100.14561565767296
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.323528,
+      "min": 0.227624,
+      "max": 0.333463
+    },
+    "p95_ms": {
+      "median": 0.413384,
+      "min": 0.314585,
+      "max": 0.445377
+    },
+    "p99_ms": {
+      "median": 0.6872467299999994,
+      "min": 0.481321,
+      "max": 1.041727
+    },
+    "successful_per_s": {
+      "median": 100.13782550423333,
+      "min": 99.98375355656479,
+      "max": 100.14683789320432
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.325938,
+      "min": 0.210327,
+      "max": 0.339417
+    },
+    "p95_ms": {
+      "median": 0.43794524999999984,
+      "min": 0.335937,
+      "max": 0.45074
+    },
+    "p99_ms": {
+      "median": 0.8775294099999986,
+      "min": 0.687326,
+      "max": 0.934565
+    },
+    "successful_per_s": {
+      "median": 100.1391779616203,
+      "min": 99.97868041288385,
+      "max": 100.15310732138667
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.325301,
+      "min": 0.216312,
+      "max": 0.346683
+    },
+    "p95_ms": {
+      "median": 0.442647,
+      "min": 0.320859,
+      "max": 0.507135
+    },
+    "p99_ms": {
+      "median": 0.887674,
+      "min": 0.625599,
+      "max": 1.235915
+    },
+    "successful_per_s": {
+      "median": 100.14339504409614,
+      "min": 100.13828263735024,
+      "max": 100.15358071665607
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.327534,
+      "min": 0.213462,
+      "max": 0.362437
+    },
+    "p95_ms": {
+      "median": 0.450254,
+      "min": 0.284714,
+      "max": 0.47038
+    },
+    "p99_ms": {
+      "median": 0.89757,
+      "min": 0.339497,
+      "max": 1.067235
+    },
+    "successful_per_s": {
+      "median": 100.13793707582995,
+      "min": 99.98315833689395,
+      "max": 100.14894716322166
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.336397,
+      "min": 0.331238,
+      "max": 0.349307
+    },
+    "p95_ms": {
+      "median": 0.5402431000000002,
+      "min": 0.493495,
+      "max": 0.76896
+    },
+    "p99_ms": {
+      "median": 1.659446230000001,
+      "min": 1.2531,
+      "max": 2.051171
+    },
+    "successful_per_s": {
+      "median": 1000.0268285817764,
+      "min": 999.85454316077,
+      "max": 1000.0420960896199
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.339553,
+      "min": 0.3358765,
+      "max": 0.346408
+    },
+    "p95_ms": {
+      "median": 0.566975,
+      "min": 0.51006,
+      "max": 0.8692556000000002
+    },
+    "p99_ms": {
+      "median": 1.642628,
+      "min": 1.36551,
+      "max": 1.9331085500000027
+    },
+    "successful_per_s": {
+      "median": 999.9094666206308,
+      "min": 999.6655360702147,
+      "max": 1000.0400097660231
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.165958,
+      "min": 0.164358,
+      "max": 0.170257
+    },
+    "p95_ms": {
+      "median": 0.33063925000000016,
+      "min": 0.243312,
+      "max": 0.4384741999999992
+    },
+    "p99_ms": {
+      "median": 0.8078602799999998,
+      "min": 0.654718,
+      "max": 0.906754
+    },
+    "successful_per_s": {
+      "median": 999.9636039913843,
+      "min": 999.7902715331799,
+      "max": 1000.0763092720858
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.167894,
+      "min": 0.162309,
+      "max": 0.169721
+    },
+    "p95_ms": {
+      "median": 0.24399630000000003,
+      "min": 0.23086,
+      "max": 0.395777
+    },
+    "p99_ms": {
+      "median": 0.7165006600000009,
+      "min": 0.625346,
+      "max": 0.803692
+    },
+    "successful_per_s": {
+      "median": 1000.0045775913592,
+      "min": 999.8427260723124,
+      "max": 1000.0718081888734
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.16561599999999999,
+      "min": 0.1621595,
+      "max": 0.167011
+    },
+    "p95_ms": {
+      "median": 0.237639,
+      "min": 0.22600395000000004,
+      "max": 0.29253235000000016
+    },
+    "p99_ms": {
+      "median": 0.7303620600000024,
+      "min": 0.6077401700000019,
+      "max": 0.8501209600000064
+    },
+    "successful_per_s": {
+      "median": 999.934931413,
+      "min": 999.8351993304038,
+      "max": 1000.0725870048681
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.166451,
+      "min": 0.163176,
+      "max": 0.16911
+    },
+    "p95_ms": {
+      "median": 0.249085,
+      "min": 0.227704,
+      "max": 0.31807735000000015
+    },
+    "p99_ms": {
+      "median": 0.711534,
+      "min": 0.592695,
+      "max": 0.824176
+    },
+    "successful_per_s": {
+      "median": 999.9885090472244,
+      "min": 999.7937677071985,
+      "max": 1000.0734758198959
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.3357605000000001,
+      "min": 1.003094,
+      "max": 2.369267
+    },
+    "p95_ms": {
+      "median": 8.91759575,
+      "min": 8.12156825,
+      "max": 11.734789999999974
+    },
+    "p99_ms": {
+      "median": 13.50192782,
+      "min": 12.941863299999987,
+      "max": 17.730615489999973
+    },
+    "successful_per_s": {
+      "median": 4979.8842605506425,
+      "min": 4902.307379084114,
+      "max": 4988.726628129562
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 118,
+      "min": 45,
+      "max": 543
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.2228984999999999,
+      "min": 1.0039859999999998,
+      "max": 1.984633
+    },
+    "p95_ms": {
+      "median": 8.719243549999995,
+      "min": 7.602190049999998,
+      "max": 10.9609414
+    },
+    "p99_ms": {
+      "median": 13.175477549999998,
+      "min": 12.312004729999963,
+      "max": 16.427169679999995
+    },
+    "successful_per_s": {
+      "median": 4983.111671479067,
+      "min": 4946.782139207717,
+      "max": 4994.316106183246
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 96,
+      "min": 16,
+      "max": 271
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.169702,
+      "min": 0.162621,
+      "max": 0.213568
+    },
+    "p95_ms": {
+      "median": 3.6074399999999964,
+      "min": 2.928226,
+      "max": 5.224396
+    },
+    "p99_ms": {
+      "median": 7.527114599999997,
+      "min": 5.709766,
+      "max": 9.782837
+    },
+    "successful_per_s": {
+      "median": 4997.555072798584,
+      "min": 4995.384664945868,
+      "max": 4999.7281088492955
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 15
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.164058,
+      "min": 0.16298,
+      "max": 0.212591
+    },
+    "p95_ms": {
+      "median": 3.3569490999999996,
+      "min": 3.021372,
+      "max": 4.6173224999999976
+    },
+    "p99_ms": {
+      "median": 6.679258850000006,
+      "min": 5.6644,
+      "max": 8.538559179999993
+    },
+    "successful_per_s": {
+      "median": 4997.671639646151,
+      "min": 4996.582036901897,
+      "max": 4999.728112182154
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 13,
+      "min": 0,
+      "max": 19
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.15925,
+      "min": 0.158213,
+      "max": 0.209687
+    },
+    "p95_ms": {
+      "median": 3.127678,
+      "min": 2.900348,
+      "max": 4.731999199999969
+    },
+    "p99_ms": {
+      "median": 5.918634,
+      "min": 5.375576,
+      "max": 9.250900239999991
+    },
+    "successful_per_s": {
+      "median": 4999.696006117326,
+      "min": 4989.104564403742,
+      "max": 4999.736653483022
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 64
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.16886,
+      "min": 0.160012,
+      "max": 0.20710800000000001
+    },
+    "p95_ms": {
+      "median": 3.388236,
+      "min": 3.079704,
+      "max": 4.88841575
+    },
+    "p99_ms": {
+      "median": 6.646892,
+      "min": 5.75632,
+      "max": 10.356768900000025
+    },
+    "successful_per_s": {
+      "median": 4999.723943611321,
+      "min": 4995.351015420304,
+      "max": 4999.804589151328
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 14
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.353444,
+      "min": 0.337744,
+      "max": 0.36984300000000003
+    },
+    "p95_ms": {
+      "median": 0.445583,
+      "min": 0.413093,
+      "max": 0.6700648499999977
+    },
+    "p99_ms": {
+      "median": 1.116054,
+      "min": 0.826327,
+      "max": 1.4748603299999996
+    },
+    "successful_per_s": {
+      "median": 100.13951730805186,
+      "min": 99.97955224862714,
+      "max": 100.1419771128484
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.352026,
+      "min": 0.339692,
+      "max": 0.364666
+    },
+    "p95_ms": {
+      "median": 0.463129,
+      "min": 0.400123,
+      "max": 0.635213
+    },
+    "p99_ms": {
+      "median": 0.90191901,
+      "min": 0.733036,
+      "max": 1.246911
+    },
+    "successful_per_s": {
+      "median": 100.13973181596083,
+      "min": 99.98730147939573,
+      "max": 100.15131730885706
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.352037,
+      "min": 0.345686,
+      "max": 0.379133
+    },
+    "p95_ms": {
+      "median": 0.454596,
+      "min": 0.412923,
+      "max": 0.472849
+    },
+    "p99_ms": {
+      "median": 0.88773,
+      "min": 0.729171,
+      "max": 1.014285
+    },
+    "successful_per_s": {
+      "median": 100.14092237158277,
+      "min": 100.13807050490743,
+      "max": 100.14620853213115
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.358466,
+      "min": 0.348587,
+      "max": 0.4146825
+    },
+    "p95_ms": {
+      "median": 0.478553,
+      "min": 0.427115,
+      "max": 0.6972953999999995
+    },
+    "p99_ms": {
+      "median": 0.8190550499999998,
+      "min": 0.774167,
+      "max": 1.3623152699999999
+    },
+    "successful_per_s": {
+      "median": 100.13756934266128,
+      "min": 99.98519427575265,
+      "max": 100.14335222607268
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.361984,
+      "min": 0.353644,
+      "max": 0.395817
+    },
+    "p95_ms": {
+      "median": 0.535463,
+      "min": 0.426483,
+      "max": 0.592695
+    },
+    "p99_ms": {
+      "median": 1.097666,
+      "min": 0.777904,
+      "max": 1.277729
+    },
+    "successful_per_s": {
+      "median": 100.13988744155684,
+      "min": 99.98654257793251,
+      "max": 100.14876081934787
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.37360400000000005,
+      "min": 0.36784,
+      "max": 0.38457
+    },
+    "p95_ms": {
+      "median": 0.7254304499999997,
+      "min": 0.5834747499999988,
+      "max": 1.137867
+    },
+    "p99_ms": {
+      "median": 1.4020636399999993,
+      "min": 1.312375,
+      "max": 1.655738
+    },
+    "successful_per_s": {
+      "median": 100.1392076781178,
+      "min": 99.98233335498828,
+      "max": 100.1486440001496
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.323177,
+      "min": 0.319978,
+      "max": 0.334565
+    },
+    "p95_ms": {
+      "median": 0.5997588000000001,
+      "min": 0.557601,
+      "max": 0.655193
+    },
+    "p99_ms": {
+      "median": 1.503471,
+      "min": 1.2578062100000036,
+      "max": 1.715397
+    },
+    "successful_per_s": {
+      "median": 999.9632210194098,
+      "min": 999.8726793792713,
+      "max": 1000.044383239573
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.330699,
+      "min": 0.318374,
+      "max": 0.3354325
+    },
+    "p95_ms": {
+      "median": 0.595178,
+      "min": 0.502999,
+      "max": 0.64923
+    },
+    "p99_ms": {
+      "median": 1.3820332100000017,
+      "min": 1.320097,
+      "max": 1.465496
+    },
+    "successful_per_s": {
+      "median": 1000.003559252795,
+      "min": 999.8859833346156,
+      "max": 1000.0441985873232
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.329827,
+      "min": 0.32204849999999996,
+      "max": 0.336338
+    },
+    "p95_ms": {
+      "median": 0.48435200000000006,
+      "min": 0.481847,
+      "max": 0.655895
+    },
+    "p99_ms": {
+      "median": 1.2701826100000024,
+      "min": 1.1104654199999966,
+      "max": 1.465722
+    },
+    "successful_per_s": {
+      "median": 1000.0449715325111,
+      "min": 999.8206766626269,
+      "max": 1000.0732336580601
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.329383,
+      "min": 0.318926,
+      "max": 0.342532
+    },
+    "p95_ms": {
+      "median": 0.540089,
+      "min": 0.499063,
+      "max": 0.655915
+    },
+    "p99_ms": {
+      "median": 1.356708,
+      "min": 1.262004,
+      "max": 1.761969
+    },
+    "successful_per_s": {
+      "median": 999.969600490897,
+      "min": 999.9086928903241,
+      "max": 1000.0876064077547
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.3307715,
+      "min": 0.31635199999999997,
+      "max": 0.341646
+    },
+    "p95_ms": {
+      "median": 0.4967100000000001,
+      "min": 0.43468875,
+      "max": 0.518122
+    },
+    "p99_ms": {
+      "median": 1.209107640000002,
+      "min": 1.0491355500000001,
+      "max": 1.355916
+    },
+    "successful_per_s": {
+      "median": 999.8922332815839,
+      "min": 999.820827441892,
+      "max": 1000.0468942169615
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.327934,
+      "min": 0.31454,
+      "max": 0.346878
+    },
+    "p95_ms": {
+      "median": 0.468751,
+      "min": 0.455231,
+      "max": 0.685895
+    },
+    "p99_ms": {
+      "median": 1.1701529199999998,
+      "min": 1.00104,
+      "max": 1.386633
+    },
+    "successful_per_s": {
+      "median": 1000.0257295405124,
+      "min": 999.8015634722188,
+      "max": 1000.0655985371801
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.144171,
+      "min": 0.961861,
+      "max": 1.897683
+    },
+    "p95_ms": {
+      "median": 8.347051,
+      "min": 7.573736199999988,
+      "max": 11.305099499999999
+    },
+    "p99_ms": {
+      "median": 12.452755039999996,
+      "min": 12.40962788,
+      "max": 18.148509410000006
+    },
+    "successful_per_s": {
+      "median": 4983.296158812203,
+      "min": 4921.912493772611,
+      "max": 4994.061834846557
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 78,
+      "min": 32,
+      "max": 459
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.0961735,
+      "min": 0.9972245,
+      "max": 1.622107
+    },
+    "p95_ms": {
+      "median": 8.358674099999998,
+      "min": 7.866224199999994,
+      "max": 9.978950799999991
+    },
+    "p99_ms": {
+      "median": 13.018815829999989,
+      "min": 11.883611449999998,
+      "max": 15.366669719999992
+    },
+    "successful_per_s": {
+      "median": 4991.115614348653,
+      "min": 4958.134080614938,
+      "max": 4993.848265640846
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 29,
+      "min": 25,
+      "max": 249
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.39749,
+      "min": 0.307837,
+      "max": 0.422858
+    },
+    "p95_ms": {
+      "median": 7.1604775,
+      "min": 5.2611053,
+      "max": 7.367352
+    },
+    "p99_ms": {
+      "median": 11.508578249999987,
+      "min": 8.996415149999999,
+      "max": 12.730686939999996
+    },
+    "successful_per_s": {
+      "median": 4991.292024385761,
+      "min": 4986.182431495235,
+      "max": 4999.714657118375
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 40,
+      "min": 1,
+      "max": 66
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.346287,
+      "min": 0.320634,
+      "max": 0.5461145000000001
+    },
+    "p95_ms": {
+      "median": 6.3878995,
+      "min": 5.847629299999997,
+      "max": 8.22707475
+    },
+    "p99_ms": {
+      "median": 11.008421600000014,
+      "min": 9.670512049999987,
+      "max": 13.073457
+    },
+    "successful_per_s": {
+      "median": 4995.521628016314,
+      "min": 4988.673249959548,
+      "max": 4998.277699442
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 25,
+      "min": 4,
+      "max": 54
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.307284,
+      "min": 0.266051,
+      "max": 0.355235
+    },
+    "p95_ms": {
+      "median": 5.1710329999999995,
+      "min": 4.393153,
+      "max": 5.907715349999999
+    },
+    "p99_ms": {
+      "median": 9.472776499999986,
+      "min": 7.829026,
+      "max": 11.970825760000007
+    },
+    "successful_per_s": {
+      "median": 4991.566742416072,
+      "min": 4987.052406000134,
+      "max": 4999.86815680995
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 13,
+      "min": 0,
+      "max": 68
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.318331,
+      "min": 0.266212,
+      "max": 0.3485955
+    },
+    "p95_ms": {
+      "median": 5.051684249999993,
+      "min": 4.511226,
+      "max": 6.264903099999994
+    },
+    "p99_ms": {
+      "median": 8.809835209999992,
+      "min": 7.947835,
+      "max": 11.89070061999992
+    },
+    "successful_per_s": {
+      "median": 4998.56691781244,
+      "min": 4979.894622876672,
+      "max": 4999.225107609424
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3,
+      "min": 0,
+      "max": 118
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.4399185,
+      "min": 0.383189,
+      "max": 0.55029
+    },
+    "p95_ms": {
+      "median": 0.6668217499999998,
+      "min": 0.5724682999999997,
+      "max": 0.735163
+    },
+    "p99_ms": {
+      "median": 1.2118446199999995,
+      "min": 0.8905865199999995,
+      "max": 1.521241
+    },
+    "successful_per_s": {
+      "median": 100.13509126860713,
+      "min": 99.98620765255089,
+      "max": 100.13963028499484
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.407475,
+      "min": 0.388201,
+      "max": 0.5984780000000001
+    },
+    "p95_ms": {
+      "median": 0.612334,
+      "min": 0.504409,
+      "max": 0.86277035
+    },
+    "p99_ms": {
+      "median": 1.042984,
+      "min": 0.7928317399999997,
+      "max": 1.7596443499999999
+    },
+    "successful_per_s": {
+      "median": 100.14470610097362,
+      "min": 99.98531935552965,
+      "max": 100.14611745115259
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.224919,
+      "min": 0.199772,
+      "max": 0.348946
+    },
+    "p95_ms": {
+      "median": 0.32598204999999997,
+      "min": 0.29381029999999997,
+      "max": 0.427976
+    },
+    "p99_ms": {
+      "median": 0.608676589999999,
+      "min": 0.42317,
+      "max": 0.846668
+    },
+    "successful_per_s": {
+      "median": 100.13900685433757,
+      "min": 99.97923846130999,
+      "max": 100.15088452306362
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.229411,
+      "min": 0.195626,
+      "max": 0.304399
+    },
+    "p95_ms": {
+      "median": 0.31758604999999984,
+      "min": 0.248495,
+      "max": 0.43308704999999986
+    },
+    "p99_ms": {
+      "median": 0.6035119499999987,
+      "min": 0.376118,
+      "max": 0.9173517
+    },
+    "successful_per_s": {
+      "median": 99.9884208409245,
+      "min": 99.98261084102107,
+      "max": 100.15379398298754
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.221404,
+      "min": 0.211369,
+      "max": 0.2718
+    },
+    "p95_ms": {
+      "median": 0.336544,
+      "min": 0.302712,
+      "max": 0.498061
+    },
+    "p99_ms": {
+      "median": 0.719375,
+      "min": 0.374144,
+      "max": 1.286631
+    },
+    "successful_per_s": {
+      "median": 100.14688441891134,
+      "min": 100.14157851411653,
+      "max": 100.15131226868012
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.203978,
+      "min": 0.1997715,
+      "max": 0.234193
+    },
+    "p95_ms": {
+      "median": 0.32469,
+      "min": 0.27628595,
+      "max": 0.400915
+    },
+    "p99_ms": {
+      "median": 0.585317,
+      "min": 0.49674326999999985,
+      "max": 0.800779
+    },
+    "successful_per_s": {
+      "median": 100.1400655931626,
+      "min": 99.98112068162634,
+      "max": 100.15081095719394
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.339713,
+      "min": 0.33408,
+      "max": 0.344526
+    },
+    "p95_ms": {
+      "median": 0.553936,
+      "min": 0.492333,
+      "max": 0.6307776999999988
+    },
+    "p99_ms": {
+      "median": 1.483026699999995,
+      "min": 1.403298,
+      "max": 1.8244933599999837
+    },
+    "successful_per_s": {
+      "median": 999.9474518532708,
+      "min": 999.7959469636927,
+      "max": 1000.0390766810683
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.339066,
+      "min": 0.335056,
+      "max": 0.34462499999999996
+    },
+    "p95_ms": {
+      "median": 0.5608923999999986,
+      "min": 0.511362,
+      "max": 0.7095040000000001
+    },
+    "p99_ms": {
+      "median": 1.4580227399999763,
+      "min": 1.369532919999993,
+      "max": 1.5912492300000034
+    },
+    "successful_per_s": {
+      "median": 999.8799760741388,
+      "min": 999.7929290349565,
+      "max": 1000.0333935496861
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.17012100000000002,
+      "min": 0.1670395,
+      "max": 0.1727705
+    },
+    "p95_ms": {
+      "median": 0.275896,
+      "min": 0.239177,
+      "max": 0.37168695000000035
+    },
+    "p99_ms": {
+      "median": 0.7716442500000004,
+      "min": 0.723567,
+      "max": 0.8805114000000013
+    },
+    "successful_per_s": {
+      "median": 999.9484790751391,
+      "min": 999.7968422814453,
+      "max": 999.9761072197705
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.165875,
+      "min": 0.165257,
+      "max": 0.17215
+    },
+    "p95_ms": {
+      "median": 0.24736100000000003,
+      "min": 0.231715,
+      "max": 0.329597
+    },
+    "p99_ms": {
+      "median": 0.867439,
+      "min": 0.598338,
+      "max": 1.0120925100000033
+    },
+    "successful_per_s": {
+      "median": 999.9802678447898,
+      "min": 999.9125244859682,
+      "max": 1000.0789355754424
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.168084,
+      "min": 0.165024,
+      "max": 0.1705845
+    },
+    "p95_ms": {
+      "median": 0.282902,
+      "min": 0.242872,
+      "max": 0.36788
+    },
+    "p99_ms": {
+      "median": 0.803132,
+      "min": 0.7095457100000008,
+      "max": 0.915703
+    },
+    "successful_per_s": {
+      "median": 999.9943404752898,
+      "min": 999.898517966315,
+      "max": 1000.0721290149176
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.167042,
+      "min": 0.163356,
+      "max": 0.171809
+    },
+    "p95_ms": {
+      "median": 0.241299,
+      "min": 0.229516,
+      "max": 0.352141
+    },
+    "p99_ms": {
+      "median": 0.784144,
+      "min": 0.657322,
+      "max": 1.016909
+    },
+    "successful_per_s": {
+      "median": 1000.0190153590773,
+      "min": 999.9444778370894,
+      "max": 1000.0806827298076
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 2.8903809999999996,
+      "min": 2.581114,
+      "max": 3.537226
+    },
+    "p95_ms": {
+      "median": 15.7409645,
+      "min": 14.776338599999999,
+      "max": 17.02714149999999
+    },
+    "p99_ms": {
+      "median": 23.417594680000036,
+      "min": 22.012407799999938,
+      "max": 24.73663165999999
+    },
+    "successful_per_s": {
+      "median": 4844.51584956292,
+      "min": 4752.068634179756,
+      "max": 4896.975145916203
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 930,
+      "min": 605,
+      "max": 1474
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 3.043161,
+      "min": 2.5259935000000002,
+      "max": 3.3590005
+    },
+    "p95_ms": {
+      "median": 15.85576125,
+      "min": 14.672666799999991,
+      "max": 17.153805
+    },
+    "p99_ms": {
+      "median": 23.617091649999995,
+      "min": 21.279988680000002,
+      "max": 27.093595800000017
+    },
+    "successful_per_s": {
+      "median": 4818.989523723879,
+      "min": 4745.19443807831,
+      "max": 4897.750657947144
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 1059,
+      "min": 591,
+      "max": 1520
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.215585,
+      "min": 0.193602,
+      "max": 0.23445149999999998
+    },
+    "p95_ms": {
+      "median": 4.64418885,
+      "min": 3.51179795,
+      "max": 5.10278275
+    },
+    "p99_ms": {
+      "median": 9.127720190000005,
+      "min": 8.39535320999997,
+      "max": 11.546821719999937
+    },
+    "successful_per_s": {
+      "median": 4996.980410287275,
+      "min": 4992.025557890978,
+      "max": 4997.191249715607
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 16,
+      "min": 14,
+      "max": 46
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.221074,
+      "min": 0.189537,
+      "max": 0.238319
+    },
+    "p95_ms": {
+      "median": 4.628844999999996,
+      "min": 4.430611000000001,
+      "max": 5.175963099999994
+    },
+    "p99_ms": {
+      "median": 10.580280300000002,
+      "min": 9.722939999999996,
+      "max": 11.67861928000001
+    },
+    "successful_per_s": {
+      "median": 4991.697544435592,
+      "min": 4971.554790075101,
+      "max": 4998.099120795884
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 48,
+      "min": 10,
+      "max": 168
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.233623,
+      "min": 0.187508,
+      "max": 0.264649
+    },
+    "p95_ms": {
+      "median": 5.495336399999998,
+      "min": 3.5856828499999986,
+      "max": 7.616673399999997
+    },
+    "p99_ms": {
+      "median": 12.821751580000013,
+      "min": 7.806458749999996,
+      "max": 16.051662859999986
+    },
+    "successful_per_s": {
+      "median": 4980.923740352008,
+      "min": 4973.279335710612,
+      "max": 4999.769158158084
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 113,
+      "min": 0,
+      "max": 158
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.207588,
+      "min": 0.189361,
+      "max": 0.258129
+    },
+    "p95_ms": {
+      "median": 5.893743499999995,
+      "min": 3.764364,
+      "max": 7.551438599999999
+    },
+    "p99_ms": {
+      "median": 12.148788039999976,
+      "min": 8.502483,
+      "max": 16.81167843999994
+    },
+    "successful_per_s": {
+      "median": 4983.914201523234,
+      "min": 4967.972619312148,
+      "max": 4999.666834140979
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 94,
+      "min": 0,
+      "max": 191
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.39591699999999996,
+      "min": 0.355987,
+      "max": 0.580055
+    },
+    "p95_ms": {
+      "median": 0.571516,
+      "min": 0.460575,
+      "max": 0.751288
+    },
+    "p99_ms": {
+      "median": 0.9887655799999994,
+      "min": 0.893463,
+      "max": 1.210046
+    },
+    "successful_per_s": {
+      "median": 100.13412421115144,
+      "min": 99.98901705638299,
+      "max": 100.14832284888956
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.401141,
+      "min": 0.3643,
+      "max": 0.54952
+    },
+    "p95_ms": {
+      "median": 0.567676,
+      "min": 0.443224,
+      "max": 1.373543
+    },
+    "p99_ms": {
+      "median": 0.97057,
+      "min": 0.7834316399999993,
+      "max": 2.136433
+    },
+    "successful_per_s": {
+      "median": 100.14220359536505,
+      "min": 99.98326251856848,
+      "max": 100.14710296348512
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.403204,
+      "min": 0.374335,
+      "max": 0.586566
+    },
+    "p95_ms": {
+      "median": 0.626375,
+      "min": 0.517371,
+      "max": 0.786276
+    },
+    "p99_ms": {
+      "median": 1.064676,
+      "min": 0.937776,
+      "max": 1.506533
+    },
+    "successful_per_s": {
+      "median": 100.14144796237511,
+      "min": 100.13327187003156,
+      "max": 100.1475333969549
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.386514,
+      "min": 0.369572,
+      "max": 0.5634025
+    },
+    "p95_ms": {
+      "median": 0.6984256499999999,
+      "min": 0.534977,
+      "max": 0.846347
+    },
+    "p99_ms": {
+      "median": 1.209043,
+      "min": 1.07819178,
+      "max": 1.59296317
+    },
+    "successful_per_s": {
+      "median": 99.98670470121807,
+      "min": 99.98198263017449,
+      "max": 100.1526426760312
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.409848,
+      "min": 0.36788,
+      "max": 0.491872
+    },
+    "p95_ms": {
+      "median": 0.669084,
+      "min": 0.525212,
+      "max": 0.8630304999999967
+    },
+    "p99_ms": {
+      "median": 1.176705,
+      "min": 1.0045263399999989,
+      "max": 1.5069428599999997
+    },
+    "successful_per_s": {
+      "median": 100.11316749143043,
+      "min": 99.98061019370834,
+      "max": 100.14954092825204
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.409407,
+      "min": 0.362476,
+      "max": 0.467513
+    },
+    "p95_ms": {
+      "median": 0.595718,
+      "min": 0.437871,
+      "max": 0.9452121999999943
+    },
+    "p99_ms": {
+      "median": 0.910003,
+      "min": 0.772636,
+      "max": 1.75094413
+    },
+    "successful_per_s": {
+      "median": 100.13659891714073,
+      "min": 99.98963905693597,
+      "max": 100.15380771898602
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.3435105,
+      "min": 0.334685,
+      "max": 0.349818
+    },
+    "p95_ms": {
+      "median": 0.558028,
+      "min": 0.4993473500000002,
+      "max": 0.606089
+    },
+    "p99_ms": {
+      "median": 1.537335,
+      "min": 1.0980282100000016,
+      "max": 1.6644967200000025
+    },
+    "successful_per_s": {
+      "median": 999.9320900978204,
+      "min": 999.8722023343308,
+      "max": 1000.0373551697274
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.343508,
+      "min": 0.332913,
+      "max": 0.347704
+    },
+    "p95_ms": {
+      "median": 0.570456,
+      "min": 0.5203781999999997,
+      "max": 0.6399905000000001
+    },
+    "p99_ms": {
+      "median": 1.540468,
+      "min": 1.443738,
+      "max": 1.6877627199999963
+    },
+    "successful_per_s": {
+      "median": 999.9278052457867,
+      "min": 999.8025180866559,
+      "max": 1000.023430810613
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.344189,
+      "min": 0.33809,
+      "max": 0.383879
+    },
+    "p95_ms": {
+      "median": 0.535143,
+      "min": 0.500525,
+      "max": 0.7383850500000001
+    },
+    "p99_ms": {
+      "median": 1.323036039999998,
+      "min": 1.2231808999999907,
+      "max": 1.7203609100000001
+    },
+    "successful_per_s": {
+      "median": 999.8741035185864,
+      "min": 999.7999301842993,
+      "max": 1000.0232431664612
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.349592,
+      "min": 0.33804,
+      "max": 0.380093
+    },
+    "p95_ms": {
+      "median": 0.57367,
+      "min": 0.49726,
+      "max": 0.707638
+    },
+    "p99_ms": {
+      "median": 1.447032,
+      "min": 1.37882,
+      "max": 1.602804920000001
+    },
+    "successful_per_s": {
+      "median": 999.9308273147698,
+      "min": 999.8827582472403,
+      "max": 1000.0449260309223
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.353329,
+      "min": 0.339237,
+      "max": 0.375165
+    },
+    "p95_ms": {
+      "median": 0.562809,
+      "min": 0.512478,
+      "max": 0.647682
+    },
+    "p99_ms": {
+      "median": 1.493648,
+      "min": 1.403091,
+      "max": 1.71029
+    },
+    "successful_per_s": {
+      "median": 999.9314309643246,
+      "min": 999.921410775985,
+      "max": 999.9601019085352
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.356332,
+      "min": 0.3362295,
+      "max": 0.391184
+    },
+    "p95_ms": {
+      "median": 0.5688873000000007,
+      "min": 0.50421,
+      "max": 0.705123
+    },
+    "p99_ms": {
+      "median": 1.4561951300000018,
+      "min": 1.228433,
+      "max": 1.922801
+    },
+    "successful_per_s": {
+      "median": 999.9536663695344,
+      "min": 999.8835405643798,
+      "max": 1000.0314300829698
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 2.8593729999999997,
+      "min": 2.5025835,
+      "max": 5.015378
+    },
+    "p95_ms": {
+      "median": 15.160520250000001,
+      "min": 14.032785599999999,
+      "max": 20.050614500000002
+    },
+    "p99_ms": {
+      "median": 22.82267644,
+      "min": 20.834794129999974,
+      "max": 28.99896
+    },
+    "successful_per_s": {
+      "median": 4879.868513530907,
+      "min": 4638.345496195992,
+      "max": 4903.202886201617
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 695,
+      "min": 539,
+      "max": 2138
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 2.7783645,
+      "min": 2.251047,
+      "max": 3.6227
+    },
+    "p95_ms": {
+      "median": 15.289874499999993,
+      "min": 13.9959078,
+      "max": 17.022851
+    },
+    "p99_ms": {
+      "median": 22.0337642,
+      "min": 21.06406059999998,
+      "max": 24.86225359999999
+    },
+    "successful_per_s": {
+      "median": 4867.41710279357,
+      "min": 4788.8183812365205,
+      "max": 4884.970592589509
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 790,
+      "min": 685,
+      "max": 1260
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.1212355,
+      "min": 0.836802,
+      "max": 2.3887435
+    },
+    "p95_ms": {
+      "median": 12.885204999999994,
+      "min": 10.997067099999999,
+      "max": 14.68293874999999
+    },
+    "p99_ms": {
+      "median": 20.17362704,
+      "min": 18.21465558999997,
+      "max": 22.31000753000001
+    },
+    "successful_per_s": {
+      "median": 4924.2281681033965,
+      "min": 4897.2376857081335,
+      "max": 4970.777771509814
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 430,
+      "min": 167,
+      "max": 597
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.102128,
+      "min": 0.771354,
+      "max": 1.292027
+    },
+    "p95_ms": {
+      "median": 11.841114699999988,
+      "min": 10.789784,
+      "max": 12.0110365
+    },
+    "p99_ms": {
+      "median": 18.4844703,
+      "min": 17.048558000000014,
+      "max": 19.695315039999898
+    },
+    "successful_per_s": {
+      "median": 4950.446494687331,
+      "min": 4933.855071203814,
+      "max": 4963.5117813493725
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 294,
+      "min": 214,
+      "max": 373
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.7149890000000001,
+      "min": 0.592232,
+      "max": 1.2242445000000002
+    },
+    "p95_ms": {
+      "median": 10.556463749999995,
+      "min": 8.215919599999996,
+      "max": 15.01711144999999
+    },
+    "p99_ms": {
+      "median": 17.681878859999998,
+      "min": 14.519281600000003,
+      "max": 28.143678919999967
+    },
+    "successful_per_s": {
+      "median": 4963.2002524045465,
+      "min": 4790.995623238345,
+      "max": 4985.317362501101
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 219,
+      "min": 68,
+      "max": 1252
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 9,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 0.721614,
+      "min": 0.6012375,
+      "max": 0.823848
+    },
+    "p95_ms": {
+      "median": 9.7754641,
+      "min": 8.5808635,
+      "max": 11.154965399999986
+    },
+    "p99_ms": {
+      "median": 17.199686859999996,
+      "min": 15.0761135,
+      "max": 18.617974319999988
+    },
+    "successful_per_s": {
+      "median": 4972.8261267047055,
+      "min": 4946.415761521952,
+      "max": 4979.855489706189
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 161,
+      "min": 117,
+      "max": 319
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.656799,
+      "min": 1.543689,
+      "max": 1.769215
+    },
+    "p95_ms": {
+      "median": 3.862509,
+      "min": 3.247914,
+      "max": 4.4052199499999976
+    },
+    "p99_ms": {
+      "median": 6.700344,
+      "min": 5.917067,
+      "max": 7.017264
+    },
+    "successful_per_s": {
+      "median": 100.03620283548683,
+      "min": 99.98986257777747,
+      "max": 100.0422687740853
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.642567,
+      "min": 1.543499,
+      "max": 1.674136
+    },
+    "p95_ms": {
+      "median": 3.615284,
+      "min": 3.099376,
+      "max": 4.169216
+    },
+    "p99_ms": {
+      "median": 7.138294,
+      "min": 6.183709,
+      "max": 7.686558189999996
+    },
+    "successful_per_s": {
+      "median": 100.02207359016053,
+      "min": 99.98440831471892,
+      "max": 100.03852273779287
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.105979,
+      "min": 1.032748,
+      "max": 1.148689
+    },
+    "p95_ms": {
+      "median": 2.499412,
+      "min": 2.041561,
+      "max": 3.085951
+    },
+    "p99_ms": {
+      "median": 4.238726,
+      "min": 3.703408,
+      "max": 5.186482
+    },
+    "successful_per_s": {
+      "median": 100.0381994782764,
+      "min": 99.98258679312517,
+      "max": 100.04170365757903
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.0764939999999998,
+      "min": 1.0540325,
+      "max": 1.090516
+    },
+    "p95_ms": {
+      "median": 2.4802496499999998,
+      "min": 1.985546,
+      "max": 2.609211
+    },
+    "p99_ms": {
+      "median": 4.419811289999998,
+      "min": 4.047978,
+      "max": 4.989831
+    },
+    "successful_per_s": {
+      "median": 100.02529518220207,
+      "min": 99.98837570140027,
+      "max": 100.03878482048485
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.0917750000000002,
+      "min": 1.026314,
+      "max": 1.1295545
+    },
+    "p95_ms": {
+      "median": 2.501615,
+      "min": 2.26934375,
+      "max": 3.535754999999997
+    },
+    "p99_ms": {
+      "median": 4.264203,
+      "min": 3.911426199999996,
+      "max": 6.615936979999993
+    },
+    "successful_per_s": {
+      "median": 99.99357239650075,
+      "min": 99.983167183914,
+      "max": 100.0589206027532
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.102964,
+      "min": 1.055183,
+      "max": 1.126454
+    },
+    "p95_ms": {
+      "median": 2.325379,
+      "min": 1.8036571499999994,
+      "max": 2.534909
+    },
+    "p99_ms": {
+      "median": 4.08205,
+      "min": 3.33218806,
+      "max": 5.117352
+    },
+    "successful_per_s": {
+      "median": 99.98647522944162,
+      "min": 99.75439425775014,
+      "max": 100.06212212836141
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 78.6975135,
+      "min": 71.40267850000001,
+      "max": 86.068023
+    },
+    "p95_ms": {
+      "median": 279.0384498,
+      "min": 269.05060759999986,
+      "max": 304.41178615
+    },
+    "p99_ms": {
+      "median": 380.862914,
+      "min": 364.2800318299997,
+      "max": 452.5686424399999
+    },
+    "successful_per_s": {
+      "median": 410.1069858140479,
+      "min": 408.3464532093611,
+      "max": 416.6081969318673
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3468,
+      "min": 3416,
+      "max": 3488
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 81.461949,
+      "min": 73.871463,
+      "max": 89.083219
+    },
+    "p95_ms": {
+      "median": 274.0471665,
+      "min": 257.926567,
+      "max": 300.33652809999995
+    },
+    "p99_ms": {
+      "median": 388.83157269999975,
+      "min": 355.23871475,
+      "max": 432.34652004000003
+    },
+    "successful_per_s": {
+      "median": 407.7270364915649,
+      "min": 392.6772957145241,
+      "max": 416.90232406263556
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3487,
+      "min": 3441,
+      "max": 3568
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 76.502737,
+      "min": 72.996244,
+      "max": 77.5153635
+    },
+    "p95_ms": {
+      "median": 245.07932329999988,
+      "min": 225.51905360000015,
+      "max": 246.6532388
+    },
+    "p99_ms": {
+      "median": 325.5633638199998,
+      "min": 304.0768088600003,
+      "max": 377.6971022799998
+    },
+    "successful_per_s": {
+      "median": 457.8049247451449,
+      "min": 450.34448965317205,
+      "max": 471.55527637429486
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3187,
+      "min": 3112,
+      "max": 3229
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 71.6900425,
+      "min": 68.60212899999999,
+      "max": 77.00515200000001
+    },
+    "p95_ms": {
+      "median": 255.2631943,
+      "min": 229.5812559999999,
+      "max": 260.10313444999986
+    },
+    "p99_ms": {
+      "median": 371.32097821,
+      "min": 328.74869905999975,
+      "max": 379.11830921999984
+    },
+    "successful_per_s": {
+      "median": 464.8744073924629,
+      "min": 454.87207150690836,
+      "max": 474.11434452704134
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3163,
+      "min": 3096,
+      "max": 3195
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 67.66739100000001,
+      "min": 61.44646899999999,
+      "max": 73.435482
+    },
+    "p95_ms": {
+      "median": 263.40904620000003,
+      "min": 239.84330249999982,
+      "max": 269.26525319999996
+    },
+    "p99_ms": {
+      "median": 380.9728108800003,
+      "min": 313.21929503999996,
+      "max": 382.72896902999923
+    },
+    "successful_per_s": {
+      "median": 467.92392167145096,
+      "min": 463.3607832602296,
+      "max": 475.2795920028685
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3134,
+      "min": 3089,
+      "max": 3195
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 70.327039,
+      "min": 66.938495,
+      "max": 72.81697600000001
+    },
+    "p95_ms": {
+      "median": 259.41965495,
+      "min": 220.4059786,
+      "max": 266.22808640000005
+    },
+    "p99_ms": {
+      "median": 360.9447512000004,
+      "min": 303.2592097999993,
+      "max": 375.00580663999955
+    },
+    "successful_per_s": {
+      "median": 475.8741259852611,
+      "min": 455.37119485813923,
+      "max": 478.0335458461478
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3082,
+      "min": 3059,
+      "max": 3235
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 87.446486,
+      "min": 78.143046,
+      "max": 94.9419905
+    },
+    "p95_ms": {
+      "median": 280.1355577499998,
+      "min": 248.22013684999996,
+      "max": 295.043935
+    },
+    "p99_ms": {
+      "median": 368.02033632,
+      "min": 362.25108516999984,
+      "max": 391.8857509999992
+    },
+    "successful_per_s": {
+      "median": 392.68972030916547,
+      "min": 389.33883596110263,
+      "max": 397.96039455776577
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27583,
+      "min": 27332,
+      "max": 27615
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 82.535012,
+      "min": 78.3547735,
+      "max": 89.329818
+    },
+    "p95_ms": {
+      "median": 269.7527725,
+      "min": 247.1975268,
+      "max": 276.2366025
+    },
+    "p99_ms": {
+      "median": 355.2186727000003,
+      "min": 331.56820455999997,
+      "max": 393.9385062999986
+    },
+    "successful_per_s": {
+      "median": 406.25873258514935,
+      "min": 395.32920261129476,
+      "max": 409.7253053784031
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27529,
+      "min": 27420,
+      "max": 27547
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 70.392874,
+      "min": 65.96929499999999,
+      "max": 77.2080045
+    },
+    "p95_ms": {
+      "median": 255.68821534999995,
+      "min": 244.4174997999999,
+      "max": 269.41317849999996
+    },
+    "p99_ms": {
+      "median": 364.25845955000034,
+      "min": 343.6945267,
+      "max": 386.33944607999996
+    },
+    "successful_per_s": {
+      "median": 457.23672370462987,
+      "min": 452.19023219787255,
+      "max": 461.8816448762516
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27221,
+      "min": 27074,
+      "max": 27284
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 72.042278,
+      "min": 70.128342,
+      "max": 81.0805095
+    },
+    "p95_ms": {
+      "median": 253.3009679000001,
+      "min": 232.82421499999998,
+      "max": 262.50745144999996
+    },
+    "p99_ms": {
+      "median": 350.1479580799999,
+      "min": 344.90489388000003,
+      "max": 368.7487806200001
+    },
+    "successful_per_s": {
+      "median": 456.3815046117702,
+      "min": 449.92848115045075,
+      "max": 467.58124559884556
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27189,
+      "min": 27089,
+      "max": 27413
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 73.97437500000001,
+      "min": 70.960415,
+      "max": 83.7956875
+    },
+    "p95_ms": {
+      "median": 238.151192,
+      "min": 228.31985679999983,
+      "max": 254.58561839999993
+    },
+    "p99_ms": {
+      "median": 334.3239026999997,
+      "min": 318.7266848799987,
+      "max": 344.99633207999983
+    },
+    "successful_per_s": {
+      "median": 448.8933554798382,
+      "min": 442.7442406316943,
+      "max": 468.8856580240625
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27269,
+      "min": 27166,
+      "max": 27320
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 80.68719999999999,
+      "min": 72.90231,
+      "max": 83.8052755
+    },
+    "p95_ms": {
+      "median": 257.96150489999997,
+      "min": 236.59171665000002,
+      "max": 275.47266289999993
+    },
+    "p99_ms": {
+      "median": 361.9118955500001,
+      "min": 318.60337276,
+      "max": 389.0868395599997
+    },
+    "successful_per_s": {
+      "median": 447.20244500928413,
+      "min": 421.977328549003,
+      "max": 459.2225539096612
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27297,
+      "min": 27181,
+      "max": 27357
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.63016,
+      "min": 1.5741775,
+      "max": 1.705128
+    },
+    "p95_ms": {
+      "median": 3.913169,
+      "min": 3.4368975499999967,
+      "max": 4.688479
+    },
+    "p99_ms": {
+      "median": 6.445589,
+      "min": 6.0062198,
+      "max": 7.830104
+    },
+    "successful_per_s": {
+      "median": 100.02856254854113,
+      "min": 99.98105137451789,
+      "max": 100.04102654200693
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.616326,
+      "min": 1.5672595,
+      "max": 1.722839
+    },
+    "p95_ms": {
+      "median": 4.087448899999998,
+      "min": 3.703477,
+      "max": 4.315823999999988
+    },
+    "p99_ms": {
+      "median": 7.302149,
+      "min": 5.835284,
+      "max": 7.42684071
+    },
+    "successful_per_s": {
+      "median": 99.99369101472473,
+      "min": 99.72137975917377,
+      "max": 100.03102143395321
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.6946515,
+      "min": 1.6258605,
+      "max": 1.823561
+    },
+    "p95_ms": {
+      "median": 4.254529,
+      "min": 3.8416838999999996,
+      "max": 4.525575849999998
+    },
+    "p99_ms": {
+      "median": 7.390288,
+      "min": 5.822262079999998,
+      "max": 7.950084
+    },
+    "successful_per_s": {
+      "median": 99.99591396696349,
+      "min": 99.98440106698007,
+      "max": 100.0392505081324
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.6891289999999999,
+      "min": 1.633039,
+      "max": 1.821973
+    },
+    "p95_ms": {
+      "median": 4.068911849999992,
+      "min": 3.256102,
+      "max": 4.669414
+    },
+    "p99_ms": {
+      "median": 6.934852,
+      "min": 6.743559,
+      "max": 7.464847
+    },
+    "successful_per_s": {
+      "median": 100.02517811814666,
+      "min": 99.9859593383453,
+      "max": 100.03829589141996
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.679585,
+      "min": 1.644475,
+      "max": 1.769405
+    },
+    "p95_ms": {
+      "median": 3.947334,
+      "min": 3.580606,
+      "max": 4.000634
+    },
+    "p99_ms": {
+      "median": 7.2897,
+      "min": 6.457888,
+      "max": 8.361474
+    },
+    "successful_per_s": {
+      "median": 100.03270067320568,
+      "min": 99.66983598989178,
+      "max": 100.04429576886989
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.731722,
+      "min": 1.632773,
+      "max": 1.795723
+    },
+    "p95_ms": {
+      "median": 3.870323,
+      "min": 3.36428,
+      "max": 4.373949
+    },
+    "p99_ms": {
+      "median": 6.340205,
+      "min": 6.119551,
+      "max": 7.967556
+    },
+    "successful_per_s": {
+      "median": 100.03919204299666,
+      "min": 100.02170237945988,
+      "max": 100.05092019166932
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 85.384952,
+      "min": 82.139747,
+      "max": 90.406976
+    },
+    "p95_ms": {
+      "median": 271.68104374999996,
+      "min": 239.19539040000004,
+      "max": 286.7911065
+    },
+    "p99_ms": {
+      "median": 366.98882555000034,
+      "min": 329.9212247999996,
+      "max": 390.5887652400007
+    },
+    "successful_per_s": {
+      "median": 405.4191987461789,
+      "min": 402.08403506614206,
+      "max": 418.2353021987631
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3499,
+      "min": 3435,
+      "max": 3530
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 77.147349,
+      "min": 72.0325205,
+      "max": 83.74291
+    },
+    "p95_ms": {
+      "median": 276.85062724999995,
+      "min": 259.81707059999997,
+      "max": 296.3390598
+    },
+    "p99_ms": {
+      "median": 399.76574064000056,
+      "min": 364.40621728000013,
+      "max": 414.6170661199997
+    },
+    "successful_per_s": {
+      "median": 409.3349642288636,
+      "min": 396.2958857307324,
+      "max": 418.5826781930074
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3491,
+      "min": 3432,
+      "max": 3530
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 78.964235,
+      "min": 78.468108,
+      "max": 86.186702
+    },
+    "p95_ms": {
+      "median": 269.6597124,
+      "min": 263.2998914,
+      "max": 293.20987819999937
+    },
+    "p99_ms": {
+      "median": 380.6542427999992,
+      "min": 364.09793588000025,
+      "max": 445.27023549000006
+    },
+    "successful_per_s": {
+      "median": 412.97184331877787,
+      "min": 403.18889228752374,
+      "max": 418.5759706108034
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3471,
+      "min": 3432,
+      "max": 3520
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 81.307616,
+      "min": 74.499248,
+      "max": 82.150244
+    },
+    "p95_ms": {
+      "median": 284.500065,
+      "min": 262.42785,
+      "max": 313.43239354999974
+    },
+    "p99_ms": {
+      "median": 395.4932363999997,
+      "min": 363.7256523599999,
+      "max": 463.7466785799986
+    },
+    "successful_per_s": {
+      "median": 408.44252054694954,
+      "min": 400.72333716017494,
+      "max": 426.71730300663756
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3487,
+      "min": 3384,
+      "max": 3531
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 79.8796155,
+      "min": 75.6837675,
+      "max": 83.401297
+    },
+    "p95_ms": {
+      "median": 250.83763629999993,
+      "min": 234.88628529999994,
+      "max": 262.911061
+    },
+    "p99_ms": {
+      "median": 345.79240028000004,
+      "min": 331.95387795999994,
+      "max": 392.64855554999997
+    },
+    "successful_per_s": {
+      "median": 426.4587126513844,
+      "min": 414.7593788550161,
+      "max": 444.96892172428477
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3375,
+      "min": 3269,
+      "max": 3456
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 71.542329,
+      "min": 70.013987,
+      "max": 80.6084455
+    },
+    "p95_ms": {
+      "median": 261.53107489999996,
+      "min": 251.29635429999993,
+      "max": 306.9678512
+    },
+    "p99_ms": {
+      "median": 356.2328183200005,
+      "min": 351.88569957999977,
+      "max": 432.983129640001
+    },
+    "successful_per_s": {
+      "median": 433.39029858322465,
+      "min": 406.10992182768376,
+      "max": 452.9586814142051
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3340,
+      "min": 3225,
+      "max": 3507
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 81.867684,
+      "min": 76.67366100000001,
+      "max": 91.95104599999999
+    },
+    "p95_ms": {
+      "median": 275.93865525,
+      "min": 261.79636725,
+      "max": 277.92194274999997
+    },
+    "p99_ms": {
+      "median": 383.39287389999976,
+      "min": 356.75546924999986,
+      "max": 394.85505058000047
+    },
+    "successful_per_s": {
+      "median": 401.61155858989815,
+      "min": 397.568980609164,
+      "max": 409.33280247359147
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27466,
+      "min": 27446,
+      "max": 27561
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 83.75513699999999,
+      "min": 76.49039350000001,
+      "max": 86.2898605
+    },
+    "p95_ms": {
+      "median": 283.5179884499998,
+      "min": 274.11642,
+      "max": 289.29362119999985
+    },
+    "p99_ms": {
+      "median": 385.6434796500002,
+      "min": 363.03597964000045,
+      "max": 432.52578223999996
+    },
+    "successful_per_s": {
+      "median": 401.98321755291204,
+      "min": 398.35496772209746,
+      "max": 407.2065772363839
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27493,
+      "min": 27366,
+      "max": 27580
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 83.398417,
+      "min": 77.939761,
+      "max": 89.0320775
+    },
+    "p95_ms": {
+      "median": 282.33965620000004,
+      "min": 246.07355675000002,
+      "max": 293.600524
+    },
+    "p99_ms": {
+      "median": 371.1027731,
+      "min": 366.5546209199995,
+      "max": 385.7823264000016
+    },
+    "successful_per_s": {
+      "median": 409.5973394664349,
+      "min": 392.3604596503891,
+      "max": 419.5475155991074
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27486,
+      "min": 27414,
+      "max": 27597
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 82.084328,
+      "min": 68.309507,
+      "max": 89.965625
+    },
+    "p95_ms": {
+      "median": 275.279629,
+      "min": 243.53798299999983,
+      "max": 326.7063754999995
+    },
+    "p99_ms": {
+      "median": 379.9094728800002,
+      "min": 340.3504512199999,
+      "max": 461.0320906599991
+    },
+    "successful_per_s": {
+      "median": 401.45869574277026,
+      "min": 386.4087069742819,
+      "max": 412.12220558178325
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27544,
+      "min": 27492,
+      "max": 27659
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 77.74154,
+      "min": 71.98939150000001,
+      "max": 84.975975
+    },
+    "p95_ms": {
+      "median": 251.3028968,
+      "min": 236.98437779999986,
+      "max": 288.45902294999996
+    },
+    "p99_ms": {
+      "median": 356.3165244399994,
+      "min": 333.27045002000006,
+      "max": 429.16094687000054
+    },
+    "successful_per_s": {
+      "median": 425.3468165282986,
+      "min": 411.8715518536038,
+      "max": 444.9733684416235
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27270,
+      "min": 27185,
+      "max": 27443
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 75.059505,
+      "min": 69.099804,
+      "max": 81.693833
+    },
+    "p95_ms": {
+      "median": 266.21885684999995,
+      "min": 234.35321649999997,
+      "max": 274.12079689999996
+    },
+    "p99_ms": {
+      "median": 371.3986740400002,
+      "min": 339.4820934000001,
+      "max": 437.9536496199993
+    },
+    "successful_per_s": {
+      "median": 432.57692773160295,
+      "min": 418.1066642072308,
+      "max": 444.82636688108477
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27304,
+      "min": 27235,
+      "max": 27510
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.943647,
+      "min": 1.782049,
+      "max": 2.073224
+    },
+    "p95_ms": {
+      "median": 4.435158,
+      "min": 4.295471,
+      "max": 4.755712
+    },
+    "p99_ms": {
+      "median": 7.974871,
+      "min": 6.921229479999997,
+      "max": 8.843756
+    },
+    "successful_per_s": {
+      "median": 100.01080136623634,
+      "min": 99.98288381347328,
+      "max": 100.02567123069242
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.8545475,
+      "min": 1.724755,
+      "max": 1.9362265
+    },
+    "p95_ms": {
+      "median": 3.967707,
+      "min": 3.690038,
+      "max": 4.6647433
+    },
+    "p99_ms": {
+      "median": 6.954803,
+      "min": 6.434213519999999,
+      "max": 7.961115
+    },
+    "successful_per_s": {
+      "median": 99.98512904511524,
+      "min": 99.94808029834425,
+      "max": 100.03910815039205
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.211598,
+      "min": 1.186249,
+      "max": 1.324886
+    },
+    "p95_ms": {
+      "median": 2.4784566499999965,
+      "min": 2.1586699499999873,
+      "max": 3.020233
+    },
+    "p99_ms": {
+      "median": 5.09719442,
+      "min": 4.87640157,
+      "max": 6.020415
+    },
+    "successful_per_s": {
+      "median": 99.99351127106335,
+      "min": 99.98900360933905,
+      "max": 100.04248458083262
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.218994,
+      "min": 1.121136,
+      "max": 1.331138
+    },
+    "p95_ms": {
+      "median": 2.726625,
+      "min": 2.046398349999999,
+      "max": 3.03259
+    },
+    "p99_ms": {
+      "median": 5.237939,
+      "min": 4.445161519999996,
+      "max": 5.396805
+    },
+    "successful_per_s": {
+      "median": 100.03409348325518,
+      "min": 99.98135389408772,
+      "max": 100.03628262706974
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.2212655,
+      "min": 1.151154,
+      "max": 1.303317
+    },
+    "p95_ms": {
+      "median": 2.381986,
+      "min": 2.150755,
+      "max": 3.002729
+    },
+    "p99_ms": {
+      "median": 4.569956,
+      "min": 4.01784220999999,
+      "max": 5.429769
+    },
+    "successful_per_s": {
+      "median": 100.01587100434497,
+      "min": 99.95686726460289,
+      "max": 100.04058608292301
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.2639395,
+      "min": 1.17911,
+      "max": 1.351484
+    },
+    "p95_ms": {
+      "median": 2.465915,
+      "min": 2.3799887499999985,
+      "max": 2.9268362999999993
+    },
+    "p99_ms": {
+      "median": 5.021983079999999,
+      "min": 4.80542,
+      "max": 5.337575169999995
+    },
+    "successful_per_s": {
+      "median": 99.99175228030491,
+      "min": 99.97864304550272,
+      "max": 100.03043370187984
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 83.982561,
+      "min": 76.166855,
+      "max": 87.82567900000001
+    },
+    "p95_ms": {
+      "median": 300.0144405,
+      "min": 258.87321925000003,
+      "max": 306.958619
+    },
+    "p99_ms": {
+      "median": 436.0085740999996,
+      "min": 396.8202624000001,
+      "max": 456.13493133000304
+    },
+    "successful_per_s": {
+      "median": 383.88366596080834,
+      "min": 377.8778491105701,
+      "max": 397.1340231741433
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3620,
+      "min": 3557,
+      "max": 3666
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 90.9079425,
+      "min": 79.581878,
+      "max": 93.24261000000001
+    },
+    "p95_ms": {
+      "median": 285.579945,
+      "min": 283.8926344,
+      "max": 312.36184825
+    },
+    "p99_ms": {
+      "median": 411.45652455999954,
+      "min": 377.5495952,
+      "max": 438.7420219699992
+    },
+    "successful_per_s": {
+      "median": 377.68513729122,
+      "min": 373.57959185122144,
+      "max": 404.81363710771444
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3684,
+      "min": 3512,
+      "max": 3705
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 76.89445,
+      "min": 74.24817350000001,
+      "max": 82.381662
+    },
+    "p95_ms": {
+      "median": 261.8150754,
+      "min": 227.2625612,
+      "max": 295.20398489999945
+    },
+    "p99_ms": {
+      "median": 364.8602455299998,
+      "min": 314.8747384300001,
+      "max": 441.03132903999966
+    },
+    "successful_per_s": {
+      "median": 440.839587119203,
+      "min": 426.54809697622005,
+      "max": 450.2776203873429
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3299,
+      "min": 3243,
+      "max": 3373
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 75.96387899999999,
+      "min": 69.845337,
+      "max": 81.960535
+    },
+    "p95_ms": {
+      "median": 257.23659,
+      "min": 226.56595725,
+      "max": 268.2269695
+    },
+    "p99_ms": {
+      "median": 371.8100754300004,
+      "min": 324.9780276499999,
+      "max": 378.95902267999907
+    },
+    "successful_per_s": {
+      "median": 448.784831105952,
+      "min": 404.09149617274693,
+      "max": 459.13891490369457
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3252,
+      "min": 3193,
+      "max": 3513
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 76.623086,
+      "min": 68.670734,
+      "max": 82.455267
+    },
+    "p95_ms": {
+      "median": 251.389672,
+      "min": 234.38659339999998,
+      "max": 279.99211479999997
+    },
+    "p99_ms": {
+      "median": 387.22968649999996,
+      "min": 337.52048900000005,
+      "max": 436.72954583000035
+    },
+    "successful_per_s": {
+      "median": 441.9669019823185,
+      "min": 413.9001450608549,
+      "max": 458.4673145208975
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3319,
+      "min": 3183,
+      "max": 3485
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 77.551688,
+      "min": 68.182938,
+      "max": 83.76377149999999
+    },
+    "p95_ms": {
+      "median": 240.94592784999998,
+      "min": 232.93096425,
+      "max": 244.05912339999992
+    },
+    "p99_ms": {
+      "median": 339.83993859000014,
+      "min": 332.36424360000007,
+      "max": 374.8145561400019
+    },
+    "successful_per_s": {
+      "median": 449.92222566733244,
+      "min": 411.7188970553642,
+      "max": 470.2186820512925
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3234,
+      "min": 3120,
+      "max": 3462
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 83.78980100000001,
+      "min": 80.2636645,
+      "max": 86.456116
+    },
+    "p95_ms": {
+      "median": 283.33808944999987,
+      "min": 270.56396175,
+      "max": 305.099153
+    },
+    "p99_ms": {
+      "median": 408.5086535599986,
+      "min": 392.8875155899997,
+      "max": 451.66957739999907
+    },
+    "successful_per_s": {
+      "median": 396.97156592087237,
+      "min": 396.7115951188638,
+      "max": 407.3154535944847
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27563,
+      "min": 27521,
+      "max": 27958
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 85.54764,
+      "min": 75.277774,
+      "max": 91.854341
+    },
+    "p95_ms": {
+      "median": 265.81521185000014,
+      "min": 254.31965890000004,
+      "max": 325.7568418
+    },
+    "p99_ms": {
+      "median": 376.328622900001,
+      "min": 361.9026588400004,
+      "max": 489.8732490199996
+    },
+    "successful_per_s": {
+      "median": 400.84141680751026,
+      "min": 392.5176165247475,
+      "max": 412.1526722444008
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27543,
+      "min": 27460,
+      "max": 27570
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 74.23607,
+      "min": 70.2658595,
+      "max": 76.38098550000001
+    },
+    "p95_ms": {
+      "median": 250.52497099999994,
+      "min": 216.22622875,
+      "max": 276.2569095
+    },
+    "p99_ms": {
+      "median": 327.00927344999974,
+      "min": 299.96119684999985,
+      "max": 412.22164589000045
+    },
+    "successful_per_s": {
+      "median": 462.21578056963733,
+      "min": 445.180289986327,
+      "max": 466.16011167723093
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27176,
+      "min": 27143,
+      "max": 27302
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 76.588282,
+      "min": 73.02541,
+      "max": 76.9529405
+    },
+    "p95_ms": {
+      "median": 234.75352875,
+      "min": 227.5996155,
+      "max": 277.51915959999985
+    },
+    "p99_ms": {
+      "median": 332.99517615000013,
+      "min": 315.9790350000001,
+      "max": 389.7927762799997
+    },
+    "successful_per_s": {
+      "median": 460.7911348829004,
+      "min": 424.3256207130473,
+      "max": 466.8143034583987
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27241,
+      "min": 26991,
+      "max": 27371
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 78.452375,
+      "min": 69.074412,
+      "max": 80.2620005
+    },
+    "p95_ms": {
+      "median": 235.04136519999992,
+      "min": 217.47630999999998,
+      "max": 265.8502232999997
+    },
+    "p99_ms": {
+      "median": 311.35370752000017,
+      "min": 298.08828156,
+      "max": 389.53069772
+    },
+    "successful_per_s": {
+      "median": 461.26666864700553,
+      "min": 455.7356385236412,
+      "max": 464.1830716172089
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27140,
+      "min": 26807,
+      "max": 27188
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 75.582674,
+      "min": 67.411547,
+      "max": 76.5242015
+    },
+    "p95_ms": {
+      "median": 255.53168815000006,
+      "min": 234.4734675,
+      "max": 266.90522225
+    },
+    "p99_ms": {
+      "median": 338.30687195000127,
+      "min": 331.3968075,
+      "max": 392.54550755999986
+    },
+    "successful_per_s": {
+      "median": 462.51681729196906,
+      "min": 458.3452889942354,
+      "max": 466.37754651511705
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27141,
+      "min": 26999,
+      "max": 27179
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.642519,
+      "min": 1.560221,
+      "max": 1.6651639999999999
+    },
+    "p95_ms": {
+      "median": 4.050271199999999,
+      "min": 3.227455249999995,
+      "max": 4.644639
+    },
+    "p99_ms": {
+      "median": 6.893203,
+      "min": 6.201492959999996,
+      "max": 9.486597
+    },
+    "successful_per_s": {
+      "median": 100.02881069417688,
+      "min": 99.99028001154026,
+      "max": 100.04134414122443
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.654507,
+      "min": 1.5793335,
+      "max": 1.856793
+    },
+    "p95_ms": {
+      "median": 4.131286,
+      "min": 3.0909240499999995,
+      "max": 5.110067
+    },
+    "p99_ms": {
+      "median": 6.842152,
+      "min": 6.476994,
+      "max": 7.661267
+    },
+    "successful_per_s": {
+      "median": 99.98940651335346,
+      "min": 99.98027790704343,
+      "max": 100.02988783198626
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.6907035000000001,
+      "min": 1.662624,
+      "max": 2.026293
+    },
+    "p95_ms": {
+      "median": 4.294700749999999,
+      "min": 3.57283,
+      "max": 5.218913899999987
+    },
+    "p99_ms": {
+      "median": 7.042545369999995,
+      "min": 5.886575,
+      "max": 8.83914965
+    },
+    "successful_per_s": {
+      "median": 99.99158642460874,
+      "min": 99.98060386283122,
+      "max": 100.03420876994495
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.719179,
+      "min": 1.640907,
+      "max": 2.0285775
+    },
+    "p95_ms": {
+      "median": 4.2985923999999995,
+      "min": 3.730639,
+      "max": 5.870242749999997
+    },
+    "p99_ms": {
+      "median": 7.507409,
+      "min": 6.91455,
+      "max": 8.477231469999998
+    },
+    "successful_per_s": {
+      "median": 100.02326313093985,
+      "min": 99.98085356656117,
+      "max": 100.0460632883629
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.72388,
+      "min": 1.624104,
+      "max": 1.7651165
+    },
+    "p95_ms": {
+      "median": 4.202149099999996,
+      "min": 3.464536,
+      "max": 4.398234099999996
+    },
+    "p99_ms": {
+      "median": 7.063457,
+      "min": 6.676486139999998,
+      "max": 7.887368
+    },
+    "successful_per_s": {
+      "median": 99.9900471406927,
+      "min": 99.98011263919126,
+      "max": 100.0426953592606
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 1.747933,
+      "min": 1.6365180000000001,
+      "max": 1.810892
+    },
+    "p95_ms": {
+      "median": 3.8963950499999944,
+      "min": 3.2055,
+      "max": 5.043832
+    },
+    "p99_ms": {
+      "median": 6.740909,
+      "min": 6.194834,
+      "max": 7.556054
+    },
+    "successful_per_s": {
+      "median": 100.01920615061628,
+      "min": 99.97979678252477,
+      "max": 100.0403951963213
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 80.110849,
+      "min": 76.56706,
+      "max": 81.32488
+    },
+    "p95_ms": {
+      "median": 282.055631,
+      "min": 268.1052419999997,
+      "max": 312.89743119999997
+    },
+    "p99_ms": {
+      "median": 415.19353275999936,
+      "min": 370.72929092,
+      "max": 464.73101773000064
+    },
+    "successful_per_s": {
+      "median": 406.50424567647775,
+      "min": 397.04822990504323,
+      "max": 424.4968859284022
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3503,
+      "min": 3361,
+      "max": 3556
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 81.3205475,
+      "min": 80.1313675,
+      "max": 84.206964
+    },
+    "p95_ms": {
+      "median": 273.8188315,
+      "min": 260.65058999999997,
+      "max": 293.2073245
+    },
+    "p99_ms": {
+      "median": 388.00566249999997,
+      "min": 343.27015600000016,
+      "max": 453.92922879999963
+    },
+    "successful_per_s": {
+      "median": 418.2278271806675,
+      "min": 390.54035516840463,
+      "max": 421.92001891525047
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3429,
+      "min": 3392,
+      "max": 3611
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 81.690123,
+      "min": 77.5667955,
+      "max": 87.0380605
+    },
+    "p95_ms": {
+      "median": 275.1033561999999,
+      "min": 265.54005695000006,
+      "max": 338.1486172
+    },
+    "p99_ms": {
+      "median": 417.4612839399991,
+      "min": 343.93980501000004,
+      "max": 536.0099078800001
+    },
+    "successful_per_s": {
+      "median": 413.61139401291996,
+      "min": 346.9371337042165,
+      "max": 423.28230940002624
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3465,
+      "min": 3421,
+      "max": 3862
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 80.8023145,
+      "min": 66.748367,
+      "max": 94.155037
+    },
+    "p95_ms": {
+      "median": 287.0333019500001,
+      "min": 271.49151445,
+      "max": 309.83732955
+    },
+    "p99_ms": {
+      "median": 414.3045067200004,
+      "min": 380.37471171,
+      "max": 439.22468825999994
+    },
+    "successful_per_s": {
+      "median": 414.29023287464634,
+      "min": 369.5755101691593,
+      "max": 417.9365457323144
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3456,
+      "min": 3416,
+      "max": 3734
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 74.7770805,
+      "min": 71.8289,
+      "max": 80.58172400000001
+    },
+    "p95_ms": {
+      "median": 281.8640016,
+      "min": 255.26047234999984,
+      "max": 284.85347349999995
+    },
+    "p99_ms": {
+      "median": 370.36123815,
+      "min": 354.9103255500001,
+      "max": 398.66069177
+    },
+    "successful_per_s": {
+      "median": 432.4232365902531,
+      "min": 420.61112498225117,
+      "max": 444.2183134029188
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3348,
+      "min": 3278,
+      "max": 3419
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 76.612275,
+      "min": 72.845212,
+      "max": 78.603813
+    },
+    "p95_ms": {
+      "median": 267.436848,
+      "min": 230.181804,
+      "max": 285.118981
+    },
+    "p99_ms": {
+      "median": 374.76617264000055,
+      "min": 315.76380025,
+      "max": 429.0955103999997
+    },
+    "successful_per_s": {
+      "median": 430.1973026953276,
+      "min": 427.07735830600694,
+      "max": 446.17114946889853
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 3351,
+      "min": 3283,
+      "max": 3379
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 85.30364,
+      "min": 82.211798,
+      "max": 89.73688100000001
+    },
+    "p95_ms": {
+      "median": 298.81986440000003,
+      "min": 264.46107814999976,
+      "max": 319.1701721499999
+    },
+    "p99_ms": {
+      "median": 441.5281398900001,
+      "min": 365.48749094999926,
+      "max": 456.9470696199997
+    },
+    "successful_per_s": {
+      "median": 389.8589561228967,
+      "min": 382.9326201022088,
+      "max": 399.5658652617217
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27610,
+      "min": 27533,
+      "max": 27650
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 87.242102,
+      "min": 79.841284,
+      "max": 91.613578
+    },
+    "p95_ms": {
+      "median": 281.8158494,
+      "min": 256.4242570999999,
+      "max": 294.4029335
+    },
+    "p99_ms": {
+      "median": 377.18645356,
+      "min": 339.718040040002,
+      "max": 406.9174984999998
+    },
+    "successful_per_s": {
+      "median": 388.9251780262426,
+      "min": 382.6580297490927,
+      "max": 419.8946324881789
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27597,
+      "min": 27441,
+      "max": 27674
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 85.916172,
+      "min": 80.6336445,
+      "max": 88.86540600000001
+    },
+    "p95_ms": {
+      "median": 294.47049025,
+      "min": 252.37480325,
+      "max": 309.5502075
+    },
+    "p99_ms": {
+      "median": 413.31855816,
+      "min": 355.55819910000054,
+      "max": 458.6730895
+    },
+    "successful_per_s": {
+      "median": 379.17718394530885,
+      "min": 374.10973850336495,
+      "max": 406.140485117197
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27616,
+      "min": 27465,
+      "max": 27697
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 89.881728,
+      "min": 81.6649905,
+      "max": 94.76936599999999
+    },
+    "p95_ms": {
+      "median": 298.38174755000006,
+      "min": 266.00174360000005,
+      "max": 330.50133739999995
+    },
+    "p99_ms": {
+      "median": 424.2091232600009,
+      "min": 355.35708502999984,
+      "max": 483.8832744200004
+    },
+    "successful_per_s": {
+      "median": 381.2518328942251,
+      "min": 374.4001142739227,
+      "max": 400.5042984558202
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27668,
+      "min": 27552,
+      "max": 27866
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 81.819828,
+      "min": 80.602561,
+      "max": 86.487889
+    },
+    "p95_ms": {
+      "median": 273.20428109999983,
+      "min": 243.616592,
+      "max": 293.3318335999999
+    },
+    "p99_ms": {
+      "median": 385.9769994599999,
+      "min": 320.3112118500004,
+      "max": 440.70280715999996
+    },
+    "successful_per_s": {
+      "median": 402.9903517784366,
+      "min": 391.1545312971068,
+      "max": 422.49981408664974
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27403,
+      "min": 27206,
+      "max": 27631
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 74.324907,
+      "min": 70.337103,
+      "max": 88.399705
+    },
+    "p95_ms": {
+      "median": 288.99845624999995,
+      "min": 285.31413749999984,
+      "max": 323.4408052
+    },
+    "p99_ms": {
+      "median": 401.42594323999924,
+      "min": 387.75274992,
+      "max": 479.4325745600008
+    },
+    "successful_per_s": {
+      "median": 406.8418245839443,
+      "min": 402.7396519700071,
+      "max": 432.7828984311213
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 27480,
+      "min": 27336,
+      "max": 27520
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 398.93793,
+      "min": 358.894733,
+      "max": 410.523187
+    },
+    "p95_ms": {
+      "median": 1890.5312463,
+      "min": 1642.6762755,
+      "max": 2033.3936913999996
+    },
+    "p99_ms": {
+      "median": 2279.11047976,
+      "min": 2047.18119614,
+      "max": 2503.3855486199996
+    },
+    "successful_per_s": {
+      "median": 42.6554140331301,
+      "min": 41.81761017780668,
+      "max": 44.01803884698618
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 282,
+      "min": 273,
+      "max": 288
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 408.56376450000005,
+      "min": 359.0983405,
+      "max": 434.827931
+    },
+    "p95_ms": {
+      "median": 1827.2885285999982,
+      "min": 1699.5961907499982,
+      "max": 1868.7914474
+    },
+    "p99_ms": {
+      "median": 2282.762764800002,
+      "min": 2157.99115164,
+      "max": 2556.6711715700026
+    },
+    "successful_per_s": {
+      "median": 42.141239970886055,
+      "min": 41.19564093987492,
+      "max": 43.54244381698296
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 280,
+      "min": 272,
+      "max": 292
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 342.154185,
+      "min": 288.537878,
+      "max": 366.3699305
+    },
+    "p95_ms": {
+      "median": 1568.4516026000001,
+      "min": 1449.6278532,
+      "max": 1801.84177275
+    },
+    "p99_ms": {
+      "median": 2179.0644232099994,
+      "min": 1977.65144068,
+      "max": 2488.4259196999988
+    },
+    "successful_per_s": {
+      "median": 47.6164691652801,
+      "min": 45.752331397215876,
+      "max": 48.68528722752549
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 4
+    },
+    "dropped_iterations": {
+      "median": 243,
+      "min": 233,
+      "max": 266
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 4
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 335.72981200000004,
+      "min": 287.89826,
+      "max": 344.019591
+    },
+    "p95_ms": {
+      "median": 1642.321887,
+      "min": 1569.6586514,
+      "max": 1731.8323519999994
+    },
+    "p99_ms": {
+      "median": 2109.64859727,
+      "min": 1943.5916086000004,
+      "max": 2213.9924939199977
+    },
+    "successful_per_s": {
+      "median": 46.217707215194416,
+      "min": 45.32769428772186,
+      "max": 47.69219401813
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 236,
+      "min": 215,
+      "max": 265
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 352.997531,
+      "min": 323.332344,
+      "max": 371.5479745
+    },
+    "p95_ms": {
+      "median": 1705.1561417999987,
+      "min": 1572.26613955,
+      "max": 1807.3786647999998
+    },
+    "p99_ms": {
+      "median": 2229.4446891199987,
+      "min": 1912.4543599100004,
+      "max": 2443.60678324
+    },
+    "successful_per_s": {
+      "median": 46.81426101077636,
+      "min": 46.28583277836086,
+      "max": 48.77077841347589
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 242,
+      "min": 216,
+      "max": 249
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 346.801823,
+      "min": 320.002375,
+      "max": 362.2599395
+    },
+    "p95_ms": {
+      "median": 1624.219806149999,
+      "min": 1603.8122821999996,
+      "max": 1694.6152321
+    },
+    "p99_ms": {
+      "median": 2176.22760732,
+      "min": 2113.10246723,
+      "max": 2226.0027079199995
+    },
+    "successful_per_s": {
+      "median": 46.893868795956166,
+      "min": 45.562613866860445,
+      "max": 48.66414145711102
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 243,
+      "min": 231,
+      "max": 252
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 464.275949,
+      "min": 421.677289,
+      "max": 477.025034
+    },
+    "p95_ms": {
+      "median": 1896.0640881999998,
+      "min": 1871.870107,
+      "max": 1915.090698
+    },
+    "p99_ms": {
+      "median": 2403.187754000001,
+      "min": 2209.575447199999,
+      "max": 2583.229633760001
+    },
+    "successful_per_s": {
+      "median": 42.545294110439855,
+      "min": 40.46909970965012,
+      "max": 43.48365473334584
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5672,
+      "min": 5648,
+      "max": 5692
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 426.724299,
+      "min": 405.9271235,
+      "max": 482.01377049999996
+    },
+    "p95_ms": {
+      "median": 1971.140607,
+      "min": 1788.2967085999999,
+      "max": 2082.4763717
+    },
+    "p99_ms": {
+      "median": 2312.2903840599997,
+      "min": 2157.879622929999,
+      "max": 2401.89267
+    },
+    "successful_per_s": {
+      "median": 42.277000064909544,
+      "min": 41.37093370741314,
+      "max": 43.21202644822204
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 4
+    },
+    "dropped_iterations": {
+      "median": 5670,
+      "min": 5597,
+      "max": 6133
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 4
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 379.549151,
+      "min": 347.600081,
+      "max": 409.3799605
+    },
+    "p95_ms": {
+      "median": 1872.8726887999999,
+      "min": 1714.03799115,
+      "max": 2033.4957952999998
+    },
+    "p99_ms": {
+      "median": 2235.8802699999997,
+      "min": 2074.224459109998,
+      "max": 2578.0089696600007
+    },
+    "successful_per_s": {
+      "median": 47.032789911483945,
+      "min": 44.56572422327145,
+      "max": 47.43355685810444
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 5645,
+      "min": 5556,
+      "max": 5761
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 393.535674,
+      "min": 337.905599,
+      "max": 425.710039
+    },
+    "p95_ms": {
+      "median": 1849.389619699999,
+      "min": 1623.7826484000002,
+      "max": 1996.5336803999999
+    },
+    "p99_ms": {
+      "median": 2229.56783632,
+      "min": 2125.1450925,
+      "max": 2457.4620364600005
+    },
+    "successful_per_s": {
+      "median": 46.97858587211616,
+      "min": 43.35256085054,
+      "max": 49.16564621379473
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5648,
+      "min": 5613,
+      "max": 5751
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 415.85657449999997,
+      "min": 346.3721495,
+      "max": 443.41454899999997
+    },
+    "p95_ms": {
+      "median": 1734.32871705,
+      "min": 1653.3139652,
+      "max": 1779.5296779000003
+    },
+    "p99_ms": {
+      "median": 2177.8723636,
+      "min": 2050.0506972700005,
+      "max": 2223.2378216500015
+    },
+    "successful_per_s": {
+      "median": 47.49001699363236,
+      "min": 44.66572142360773,
+      "max": 48.435604823395195
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5649,
+      "min": 5621,
+      "max": 5663
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 356.8186995,
+      "min": 346.16813,
+      "max": 453.827267
+    },
+    "p95_ms": {
+      "median": 1778.3468559999988,
+      "min": 1625.822885,
+      "max": 1895.6298566999997
+    },
+    "p99_ms": {
+      "median": 2184.2728318199993,
+      "min": 2140.29685028,
+      "max": 2336.18609068
+    },
+    "successful_per_s": {
+      "median": 46.86675679375785,
+      "min": 43.29822081722365,
+      "max": 47.74393896767156
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 5633,
+      "min": 5539,
+      "max": 5663
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 466.100308,
+      "min": 459.42073,
+      "max": 528.326733
+    },
+    "p95_ms": {
+      "median": 1842.1852241999998,
+      "min": 1751.91716425,
+      "max": 1979.6766948
+    },
+    "p99_ms": {
+      "median": 2338.69576009,
+      "min": 2117.3371918000003,
+      "max": 2579.365575600001
+    },
+    "successful_per_s": {
+      "median": 42.588801485717866,
+      "min": 41.24232944409369,
+      "max": 42.878513562192296
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 29679,
+      "min": 29579,
+      "max": 29732
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 439.7440885,
+      "min": 419.333196,
+      "max": 466.047502
+    },
+    "p95_ms": {
+      "median": 2013.9531126,
+      "min": 1917.879609499999,
+      "max": 2152.218589599999
+    },
+    "p99_ms": {
+      "median": 2409.61900726,
+      "min": 2305.536297950001,
+      "max": 2622.430596920001
+    },
+    "successful_per_s": {
+      "median": 42.79825575543758,
+      "min": 41.88560650954963,
+      "max": 43.956300857247214
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 29632,
+      "min": 29066,
+      "max": 29963
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 371.12638400000003,
+      "min": 348.038136,
+      "max": 434.36069
+    },
+    "p95_ms": {
+      "median": 1787.68695685,
+      "min": 1505.4627232499977,
+      "max": 1905.94279395
+    },
+    "p99_ms": {
+      "median": 2241.409595379998,
+      "min": 1940.9934453499995,
+      "max": 2409.1824629500006
+    },
+    "successful_per_s": {
+      "median": 47.11566194405268,
+      "min": 45.80167039130581,
+      "max": 47.91828390874859
+    },
+    "failed": {
+      "median": 4,
+      "min": 0,
+      "max": 5
+    },
+    "dropped_iterations": {
+      "median": 29598,
+      "min": 28984,
+      "max": 29633
+    },
+    "timeouts": {
+      "median": 4,
+      "min": 0,
+      "max": 5
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 389.2937995,
+      "min": 338.9341635,
+      "max": 439.048449
+    },
+    "p95_ms": {
+      "median": 1802.3791835000002,
+      "min": 1622.52288525,
+      "max": 1953.6197363499998
+    },
+    "p99_ms": {
+      "median": 2192.431613000002,
+      "min": 2086.661862499999,
+      "max": 2273.7277535
+    },
+    "successful_per_s": {
+      "median": 45.431302876108006,
+      "min": 44.83818310195225,
+      "max": 48.360996391575675
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 29631,
+      "min": 28909,
+      "max": 29825
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 408.414253,
+      "min": 353.78661,
+      "max": 472.26189750000003
+    },
+    "p95_ms": {
+      "median": 1849.020954,
+      "min": 1673.9554202499999,
+      "max": 1953.526466
+    },
+    "p99_ms": {
+      "median": 2184.7592720800017,
+      "min": 2149.7279131,
+      "max": 2299.5680580000044
+    },
+    "successful_per_s": {
+      "median": 46.03793233909242,
+      "min": 45.02609353360832,
+      "max": 47.98931559254863
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 29659,
+      "min": 29579,
+      "max": 29718
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 380.80152499999997,
+      "min": 348.504286,
+      "max": 450.107599
+    },
+    "p95_ms": {
+      "median": 1826.4394590999998,
+      "min": 1660.7883138999996,
+      "max": 1898.9766112499997
+    },
+    "p99_ms": {
+      "median": 2205.250659,
+      "min": 2081.0905587500006,
+      "max": 2247.470466010001
+    },
+    "successful_per_s": {
+      "median": 46.38974708058864,
+      "min": 45.978692749354295,
+      "max": 48.903203141428044
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 29587,
+      "min": 29440,
+      "max": 29642
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 403.2181795,
+      "min": 388.9197765,
+      "max": 444.800911
+    },
+    "p95_ms": {
+      "median": 1834.94786855,
+      "min": 1786.93401775,
+      "max": 1956.751532
+    },
+    "p99_ms": {
+      "median": 2455.246453,
+      "min": 2135.55592322,
+      "max": 2588.912253750002
+    },
+    "successful_per_s": {
+      "median": 39.64384812075485,
+      "min": 37.99212252928648,
+      "max": 40.27558772797157
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 4
+    },
+    "dropped_iterations": {
+      "median": 292,
+      "min": 285,
+      "max": 301
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 4
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 376.8902915,
+      "min": 300.289671,
+      "max": 406.907611
+    },
+    "p95_ms": {
+      "median": 1949.8349162999991,
+      "min": 1852.1044445999999,
+      "max": 2090.3748625
+    },
+    "p99_ms": {
+      "median": 2558.866122,
+      "min": 2506.72850297,
+      "max": 2756.6955997
+    },
+    "successful_per_s": {
+      "median": 39.20662509247202,
+      "min": 38.59382463165221,
+      "max": 39.62488468401117
+    },
+    "failed": {
+      "median": 2,
+      "min": 1,
+      "max": 6
+    },
+    "dropped_iterations": {
+      "median": 290,
+      "min": 288,
+      "max": 306
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 1,
+      "max": 6
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 389.631191,
+      "min": 377.492081,
+      "max": 420.735846
+    },
+    "p95_ms": {
+      "median": 1873.0007348999995,
+      "min": 1664.7001114999998,
+      "max": 2045.4841542
+    },
+    "p99_ms": {
+      "median": 2378.86296995,
+      "min": 2213.200427149999,
+      "max": 2488.0075822000017
+    },
+    "successful_per_s": {
+      "median": 38.68385913363558,
+      "min": 38.35038090919904,
+      "max": 39.624158490695834
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 295,
+      "min": 290,
+      "max": 302
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 425.205989,
+      "min": 393.108445,
+      "max": 453.39792850000003
+    },
+    "p95_ms": {
+      "median": 1965.9109693999978,
+      "min": 1848.7272773000007,
+      "max": 2110.5573946
+    },
+    "p99_ms": {
+      "median": 2347.0871686000005,
+      "min": 2210.1991405000012,
+      "max": 2472.3515787500014
+    },
+    "successful_per_s": {
+      "median": 37.731155538491876,
+      "min": 37.186778124763585,
+      "max": 39.42872450303761
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 308,
+      "min": 298,
+      "max": 317
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 389.23182,
+      "min": 309.431813,
+      "max": 422.615919
+    },
+    "p95_ms": {
+      "median": 1868.042665,
+      "min": 1692.8322718,
+      "max": 2060.9412854
+    },
+    "p99_ms": {
+      "median": 2403.24609448,
+      "min": 1989.3089549600015,
+      "max": 2502.919047
+    },
+    "successful_per_s": {
+      "median": 39.312587929092416,
+      "min": 38.78012048910929,
+      "max": 41.14828941998474
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 4
+    },
+    "dropped_iterations": {
+      "median": 292,
+      "min": 256,
+      "max": 296
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 4
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 383.032068,
+      "min": 361.61697100000004,
+      "max": 412.834606
+    },
+    "p95_ms": {
+      "median": 1881.0974844499985,
+      "min": 1832.78671775,
+      "max": 2025.4446819999998
+    },
+    "p99_ms": {
+      "median": 2355.7034089800004,
+      "min": 2216.397672439999,
+      "max": 2498.804206899999
+    },
+    "successful_per_s": {
+      "median": 40.591149576338545,
+      "min": 39.29704212098786,
+      "max": 42.214958608635804
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 286,
+      "min": 272,
+      "max": 311
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 434.893973,
+      "min": 411.407067,
+      "max": 492.4445985
+    },
+    "p95_ms": {
+      "median": 1925.9685758499993,
+      "min": 1888.3592819999988,
+      "max": 2038.524501
+    },
+    "p99_ms": {
+      "median": 2505.3048639900003,
+      "min": 2312.77804344,
+      "max": 2593.499718000001
+    },
+    "successful_per_s": {
+      "median": 41.00451862629052,
+      "min": 39.47014755530395,
+      "max": 42.58174208617187
+    },
+    "failed": {
+      "median": 2,
+      "min": 0,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 5688,
+      "min": 5604,
+      "max": 5795
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 418.7539785,
+      "min": 414.7652515,
+      "max": 503.677454
+    },
+    "p95_ms": {
+      "median": 1942.82485,
+      "min": 1793.74818375,
+      "max": 2025.95223555
+    },
+    "p99_ms": {
+      "median": 2354.628645,
+      "min": 2316.0635677500004,
+      "max": 2602.8075422400007
+    },
+    "successful_per_s": {
+      "median": 41.24158311124451,
+      "min": 39.59607660241246,
+      "max": 43.08505932869336
+    },
+    "failed": {
+      "median": 2,
+      "min": 0,
+      "max": 5
+    },
+    "dropped_iterations": {
+      "median": 5657,
+      "min": 5636,
+      "max": 5696
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 0,
+      "max": 5
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 468.68149800000003,
+      "min": 457.064932,
+      "max": 486.683064
+    },
+    "p95_ms": {
+      "median": 1883.1344429,
+      "min": 1791.255678999999,
+      "max": 2022.7084135499995
+    },
+    "p99_ms": {
+      "median": 2344.3328855499994,
+      "min": 2186.470339469999,
+      "max": 2380.08536204
+    },
+    "successful_per_s": {
+      "median": 40.220273733228375,
+      "min": 38.22699039757234,
+      "max": 41.33630306304951
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5693,
+      "min": 5688,
+      "max": 5733
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 457.559143,
+      "min": 406.1947695,
+      "max": 479.217591
+    },
+    "p95_ms": {
+      "median": 1937.8767847,
+      "min": 1851.2733935499998,
+      "max": 2033.8650383999998
+    },
+    "p99_ms": {
+      "median": 2420.5106256,
+      "min": 2291.0412672199996,
+      "max": 2647.1867011999993
+    },
+    "successful_per_s": {
+      "median": 41.11001341908682,
+      "min": 40.42362271469443,
+      "max": 41.881140458442346
+    },
+    "failed": {
+      "median": 3,
+      "min": 1,
+      "max": 6
+    },
+    "dropped_iterations": {
+      "median": 5672,
+      "min": 5660,
+      "max": 5690
+    },
+    "timeouts": {
+      "median": 3,
+      "min": 1,
+      "max": 6
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 496.730029,
+      "min": 467.860358,
+      "max": 537.506858
+    },
+    "p95_ms": {
+      "median": 1970.143082399999,
+      "min": 1679.67813375,
+      "max": 1990.8093322999987
+    },
+    "p99_ms": {
+      "median": 2339.2195436399998,
+      "min": 2186.4166261499995,
+      "max": 2463.06176969
+    },
+    "successful_per_s": {
+      "median": 41.85793859909164,
+      "min": 40.13295615041629,
+      "max": 43.46744089853655
+    },
+    "failed": {
+      "median": 2,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5669,
+      "min": 5664,
+      "max": 5691
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 440.43683799999997,
+      "min": 393.181073,
+      "max": 475.168734
+    },
+    "p95_ms": {
+      "median": 1947.5527171999995,
+      "min": 1747.32315275,
+      "max": 2056.16090775
+    },
+    "p99_ms": {
+      "median": 2480.0640110000004,
+      "min": 2224.12463075,
+      "max": 2682.99080725
+    },
+    "successful_per_s": {
+      "median": 42.376396798195714,
+      "min": 41.10344338716964,
+      "max": 43.451136781961516
+    },
+    "failed": {
+      "median": 2,
+      "min": 1,
+      "max": 6
+    },
+    "dropped_iterations": {
+      "median": 5666,
+      "min": 5596,
+      "max": 6345
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 1,
+      "max": 6
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 455.472433,
+      "min": 427.353836,
+      "max": 476.634091
+    },
+    "p95_ms": {
+      "median": 2006.9788512499997,
+      "min": 1924.29989875,
+      "max": 2112.1097066499997
+    },
+    "p99_ms": {
+      "median": 2486.07167685,
+      "min": 2285.5911724800003,
+      "max": 2686.1058671499995
+    },
+    "successful_per_s": {
+      "median": 41.15261945127111,
+      "min": 40.8439420314821,
+      "max": 42.658874445102285
+    },
+    "failed": {
+      "median": 2,
+      "min": 0,
+      "max": 5
+    },
+    "dropped_iterations": {
+      "median": 29606,
+      "min": 29311,
+      "max": 29682
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 0,
+      "max": 5
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 485.852843,
+      "min": 417.454528,
+      "max": 512.741286
+    },
+    "p95_ms": {
+      "median": 1963.68772,
+      "min": 1922.4738909999996,
+      "max": 2042.8867939499999
+    },
+    "p99_ms": {
+      "median": 2437.0327057600007,
+      "min": 2390.5332773099985,
+      "max": 2566.181630999998
+    },
+    "successful_per_s": {
+      "median": 41.17818396248222,
+      "min": 39.916855013473445,
+      "max": 41.4452402280159
+    },
+    "failed": {
+      "median": 2,
+      "min": 1,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 29700,
+      "min": 29192,
+      "max": 29718
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 1,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 475.42222,
+      "min": 428.288467,
+      "max": 536.439143
+    },
+    "p95_ms": {
+      "median": 1984.8309831499992,
+      "min": 1907.0801405,
+      "max": 2151.314578
+    },
+    "p99_ms": {
+      "median": 2278.5945528400002,
+      "min": 2238.7687499800004,
+      "max": 2598.99115435
+    },
+    "successful_per_s": {
+      "median": 41.07489821419173,
+      "min": 40.438764615445706,
+      "max": 41.35204919048621
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 4
+    },
+    "dropped_iterations": {
+      "median": 29659,
+      "min": 28764,
+      "max": 29738
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 4
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 496.802046,
+      "min": 449.211714,
+      "max": 551.3197705
+    },
+    "p95_ms": {
+      "median": 1960.9780618,
+      "min": 1862.0990789000004,
+      "max": 2020.4280127999996
+    },
+    "p99_ms": {
+      "median": 2373.817797069997,
+      "min": 2286.352002149999,
+      "max": 2461.40850034
+    },
+    "successful_per_s": {
+      "median": 40.28916471958828,
+      "min": 40.10419554418847,
+      "max": 41.40709805627164
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 29543,
+      "min": 28900,
+      "max": 29666
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 517.1612235,
+      "min": 475.0230215,
+      "max": 537.493719
+    },
+    "p95_ms": {
+      "median": 2014.9004176,
+      "min": 1789.126989599999,
+      "max": 2203.7429386000003
+    },
+    "p99_ms": {
+      "median": 2549.8516715499986,
+      "min": 2207.5694540299987,
+      "max": 2679.2923025599994
+    },
+    "successful_per_s": {
+      "median": 41.649258316843806,
+      "min": 40.54056090859033,
+      "max": 42.23583417337113
+    },
+    "failed": {
+      "median": 2,
+      "min": 0,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 29663,
+      "min": 29321,
+      "max": 32123
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 1,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 496.57457,
+      "min": 460.850329,
+      "max": 564.300777
+    },
+    "p95_ms": {
+      "median": 1932.4936217499999,
+      "min": 1811.6593473999997,
+      "max": 1958.2500948499994
+    },
+    "p99_ms": {
+      "median": 2238.98220798,
+      "min": 2167.2169744500025,
+      "max": 2347.0867722199987
+    },
+    "successful_per_s": {
+      "median": 42.03531582106905,
+      "min": 41.555096028648514,
+      "max": 42.977922370742505
+    },
+    "failed": {
+      "median": 2,
+      "min": 0,
+      "max": 4
+    },
+    "dropped_iterations": {
+      "median": 29613,
+      "min": 29043,
+      "max": 32552
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 0,
+      "max": 4
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 351.8663095,
+      "min": 333.369569,
+      "max": 392.405224
+    },
+    "p95_ms": {
+      "median": 1925.6747179999995,
+      "min": 1786.3076019,
+      "max": 2001.3025075
+    },
+    "p99_ms": {
+      "median": 2126.3299195199997,
+      "min": 2073.27876714,
+      "max": 2272.2539975599993
+    },
+    "successful_per_s": {
+      "median": 41.5125852671987,
+      "min": 40.5937197671295,
+      "max": 42.276764502931485
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 273,
+      "min": 265,
+      "max": 308
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 345.169312,
+      "min": 296.681577,
+      "max": 367.0271975
+    },
+    "p95_ms": {
+      "median": 1888.0200823999962,
+      "min": 1800.274422,
+      "max": 1984.275167
+    },
+    "p99_ms": {
+      "median": 2211.54089704,
+      "min": 2102.356654,
+      "max": 2326.4540183999998
+    },
+    "successful_per_s": {
+      "median": 41.4577210493833,
+      "min": 40.72199810864661,
+      "max": 41.881450269795295
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 282,
+      "min": 276,
+      "max": 324
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 296.410546,
+      "min": 274.396529,
+      "max": 325.9724135
+    },
+    "p95_ms": {
+      "median": 1692.5642416000003,
+      "min": 1668.6592086999995,
+      "max": 1746.5143300499997
+    },
+    "p99_ms": {
+      "median": 2178.4978099200002,
+      "min": 1987.1115439499997,
+      "max": 2269.5303516099916
+    },
+    "successful_per_s": {
+      "median": 46.514460530665325,
+      "min": 45.536278683700864,
+      "max": 46.69087535378041
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 245,
+      "min": 239,
+      "max": 256
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 328.836734,
+      "min": 266.1302835,
+      "max": 354.153726
+    },
+    "p95_ms": {
+      "median": 1752.91167475,
+      "min": 1718.7786995,
+      "max": 1809.5451886
+    },
+    "p99_ms": {
+      "median": 2011.0782097700007,
+      "min": 1990.18875988,
+      "max": 2061.852533320001
+    },
+    "successful_per_s": {
+      "median": 45.78109268181549,
+      "min": 44.88901029129238,
+      "max": 47.82895868803432
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 240,
+      "min": 226,
+      "max": 251
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 293.1464475,
+      "min": 256.789092,
+      "max": 299.906768
+    },
+    "p95_ms": {
+      "median": 1786.755214799999,
+      "min": 1722.7307107000004,
+      "max": 1807.8525964
+    },
+    "p99_ms": {
+      "median": 2099.23437576,
+      "min": 1922.4684828999998,
+      "max": 2273.117525619997
+    },
+    "successful_per_s": {
+      "median": 46.77699770938011,
+      "min": 46.54396012503934,
+      "max": 47.34209209379161
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 236,
+      "min": 231,
+      "max": 252
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 278.7724475,
+      "min": 274.523153,
+      "max": 306.826278
+    },
+    "p95_ms": {
+      "median": 1714.88351,
+      "min": 1694.9344585,
+      "max": 1916.8155581499998
+    },
+    "p99_ms": {
+      "median": 1974.3546430000001,
+      "min": 1945.20760168,
+      "max": 2318.2094288899993
+    },
+    "successful_per_s": {
+      "median": 46.760216586841565,
+      "min": 45.21394832082566,
+      "max": 47.566786356775786
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 244,
+      "min": 238,
+      "max": 249
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 449.3451465,
+      "min": 390.528218,
+      "max": 542.940539
+    },
+    "p95_ms": {
+      "median": 1926.085402,
+      "min": 1896.72723475,
+      "max": 2011.5905322000003
+    },
+    "p99_ms": {
+      "median": 2281.06950828,
+      "min": 2234.4302867499996,
+      "max": 2340.9204105499975
+    },
+    "successful_per_s": {
+      "median": 41.25693558215297,
+      "min": 40.395013843887334,
+      "max": 42.4643335377012
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 4
+    },
+    "dropped_iterations": {
+      "median": 5677,
+      "min": 5640,
+      "max": 5971
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 4
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 442.9551475,
+      "min": 390.563121,
+      "max": 479.4782515
+    },
+    "p95_ms": {
+      "median": 1910.5439972,
+      "min": 1787.711526,
+      "max": 2068.910661999999
+    },
+    "p99_ms": {
+      "median": 2319.61754783,
+      "min": 2157.8730628199996,
+      "max": 2398.0246511200016
+    },
+    "successful_per_s": {
+      "median": 41.40144808376134,
+      "min": 40.78692039417268,
+      "max": 42.06606840976546
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5682,
+      "min": 5663,
+      "max": 5685
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 360.890397,
+      "min": 307.189051,
+      "max": 376.9984815
+    },
+    "p95_ms": {
+      "median": 1841.18867275,
+      "min": 1786.3139042500002,
+      "max": 2026.468438899999
+    },
+    "p99_ms": {
+      "median": 2384.3364984500004,
+      "min": 2124.9937289,
+      "max": 2567.219397130001
+    },
+    "successful_per_s": {
+      "median": 45.3115515240618,
+      "min": 40.030556935530036,
+      "max": 45.67209442632447
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 5642,
+      "min": 5619,
+      "max": 5655
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 333.6976925,
+      "min": 317.46782099999996,
+      "max": 381.68929249999997
+    },
+    "p95_ms": {
+      "median": 1862.66036425,
+      "min": 1752.83609875,
+      "max": 2084.8252310999997
+    },
+    "p99_ms": {
+      "median": 2274.1797146499994,
+      "min": 2116.0039212,
+      "max": 2401.87765661
+    },
+    "successful_per_s": {
+      "median": 45.55351467864415,
+      "min": 40.94642882362494,
+      "max": 46.757005951498634
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 5641,
+      "min": 5397,
+      "max": 5926
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 327.713986,
+      "min": 303.240789,
+      "max": 382.42687750000005
+    },
+    "p95_ms": {
+      "median": 1929.016019,
+      "min": 1862.4235821,
+      "max": 1982.5437365
+    },
+    "p99_ms": {
+      "median": 2248.58484133,
+      "min": 2056.44806018,
+      "max": 2370.859129
+    },
+    "successful_per_s": {
+      "median": 45.80245489125925,
+      "min": 43.64668724320055,
+      "max": 45.992746915273024
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5659,
+      "min": 5591,
+      "max": 5758
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 331.851638,
+      "min": 312.9704235,
+      "max": 343.642442
+    },
+    "p95_ms": {
+      "median": 1836.5158000000001,
+      "min": 1790.6399052,
+      "max": 1909.87541635
+    },
+    "p99_ms": {
+      "median": 2143.521658399996,
+      "min": 1977.1795822700008,
+      "max": 2292.890199070001
+    },
+    "successful_per_s": {
+      "median": 45.552946272814786,
+      "min": 43.82568289160717,
+      "max": 46.67412776534446
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5643,
+      "min": 5619,
+      "max": 5657
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 462.0728795,
+      "min": 404.325868,
+      "max": 490.477347
+    },
+    "p95_ms": {
+      "median": 2043.8875170000001,
+      "min": 1969.06054155,
+      "max": 2126.59365325
+    },
+    "p99_ms": {
+      "median": 2375.1707159599996,
+      "min": 2281.0378212999995,
+      "max": 2659.8641172199996
+    },
+    "successful_per_s": {
+      "median": 41.50417025973219,
+      "min": 35.92035955661985,
+      "max": 41.95304470912421
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 29628,
+      "min": 29517,
+      "max": 29711
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 436.9624065,
+      "min": 399.4785995,
+      "max": 484.829396
+    },
+    "p95_ms": {
+      "median": 1985.63977005,
+      "min": 1872.45831105,
+      "max": 2053.3195075999997
+    },
+    "p99_ms": {
+      "median": 2428.1749076000006,
+      "min": 2165.4933780899996,
+      "max": 2641.1602293400006
+    },
+    "successful_per_s": {
+      "median": 40.86369178933134,
+      "min": 37.34136054894003,
+      "max": 40.911940086158225
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 29707,
+      "min": 29630,
+      "max": 29713
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 333.320444,
+      "min": 322.7336415,
+      "max": 363.073773
+    },
+    "p95_ms": {
+      "median": 1944.1219249,
+      "min": 1885.300134,
+      "max": 1982.84722075
+    },
+    "p99_ms": {
+      "median": 2263.6019754,
+      "min": 2153.517746,
+      "max": 2473.97757526
+    },
+    "successful_per_s": {
+      "median": 45.105764427372215,
+      "min": 42.00825537927464,
+      "max": 45.90450190530031
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 29653,
+      "min": 28608,
+      "max": 32068
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 335.150136,
+      "min": 313.452674,
+      "max": 394.983687
+    },
+    "p95_ms": {
+      "median": 1940.6832722,
+      "min": 1846.077577,
+      "max": 2069.6973865999985
+    },
+    "p99_ms": {
+      "median": 2291.907441000001,
+      "min": 2215.7024692400014,
+      "max": 2480.7811329200003
+    },
+    "successful_per_s": {
+      "median": 45.028493064457486,
+      "min": 41.932900673080944,
+      "max": 45.552176765622804
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 29645,
+      "min": 29533,
+      "max": 31080
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 324.697988,
+      "min": 314.262743,
+      "max": 388.721012
+    },
+    "p95_ms": {
+      "median": 1886.3182793999995,
+      "min": 1861.012847,
+      "max": 2049.390188
+    },
+    "p99_ms": {
+      "median": 2339.697422599996,
+      "min": 2141.62092582,
+      "max": 2613.9538275
+    },
+    "successful_per_s": {
+      "median": 45.44769774343569,
+      "min": 41.64256314309904,
+      "max": 45.91581764045336
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 29546,
+      "min": 29308,
+      "max": 30213
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "60s",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 330.019238,
+      "min": 314.419415,
+      "max": 364.517424
+    },
+    "p95_ms": {
+      "median": 1846.5778784999998,
+      "min": 1773.49701005,
+      "max": 2005.7348187999999
+    },
+    "p99_ms": {
+      "median": 2346.377596559999,
+      "min": 2100.67477586,
+      "max": 2433.8824362399996
+    },
+    "successful_per_s": {
+      "median": 44.52808497562853,
+      "min": 41.88656129964247,
+      "max": 45.55079498832261
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 29673,
+      "min": 29577,
+      "max": 30328
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 334.9001685,
+      "min": 296.172233,
+      "max": 397.329142
+    },
+    "p95_ms": {
+      "median": 1920.1487767499998,
+      "min": 1772.7328295999994,
+      "max": 1985.1132257999998
+    },
+    "p99_ms": {
+      "median": 2392.2138070000024,
+      "min": 1956.6375221199999,
+      "max": 2453.5294095600016
+    },
+    "successful_per_s": {
+      "median": 40.93896374023352,
+      "min": 37.274566338143615,
+      "max": 42.43675791413135
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 293,
+      "min": 265,
+      "max": 314
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 328.894208,
+      "min": 324.618263,
+      "max": 351.195627
+    },
+    "p95_ms": {
+      "median": 1887.5347419,
+      "min": 1836.4091395999997,
+      "max": 1956.9480918
+    },
+    "p99_ms": {
+      "median": 2099.9080319600007,
+      "min": 2065.3083520600007,
+      "max": 2271.9787796799974
+    },
+    "successful_per_s": {
+      "median": 41.83842461098515,
+      "min": 39.41672897059008,
+      "max": 42.56860940815902
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 283,
+      "min": 271,
+      "max": 290
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 354.5560605,
+      "min": 304.949159,
+      "max": 394.615207
+    },
+    "p95_ms": {
+      "median": 1887.1311531000003,
+      "min": 1848.6814346,
+      "max": 1967.2894675999992
+    },
+    "p99_ms": {
+      "median": 2115.0786220000014,
+      "min": 2086.39409528,
+      "max": 2347.9070867000005
+    },
+    "successful_per_s": {
+      "median": 40.80447671534793,
+      "min": 40.48359772916114,
+      "max": 41.62055675405267
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 283,
+      "min": 269,
+      "max": 288
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 350.223905,
+      "min": 297.349354,
+      "max": 382.60210800000004
+    },
+    "p95_ms": {
+      "median": 1994.87135625,
+      "min": 1909.1526145,
+      "max": 2011.5485875999996
+    },
+    "p99_ms": {
+      "median": 2346.05841925,
+      "min": 2254.1974273400006,
+      "max": 2445.5026015900007
+    },
+    "successful_per_s": {
+      "median": 40.051350616846975,
+      "min": 39.28999626105394,
+      "max": 40.46387775055041
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 292,
+      "min": 285,
+      "max": 300
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 324.6209145,
+      "min": 304.962577,
+      "max": 409.733424
+    },
+    "p95_ms": {
+      "median": 1872.1294944,
+      "min": 1793.0899855999996,
+      "max": 1999.30972245
+    },
+    "p99_ms": {
+      "median": 2219.4835075600004,
+      "min": 2097.10141232,
+      "max": 2296.3837977
+    },
+    "successful_per_s": {
+      "median": 41.02166682714027,
+      "min": 40.82420596636004,
+      "max": 42.450313047253
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 291,
+      "min": 271,
+      "max": 303
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 100,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 304.474049,
+      "min": 297.364275,
+      "max": 349.384295
+    },
+    "p95_ms": {
+      "median": 1921.7649257500002,
+      "min": 1850.0744273500002,
+      "max": 2093.338781
+    },
+    "p99_ms": {
+      "median": 2318.93937425,
+      "min": 2216.748986329997,
+      "max": 2380.913772
+    },
+    "successful_per_s": {
+      "median": 41.373375976044485,
+      "min": 41.02663871446889,
+      "max": 42.08090006978959
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 273,
+      "min": 258,
+      "max": 280
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 394.489851,
+      "min": 368.87148,
+      "max": 427.5326025
+    },
+    "p95_ms": {
+      "median": 1965.4732064,
+      "min": 1881.63290225,
+      "max": 2015.6223308
+    },
+    "p99_ms": {
+      "median": 2286.9925288000013,
+      "min": 2076.0245605,
+      "max": 2384.0688975199964
+    },
+    "successful_per_s": {
+      "median": 42.05993745585776,
+      "min": 41.16271091713777,
+      "max": 44.31790040181037
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5672,
+      "min": 5639,
+      "max": 6216
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 396.2765355,
+      "min": 375.075025,
+      "max": 427.157602
+    },
+    "p95_ms": {
+      "median": 1912.6314667,
+      "min": 1865.6921346,
+      "max": 1979.8671743
+    },
+    "p99_ms": {
+      "median": 2432.4911730800013,
+      "min": 2115.198170080001,
+      "max": 2489.919898580001
+    },
+    "successful_per_s": {
+      "median": 42.33312587036304,
+      "min": 41.680739579418685,
+      "max": 43.30524386446472
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 5688,
+      "min": 5642,
+      "max": 5970
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 457.170786,
+      "min": 417.016051,
+      "max": 527.069706
+    },
+    "p95_ms": {
+      "median": 2017.50750085,
+      "min": 1955.571034,
+      "max": 2025.81902915
+    },
+    "p99_ms": {
+      "median": 2457.68318913,
+      "min": 2285.234067400002,
+      "max": 2665.93908816
+    },
+    "successful_per_s": {
+      "median": 40.562366593683315,
+      "min": 39.58210378748977,
+      "max": 41.73087778145431
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5687,
+      "min": 5624,
+      "max": 6210
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 422.12896,
+      "min": 410.6234845,
+      "max": 434.99408
+    },
+    "p95_ms": {
+      "median": 1960.36068955,
+      "min": 1861.77009625,
+      "max": 2063.653383
+    },
+    "p99_ms": {
+      "median": 2364.88788122,
+      "min": 2279.790768559997,
+      "max": 2532.4667239299993
+    },
+    "successful_per_s": {
+      "median": 41.82769380093733,
+      "min": 41.196826626760306,
+      "max": 42.793070602362796
+    },
+    "failed": {
+      "median": 2,
+      "min": 0,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 5668,
+      "min": 5573,
+      "max": 5681
+    },
+    "timeouts": {
+      "median": 2,
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 422.876096,
+      "min": 365.536917,
+      "max": 461.779219
+    },
+    "p95_ms": {
+      "median": 1979.915692549999,
+      "min": 1896.9008436499992,
+      "max": 2046.3533517999988
+    },
+    "p99_ms": {
+      "median": 2433.9774976999975,
+      "min": 2136.44944469,
+      "max": 2549.0243476600062
+    },
+    "successful_per_s": {
+      "median": 41.82947754095843,
+      "min": 40.70193014354402,
+      "max": 42.76527819172415
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dropped_iterations": {
+      "median": 5689,
+      "min": 5669,
+      "max": 5736
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 376.610281,
+      "min": 368.118885,
+      "max": 391.659096
+    },
+    "p95_ms": {
+      "median": 1903.8645653999997,
+      "min": 1806.1015975,
+      "max": 1994.2873827
+    },
+    "p99_ms": {
+      "median": 2195.671019179998,
+      "min": 2073.7691675,
+      "max": 2468.78129404
+    },
+    "successful_per_s": {
+      "median": 42.29899085394065,
+      "min": 41.27398176582965,
+      "max": 42.535532643485745
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 5663,
+      "min": 5092,
+      "max": 5678
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 416.383375,
+      "min": 378.9567055,
+      "max": 528.4805355
+    },
+    "p95_ms": {
+      "median": 1989.4726055,
+      "min": 1884.07738075,
+      "max": 2064.762203499999
+    },
+    "p99_ms": {
+      "median": 2416.059044430003,
+      "min": 2130.1891605,
+      "max": 2461.2932937200003
+    },
+    "successful_per_s": {
+      "median": 40.160450806029985,
+      "min": 38.30103919648607,
+      "max": 41.276178382335324
+    },
+    "failed": {
+      "median": 1,
+      "min": 1,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 29510,
+      "min": 28753,
+      "max": 29980
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 1,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 406.92933949999997,
+      "min": 359.526032,
+      "max": 473.910576
+    },
+    "p95_ms": {
+      "median": 2051.3121628499994,
+      "min": 1955.8427378999997,
+      "max": 2097.7496203000005
+    },
+    "p99_ms": {
+      "median": 2428.6231551799997,
+      "min": 2242.7602964800003,
+      "max": 2479.691074009999
+    },
+    "successful_per_s": {
+      "median": 40.37049183893017,
+      "min": 39.29273106094233,
+      "max": 41.10157493866956
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 29659,
+      "min": 29518,
+      "max": 29760
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 462.834447,
+      "min": 425.20095349999997,
+      "max": 545.127229
+    },
+    "p95_ms": {
+      "median": 2016.245176,
+      "min": 1858.3339128999996,
+      "max": 2149.2474245
+    },
+    "p99_ms": {
+      "median": 2463.372330420002,
+      "min": 2322.9097494599996,
+      "max": 2641.8174088100013
+    },
+    "successful_per_s": {
+      "median": 39.932020282184766,
+      "min": 38.56833322744886,
+      "max": 42.82771793831819
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    },
+    "dropped_iterations": {
+      "median": 29463,
+      "min": 29093,
+      "max": 29644
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 2
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 429.164562,
+      "min": 418.557058,
+      "max": 446.14387
+    },
+    "p95_ms": {
+      "median": 1965.8039104999996,
+      "min": 1916.6018577,
+      "max": 2031.795211
+    },
+    "p99_ms": {
+      "median": 2325.76388004,
+      "min": 2161.8927375,
+      "max": 2437.0965695
+    },
+    "successful_per_s": {
+      "median": 39.90932654574812,
+      "min": 39.098533580273575,
+      "max": 41.846809836865944
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 29691,
+      "min": 29657,
+      "max": 29952
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 5,
+    "p50_ms": {
+      "median": 431.712567,
+      "min": 390.133095,
+      "max": 452.832362
+    },
+    "p95_ms": {
+      "median": 1965.8176262,
+      "min": 1916.7026646000002,
+      "max": 2052.4064466
+    },
+    "p99_ms": {
+      "median": 2333.518188039998,
+      "min": 2228.698102479999,
+      "max": 2528.3385533999995
+    },
+    "successful_per_s": {
+      "median": 40.86500278180585,
+      "min": 40.28694477317999,
+      "max": 41.42969466712991
+    },
+    "failed": {
+      "median": 1,
+      "min": 0,
+      "max": 3
+    },
+    "dropped_iterations": {
+      "median": 29656,
+      "min": 29128,
+      "max": 29739
+    },
+    "timeouts": {
+      "median": 1,
+      "min": 0,
+      "max": 3
+    }
+  },
+  {
+    "catalog_products": 5000,
+    "replicas": 3,
+    "ttl": "1ms",
+    "offered_rate": 5000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 5,
+    "p50_ms": {
+      "median": 376.631086,
+      "min": 337.65975000000003,
+      "max": 389.536671
+    },
+    "p95_ms": {
+      "median": 1986.0429353000004,
+      "min": 1968.5406043,
+      "max": 2021.5476258
+    },
+    "p99_ms": {
+      "median": 2415.7593119,
+      "min": 2202.4823696999993,
+      "max": 2571.18159792
+    },
+    "successful_per_s": {
+      "median": 41.14852073921215,
+      "min": 40.80479423128774,
+      "max": 43.06432178580988
+    },
+    "failed": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    },
+    "dropped_iterations": {
+      "median": 29596,
+      "min": 29151,
+      "max": 29688
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 1
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "50ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "baseline",
+    "n": 1,
+    "p50_ms": {
+      "median": 83.424412,
+      "min": 83.424412,
+      "max": 83.424412
+    },
+    "p95_ms": {
+      "median": 309.7147838,
+      "min": 309.7147838,
+      "max": 309.7147838
+    },
+    "p99_ms": {
+      "median": 443.9524650399999,
+      "min": 443.9524650399999,
+      "max": 443.9524650399999
+    },
+    "successful_per_s": {
+      "median": 387.8875857401852,
+      "min": 387.8875857401852,
+      "max": 387.8875857401852
+    },
+    "failed": {
+      "median": 1027,
+      "min": 1027,
+      "max": 1027
+    },
+    "dropped_iterations": {
+      "median": 35649,
+      "min": 35649,
+      "max": 35649
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "50ms",
+    "offered_rate": 1000,
+    "mode": "none",
+    "build": "candidate",
+    "n": 1,
+    "p50_ms": {
+      "median": 85.8622365,
+      "min": 85.8622365,
+      "max": 85.8622365
+    },
+    "p95_ms": {
+      "median": 307.83475669999996,
+      "min": 307.83475669999996,
+      "max": 307.83475669999996
+    },
+    "p99_ms": {
+      "median": 439.9490817799995,
+      "min": 439.9490817799995,
+      "max": 439.9490817799995
+    },
+    "successful_per_s": {
+      "median": 380.3080179261603,
+      "min": 380.3080179261603,
+      "max": 380.3080179261603
+    },
+    "failed": {
+      "median": 1054,
+      "min": 1054,
+      "max": 1054
+    },
+    "dropped_iterations": {
+      "median": 36077,
+      "min": 36077,
+      "max": 36077
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "50ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "baseline",
+    "n": 1,
+    "p50_ms": {
+      "median": 82.7090365,
+      "min": 82.7090365,
+      "max": 82.7090365
+    },
+    "p95_ms": {
+      "median": 288.24164005,
+      "min": 288.24164005,
+      "max": 288.24164005
+    },
+    "p99_ms": {
+      "median": 399.94550491999917,
+      "min": 399.94550491999917,
+      "max": 399.94550491999917
+    },
+    "successful_per_s": {
+      "median": 402.2876919111097,
+      "min": 402.2876919111097,
+      "max": 402.2876919111097
+    },
+    "failed": {
+      "median": 978,
+      "min": 978,
+      "max": 978
+    },
+    "dropped_iterations": {
+      "median": 34823,
+      "min": 34823,
+      "max": 34823
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "50ms",
+    "offered_rate": 1000,
+    "mode": "ttl",
+    "build": "candidate",
+    "n": 1,
+    "p50_ms": {
+      "median": 83.6039475,
+      "min": 83.6039475,
+      "max": 83.6039475
+    },
+    "p95_ms": {
+      "median": 283.93796689999994,
+      "min": 283.93796689999994,
+      "max": 283.93796689999994
+    },
+    "p99_ms": {
+      "median": 401.69581924999966,
+      "min": 401.69581924999966,
+      "max": 401.69581924999966
+    },
+    "successful_per_s": {
+      "median": 403.6215722925355,
+      "min": 403.6215722925355,
+      "max": 403.6215722925355
+    },
+    "failed": {
+      "median": 1047,
+      "min": 1047,
+      "max": 1047
+    },
+    "dropped_iterations": {
+      "median": 34667,
+      "min": 34667,
+      "max": 34667
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "50ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "baseline",
+    "n": 1,
+    "p50_ms": {
+      "median": 81.75756,
+      "min": 81.75756,
+      "max": 81.75756
+    },
+    "p95_ms": {
+      "median": 272.77412599999974,
+      "min": 272.77412599999974,
+      "max": 272.77412599999974
+    },
+    "p99_ms": {
+      "median": 397.3635142400003,
+      "min": 397.3635142400003,
+      "max": 397.3635142400003
+    },
+    "successful_per_s": {
+      "median": 419.3871094907575,
+      "min": 419.3871094907575,
+      "max": 419.3871094907575
+    },
+    "failed": {
+      "median": 1039,
+      "min": 1039,
+      "max": 1039
+    },
+    "dropped_iterations": {
+      "median": 33680,
+      "min": 33680,
+      "max": 33680
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  {
+    "catalog_products": 500,
+    "replicas": 3,
+    "ttl": "50ms",
+    "offered_rate": 1000,
+    "mode": "lease",
+    "build": "candidate",
+    "n": 1,
+    "p50_ms": {
+      "median": 79.317123,
+      "min": 79.317123,
+      "max": 79.317123
+    },
+    "p95_ms": {
+      "median": 266.6076415,
+      "min": 266.6076415,
+      "max": 266.6076415
+    },
+    "p99_ms": {
+      "median": 372.4410322,
+      "min": 372.4410322,
+      "max": 372.4410322
+    },
+    "successful_per_s": {
+      "median": 432.93834918455684,
+      "min": 432.93834918455684,
+      "max": 432.93834918455684
+    },
+    "failed": {
+      "median": 669,
+      "min": 669,
+      "max": 669
+    },
+    "dropped_iterations": {
+      "median": 33324,
+      "min": 33324,
+      "max": 33324
+    },
+    "timeouts": {
+      "median": 0,
+      "min": 0,
+      "max": 0
+    }
+  }
+]
