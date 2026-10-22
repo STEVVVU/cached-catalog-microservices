@@ -1,0 +1,18 @@
+# Copyright 2026 Google LLC
+# Licensed under the Apache License, Version 2.0.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+  - catalogdb.yaml
+  - catalogdb-networkpolicy.yaml
+
+images:
+  - name: us-central1-docker.pkg.dev/online-boutique-ci/microservices-demo/productcatalogservice
+    newName: cached-catalog-microservices/productcatalogservice
+    newTag: p24
+
+patches:
+  - path: productcatalogservice-patch.yaml
+  - path: frontend-external-delete.yaml

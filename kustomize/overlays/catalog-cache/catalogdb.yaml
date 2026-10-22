@@ -1,0 +1,99 @@
+# Copyright 2026 Google LLC
+# Licensed under the Apache License, Version 2.0.
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogdbservice
+  labels:
+    app: catalogdbservice
+spec:
+  type: ClusterIP
+  selector:
+    app: catalogdbservice
+  ports:
+    - name: grpc
+      port: 3551
+      targetPort: 3551
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: catalogdb-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: catalogdbservice
+  labels:
+    app: catalogdbservice
+spec:
+  serviceName: catalogdbservice
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalogdbservice
+  template:
+    metadata:
+      labels:
+        app: catalogdbservice
+    spec:
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        fsGroup: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+      containers:
+        - name: server
+          image: cached-catalog-microservices/productcatalogservice:p24
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+          ports:
+            - name: grpc
+              containerPort: 3551
+          env:
+            - name: CATALOG_DB_MODE
+              value: "1"
+            - name: CATALOG_DB_BIND_ADDRESS
+              value: 0.0.0.0
+            - name: CATALOG_DB_PORT
+              value: "3551"
+            - name: CATALOG_DB_PATH
+              value: /var/lib/catalog/catalog.db
+            - name: CATALOG_SEED_PATH
+              value: /src/products.json
+            - name: DISABLE_PROFILER
+              value: "1"
+          volumeMounts:
+            - name: catalog-data
+              mountPath: /var/lib/catalog
+          readinessProbe:
+            grpc:
+              port: 3551
+          livenessProbe:
+            grpc:
+              port: 3551
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+      volumes:
+        - name: catalog-data
+          persistentVolumeClaim:
+            claimName: catalogdb-data

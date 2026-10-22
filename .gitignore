@@ -7,6 +7,7 @@
 .skaffold-*.yaml
 .terraform.lock.hcl
 .terraform/*
+.tools/
 .venv/
 .vs/
 .vscode/
@@ -27,3 +28,4 @@ pkg/
 release/wi-kubernetes-manifests.yaml
 vendor/
 gha-creds-*.json
+/reports/evidence/

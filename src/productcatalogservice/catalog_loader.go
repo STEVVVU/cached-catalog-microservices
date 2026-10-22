@@ -43,10 +43,13 @@ func loadCatalog(catalog *pb.ListProductsResponse) error {
 
 func loadCatalogFromLocalFile(catalog *pb.ListProductsResponse) error {
 	log.Info("loading catalog from local products.json file...")
+	return loadCatalogFromPath("products.json", catalog)
+}
 
-	catalogJSON, err := os.ReadFile("products.json")
+func loadCatalogFromPath(path string, catalog *pb.ListProductsResponse) error {
+	catalogJSON, err := os.ReadFile(path)
 	if err != nil {
-		log.Warnf("failed to open product catalog json file: %v", err)
+		log.Warnf("failed to open product catalog json file %q: %v", path, err)
 		return err
 	}
 

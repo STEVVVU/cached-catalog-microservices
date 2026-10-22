@@ -20,9 +20,7 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"os/signal"
 	"sync"
-	"syscall"
 	"time"
 
 	pb "github.com/GoogleCloudPlatform/microservices-demo/src/productcatalogservice/genproto"
@@ -66,6 +64,11 @@ func init() {
 }
 
 func main() {
+	if os.Getenv("CATALOG_DB_MODE") == "1" {
+		runCatalogDB()
+		return
+	}
+
 	if os.Getenv("ENABLE_TRACING") == "1" {
 		err := initTracing()
 		if err != nil {
@@ -96,21 +99,7 @@ func main() {
 		extraLatency = time.Duration(0)
 	}
 
-	sigs := make(chan os.Signal, 1)
-	signal.Notify(sigs, syscall.SIGUSR1, syscall.SIGUSR2)
-	go func() {
-		for {
-			sig := <-sigs
-			log.Printf("Received signal: %s", sig)
-			if sig == syscall.SIGUSR1 {
-				reloadCatalog = true
-				log.Infof("Enable catalog reloading")
-			} else {
-				reloadCatalog = false
-				log.Infof("Disable catalog reloading")
-			}
-		}
-	}()
+	startCatalogReloadListener()
 
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
@@ -118,6 +107,45 @@ func main() {
 	log.Infof("starting grpc server at :%s", port)
 	run(port)
 	select {}
+}
+
+func runCatalogDB() {
+	path := envOr("CATALOG_DB_PATH", "catalog.db")
+	seedPath := envOr("CATALOG_SEED_PATH", "products.json")
+	responseDelay, err := parseBoundedDuration("CATALOG_DB_RESPONSE_DELAY", "0s", 0, 30*time.Second)
+	if err != nil {
+		log.Fatalf("could not configure catalog response delay: %v", err)
+	}
+	store, err := openCatalogStore(path, seedPath)
+	if err != nil {
+		log.Fatalf("could not open durable catalog: %v", err)
+	}
+	defer store.Close()
+
+	address := envOr("CATALOG_DB_BIND_ADDRESS", "127.0.0.1") + ":" + envOr("CATALOG_DB_PORT", "3551")
+	listener, err := net.Listen("tcp", address)
+	if err != nil {
+		log.Fatalf("could not listen for durable catalog gRPC: %v", err)
+	}
+	srv := grpc.NewServer(grpc.StatsHandler(otelgrpc.NewServerHandler()), grpc.MaxRecvMsgSize(8<<20))
+	database := &catalogDBService{store: store, responseDelay: responseDelay}
+	pb.RegisterProductCatalogServiceServer(srv, database)
+	pb.RegisterCatalogAdminServiceServer(srv, &catalogAdminService{store: store, database: database})
+	healthcheck := health.NewServer()
+	healthcheck.SetServingStatus("", healthpb.HealthCheckResponse_SERVING)
+	healthcheck.SetServingStatus("hipstershop.ProductCatalogService", healthpb.HealthCheckResponse_SERVING)
+	healthpb.RegisterHealthServer(srv, healthcheck)
+	log.Infof("starting durable catalog gRPC server at %s using %s", address, path)
+	if err := srv.Serve(listener); err != nil {
+		log.Fatalf("durable catalog gRPC server stopped: %v", err)
+	}
+}
+
+func envOr(key, fallback string) string {
+	if value := os.Getenv(key); value != "" {
+		return value
+	}
+	return fallback
 }
 
 func run(port string) string {
@@ -132,12 +160,20 @@ func run(port string) string {
 			propagation.TraceContext{}, propagation.Baggage{}))
 	var srv *grpc.Server
 	srv = grpc.NewServer(
-		grpc.StatsHandler(otelgrpc.NewServerHandler()))
+		grpc.StatsHandler(otelgrpc.NewServerHandler()),
+		grpc.MaxRecvMsgSize(8<<20))
 
-	svc := &productCatalog{}
-	err = loadCatalog(&svc.catalog)
+	svc, err := newProductCatalogService()
 	if err != nil {
-		log.Fatalf("could not parse product catalog: %v", err)
+		log.Fatalf("could not configure product catalog service: %v", err)
+	}
+	if svc.cache == nil {
+		err = loadCatalog(&svc.catalog)
+		if err != nil {
+			log.Fatalf("could not parse product catalog: %v", err)
+		}
+	} else if err := startCatalogAdminHTTP(svc); err != nil {
+		log.Fatalf("could not start catalog admin HTTP: %v", err)
 	}
 
 	pb.RegisterProductCatalogServiceServer(srv, svc)
