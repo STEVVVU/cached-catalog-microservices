@@ -230,6 +230,9 @@ try {
     $env:GOPATH = Join-Path $goCacheRoot 'gopath'
     $env:GOMODCACHE = Join-Path $env:GOPATH 'pkg\mod'
     $env:GOCACHE = Join-Path $goCacheRoot 'cache'
+    if ($env:GOFLAGS -notmatch '(^|\s)-modcacherw(\s|$)') {
+        $env:GOFLAGS = (@($env:GOFLAGS, '-modcacherw') | Where-Object { $_ }) -join ' '
+    }
     $env:PATH = (Join-Path $projectRoot '.tools\bin') + [System.IO.Path]::PathSeparator + $env:PATH
     Assert-That (Test-Path $go) "pinned Go 1.27.3 toolchain was not found at $go"
     $goVersion = & $go version
@@ -387,18 +390,38 @@ try {
     $failure = $_.Exception.Message
     throw
 } finally {
-    foreach ($entry in $started) { Stop-CatalogProcess $entry }
-    $resolvedWork = [System.IO.Path]::GetFullPath($workDir)
-    $directorySeparator = [System.IO.Path]::DirectorySeparatorChar
-    $resolvedTemp = [System.IO.Path]::GetFullPath($tempRoot).TrimEnd('\', '/') + $directorySeparator
-    if ($resolvedWork.StartsWith($resolvedTemp, [System.StringComparison]::OrdinalIgnoreCase) -and (Test-Path $resolvedWork)) {
-        Remove-Item -LiteralPath $resolvedWork -Recurse -Force
-    } elseif (Test-Path $resolvedWork) {
-        $result = 'failed'
-        $failure = "refused cleanup outside the temporary directory: $resolvedWork"
+    $cleanupFailures = [System.Collections.Generic.List[string]]::new()
+    foreach ($entry in $started) {
+        try { Stop-CatalogProcess $entry }
+        catch { $cleanupFailures.Add("stopping $($entry.Name): $($_.Exception.Message)") }
     }
+    try {
+        $resolvedWork = [System.IO.Path]::GetFullPath($workDir)
+        $directorySeparator = [System.IO.Path]::DirectorySeparatorChar
+        $resolvedTemp = [System.IO.Path]::GetFullPath($tempRoot).TrimEnd('\', '/') + $directorySeparator
+        if ($resolvedWork.StartsWith($resolvedTemp, [System.StringComparison]::OrdinalIgnoreCase) -and (Test-Path $resolvedWork)) {
+            Remove-Item -LiteralPath $resolvedWork -Recurse -Force -ErrorAction Stop
+        } elseif (Test-Path $resolvedWork) {
+            $cleanupFailures.Add("refused cleanup outside the temporary directory: $resolvedWork")
+        }
+    } catch {
+        $cleanupFailures.Add("removing owned temporary work directory: $($_.Exception.Message)")
+    }
+    if ($cleanupFailures.Count -gt 0) {
+        $result = 'failed'
+        $cleanupMessage = $cleanupFailures -join '; '
+        $failure = if ($failure) { "$failure; cleanup: $cleanupMessage" } else { "cleanup: $cleanupMessage" }
+    }
+    New-Item -ItemType Directory -Force -Path $evidenceDir | Out-Null
     $logPaths = @(Get-ChildItem -LiteralPath $evidenceDir -File | Select-Object -ExpandProperty Name)
     $survivesCleanup = (Test-Path $evidenceDir) -and ($logPaths.Count -gt 0)
+    if ($env:GITHUB_OUTPUT) {
+        try { "evidence_path=reports/evidence/$stamp" | Add-Content -LiteralPath $env:GITHUB_OUTPUT -Encoding utf8 -ErrorAction Stop }
+        catch {
+            $result = 'failed'
+            $failure = if ($failure) { "$failure; writing GitHub evidence output: $($_.Exception.Message)" } else { "writing GitHub evidence output: $($_.Exception.Message)" }
+        }
+    }
     $summary = [ordered]@{
         result = $result
         failure = $failure
@@ -414,7 +437,7 @@ try {
         evidence_survived_cleanup = $survivesCleanup
     }
     $summary | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath (Join-Path $evidenceDir 'evidence.json') -Encoding utf8NoBOM
-    if ($env:GITHUB_OUTPUT) { "evidence_path=reports/evidence/$stamp" | Add-Content -LiteralPath $env:GITHUB_OUTPUT -Encoding utf8 }
 }
 
 Write-Output "P24 catalog verification $result. Evidence: $evidenceDir"
+if ($result -ne 'passed') { exit 1 }

@@ -112,8 +112,10 @@ found = {
 }
 if found != wanted:
     raise SystemExit(f"rendered integration resource set differs: missing={wanted-found}, extra={found-wanted}")
-destination.write_text("---\n".join(selected) + "\n", encoding="utf-8")
+destination.write_text("\n---\n".join(selected) + "\n", encoding="utf-8")
 PY
+parsed_resource_count="$(kubectl create --dry-run=client -n "$namespace" -f "$work_dir/catalog-resources.yaml" -o name | wc -l)"
+[[ "$parsed_resource_count" -eq 7 ]]
 kubectl apply -n "$namespace" -f "$work_dir/catalog-resources.yaml"
 kubectl -n "$namespace" wait --for=jsonpath='{.status.phase}'=Bound pvc/catalogdb-data --timeout=120s
 catalog_pvc_uid="$(kubectl -n "$namespace" get pvc catalogdb-data -o jsonpath='{.metadata.uid}')"
