@@ -1,0 +1,54 @@
+name: Catalog benchmark
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.27.3'
+          cache-dependency-path: src/productcatalogservice/go.sum
+      - name: Ensure syscall profiler is available
+        if: inputs.profile
+        run: command -v strace || { sudo apt-get update && sudo apt-get install -y strace; }
+      - working-directory: src/productcatalogservice
+        env:
+          PROFILE: ${{ inputs.profile }}
+        run: |
+          go test ./...
+          flag=()
+          if [ "$PROFILE" = true ]; then flag+=(-tags benchmark); fi
+          go build -trimpath "${flag[@]}" -o ../../bin/productcatalogservice .
+          go build -trimpath -o ../../bin/catalogctl ./cmd/catalogctl
+      - name: Record environment
+        run: |
+          mkdir -p reports/evidence
+          { git rev-parse HEAD; go version; uname -a; lscpu; free -b; df -B1 .; uptime; } > reports/evidence/benchmark-environment.txt
+      - env:
+          PROFILE: ${{ inputs.profile }}
+        run: |
+          flag=()
+          if [ "$PROFILE" = true ]; then flag+=(--profile); fi
+          python3 scripts/catalog-benchmark.py --output reports/evidence/benchmark "${flag[@]}"
+      - name: Resolve separate CPU profiles to source
+        if: inputs.profile
+        run: |
+          for profile in reports/evidence/benchmark/*.pprof; do
+            binary=bin/productcatalogservice
+            if [[ "$profile" == *.generator.pprof ]]; then binary=bin/catalogctl; fi
+            go tool pprof -top -lines "$binary" "$profile" > "$profile.txt"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: catalog-benchmark-${{ github.run_id }}
+          path: reports/evidence

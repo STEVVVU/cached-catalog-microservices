@@ -47,6 +47,8 @@ func run(args []string) error {
 		return errors.New("usage: catalogctl list|get ID|search QUERY|bench REQUESTS CONCURRENCY|revision|stats|metrics|update FILE [EXPECTED_REVISION]")
 	}
 	switch args[0] {
+	case "load":
+		return loadCatalog(args[1:])
 	case "list":
 		return callCatalog(args, func(ctx context.Context, client pb.ProductCatalogServiceClient) (proto.Message, error) {
 			return client.ListProducts(ctx, &pb.Empty{})
