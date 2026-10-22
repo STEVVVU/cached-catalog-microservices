@@ -43,6 +43,22 @@ function Get-FreeLoopbackPort {
     return $port
 }
 
+function Get-GatewayLoopbackPorts {
+    $grpc = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, 0)
+    $admin = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, 0)
+    try {
+        $grpc.Start()
+        $admin.Start()
+        return [pscustomobject]@{
+            Grpc = ([System.Net.IPEndPoint]$grpc.LocalEndpoint).Port
+            Admin = ([System.Net.IPEndPoint]$admin.LocalEndpoint).Port
+        }
+    } finally {
+        $grpc.Stop()
+        $admin.Stop()
+    }
+}
+
 function Add-Proof([string]$name, [string]$command, [string]$observed) {
     $proofs.Add([ordered]@{ action = $name; command = $command; observed = $observed })
 }
@@ -89,8 +105,9 @@ function Start-Database([string]$responseDelay) {
 }
 
 function Start-Gateway([string]$mode, [string]$ttl) {
-    $script:gatewayPort = Get-FreeLoopbackPort
-    $script:adminPort = Get-FreeLoopbackPort
+    $ports = Get-GatewayLoopbackPorts
+    $script:gatewayPort = $ports.Grpc
+    $script:adminPort = $ports.Admin
     $environment = @{
         PORT = "$gatewayPort"
         CATALOG_BACKEND_ADDR = "127.0.0.1:$dbPort"
@@ -249,8 +266,6 @@ try {
     } finally { Pop-Location }
 
     $dbPort = Get-FreeLoopbackPort
-    $gatewayPort = Get-FreeLoopbackPort
-    $adminPort = Get-FreeLoopbackPort
     $script:database = Start-Database '0s'
     $catalogText = Wait-Database $dbPort
     $catalog = $catalogText | ConvertFrom-Json

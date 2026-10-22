@@ -26,6 +26,7 @@ jobs:
       - name: Existing real-product checks and concurrent defensive-copy coverage
         run: |
           python3 -m unittest discover -s scripts -p test_catalog_benchmark.py -v
+          pwsh -NoProfile -File .agents/skills/verify-productcatalog/test-ports.ps1
           node scripts/catalog-oracle.test.mjs
           test -z "$(gofmt -l src/productcatalogservice/catalog_cache.go src/productcatalogservice/catalog_cache_test.go)"
           (cd src/productcatalogservice && go test ./... && go test -race ./...)
