@@ -21,7 +21,9 @@ jobs:
         with:
           k6-version: '2.3.0'
           browser: false
-      - run: node scripts/catalog-oracle.test.mjs
+      - run: |
+          python3 -m unittest discover -s scripts -p test_catalog_benchmark.py -v
+          node scripts/catalog-oracle.test.mjs
       - working-directory: src/productcatalogservice
         run: |
           go test ./...

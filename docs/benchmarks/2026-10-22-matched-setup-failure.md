@@ -1,0 +1,11 @@
+# Matched campaign setup failure
+
+[Run 39745157891](https://github.com/STEVVVU/cached-catalog-microservices/actions/runs/39745157891) ran source `88efe1669b8e1eddb062b2d9e85f8b8bc66d2f28`. It preserved 1,008 of the required 1,086 trials and ended with `passed:false`. The final result SHA-256 is `09dfacc8a33d19434da55a1867e96924515b4ee0625f54a911815ddcb3c04b4d`. Owned processes stopped and scratch was removed. The full raw artifact is retained in the benchmark program store; it is partial evidence and does not establish a completed comparison.
+
+The failing cell was `n5000-r3-ttl1ms-rate100-rep3-lease-candidate`, before its first gateway became ready. The gateway logged `starting grpc server at :55479`, then failed to bind its admin listener to `127.0.0.1:55479` because that address was already in use. The database had a distinct port, 57299. This directly identifies duplicate endpoint allocation during setup.
+
+`scripts/catalog-benchmark.py` previously called `port()` twice. Each call closed its temporary bound socket before the next call, so the OS could return the same free port twice. The new `gateway_ports()` holds both bound sockets until the pair is allocated, then releases them for the owned server. Both benchmark builds use this common setup path. Runtime Go sources, cache behavior, baseline, fixtures, native k6 scheduling, rates, repetitions and acceptance checks are unchanged.
+
+The deterministic regression models an allocator that immediately reuses a released port. It reproduces the former duplicate assignment and requires the new pair to differ. A real-loopback check verifies distinct ports and release for the two server listeners. All three workflows that invoke the driver run these checks. Other processes could still acquire a released port before server startup; that would remain a visible setup failure rather than trigger a blanket retry.
+
+Local regression, Python compilation, the existing Node protobuf-oracle controls and whitespace checks passed. A fresh six-arm hosted smoke is required before dispatching the unchanged 1,086-trial comparison again. Preserve the original failure and its completed prefix; do not relabel it as a successful full campaign or pool a later host into a claimed single-host run.

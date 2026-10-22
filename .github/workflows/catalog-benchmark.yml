@@ -23,6 +23,7 @@ jobs:
       - name: Ensure syscall profiler is available
         if: inputs.profile
         run: command -v strace || { sudo apt-get update && sudo apt-get install -y strace; }
+      - run: python3 -m unittest discover -s scripts -p test_catalog_benchmark.py -v
       - working-directory: src/productcatalogservice
         env:
           PROFILE: ${{ inputs.profile }}

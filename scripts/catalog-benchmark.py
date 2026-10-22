@@ -28,6 +28,13 @@ def port():
         return sock.getsockname()[1]
 
 
+def gateway_ports():
+    with socket.socket() as grpc, socket.socket() as admin:
+        grpc.bind(("127.0.0.1", 0))
+        admin.bind(("127.0.0.1", 0))
+        return grpc.getsockname()[1], admin.getsockname()[1]
+
+
 def resources(process):
     base = Path(f"/proc/{process.pid}")
     try:
@@ -181,7 +188,7 @@ def main():
                         wait_catalog(db, f"127.0.0.1:{dbport}")
                         gateways, addresses, admins, gateway_env = [], [], [], []
                         for replica in range(replicas):
-                            gp, admin = port(), port()
+                            gp, admin = gateway_ports()
                             env = {"PORT": str(gp), "CATALOG_BACKEND_ADDR": f"127.0.0.1:{dbport}", "CATALOG_CACHE_MODE": mode, "CATALOG_CACHE_TTL": ttl, "CATALOG_ADMIN_PORT": str(admin), "CATALOG_BACKEND_TIMEOUT": "2s"}
                             gateway = start(f"{label}-gateway{replica}", env)
                             wait_catalog(gateway, f"127.0.0.1:{gp}")
