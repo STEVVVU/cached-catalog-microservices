@@ -1,0 +1,56 @@
+name: Same-host native k6 cache comparison
+on:
+  workflow_dispatch:
+    inputs:
+      smoke:
+        type: boolean
+        default: true
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    env:
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.27.3'
+          cache-dependency-path: src/productcatalogservice/go.sum
+      - uses: grafana/setup-k6-action@43b9fc21641a76002687994433dd586f56e791b1 # verified upstream commit
+        with:
+          k6-version: '2.3.0'
+          browser: false
+      - name: Existing real-product checks and concurrent defensive-copy coverage
+        run: |
+          node scripts/catalog-oracle.test.mjs
+          test -z "$(gofmt -l src/productcatalogservice/catalog_cache.go src/productcatalogservice/catalog_cache_test.go)"
+          (cd src/productcatalogservice && go test ./... && go test -race ./...)
+          pwsh -NoProfile -File .agents/skills/verify-productcatalog/verify.ps1
+      - name: Build normal candidate and frozen baseline independently
+        run: |
+          test "$(df --output=avail -B1 . | tail -1)" -gt 10737418240
+          mkdir -p "$RUNNER_TEMP/catalog-binaries" "$RUNNER_TEMP/catalog-baseline"
+          git fetch --depth=1 origin a0bd7a086fab59c81b73c00e4c3b8d0d62129a7c
+          git archive --format=tar --output="$RUNNER_TEMP/catalog-baseline.tar" a0bd7a086fab59c81b73c00e4c3b8d0d62129a7c
+          tar -xf "$RUNNER_TEMP/catalog-baseline.tar" -C "$RUNNER_TEMP/catalog-baseline"
+          (cd src/productcatalogservice && GOCACHE="$RUNNER_TEMP/catalog-candidate-cache" go build -trimpath -buildvcs=false -o "$RUNNER_TEMP/catalog-binaries/candidate" . && GOCACHE="$RUNNER_TEMP/catalog-candidate-cache" go build -trimpath -buildvcs=false -o "$RUNNER_TEMP/catalog-binaries/catalogctl" ./cmd/catalogctl)
+          (cd "$RUNNER_TEMP/catalog-baseline/src/productcatalogservice" && GOCACHE="$RUNNER_TEMP/catalog-baseline-cache" go build -trimpath -buildvcs=false -o "$RUNNER_TEMP/catalog-binaries/baseline" .)
+      - name: Record exact host, framework and build configuration
+        run: |
+          mkdir -p reports/evidence
+          { git rev-parse HEAD; go version; go env GOOS GOARCH CGO_ENABLED GOFLAGS GOTOOLCHAIN; k6 version; sha256sum "$(command -v k6)" "$RUNNER_TEMP/catalog-binaries/"*; uname -a; lscpu; free -b; df -B1 .; uptime; } > reports/evidence/compare-environment.txt
+      - name: Identical full native workload and exact oracle on both builds
+        env:
+          SMOKE: ${{ inputs.smoke }}
+        run: |
+          flag=()
+          if [ "$SMOKE" = true ]; then flag+=(--smoke); fi
+          python3 scripts/catalog-benchmark.py --k6 --server "$RUNNER_TEMP/catalog-binaries/candidate" --client "$RUNNER_TEMP/catalog-binaries/catalogctl" --baseline-server "$RUNNER_TEMP/catalog-binaries/baseline" --baseline-source "$RUNNER_TEMP/catalog-baseline" --baseline-archive "$RUNNER_TEMP/catalog-baseline.tar" --output reports/evidence/compare "${flag[@]}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: catalog-compare-${{ github.run_id }}
+          path: reports/evidence

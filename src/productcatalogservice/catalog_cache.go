@@ -84,7 +84,7 @@ type catalogCache struct {
 	fetch      catalogFetcher
 	metrics    *catalogMetrics
 	mu         sync.Mutex
-	snapshot   *pb.ListProductsResponse
+	snapshot   *pb.ListProductsResponse // immutable after publication; callers receive defensive copies
 	expires    time.Time
 	generation uint64
 	flight     *cacheFlight
@@ -116,9 +116,9 @@ func (c *catalogCache) getTTL(ctx context.Context) (*pb.ListProductsResponse, er
 	c.mu.Lock()
 	if c.snapshot != nil && time.Now().Before(c.expires) {
 		c.metrics.cacheHits.Add(1)
-		result := cloneCatalog(c.snapshot)
+		snapshot := c.snapshot
 		c.mu.Unlock()
-		return result, nil
+		return cloneCatalog(snapshot), nil
 	}
 	c.metrics.cacheMisses.Add(1)
 	c.mu.Unlock()
@@ -138,9 +138,9 @@ func (c *catalogCache) getLease(ctx context.Context) (*pb.ListProductsResponse, 
 		c.mu.Lock()
 		if c.snapshot != nil && time.Now().Before(c.expires) {
 			c.metrics.cacheHits.Add(1)
-			result := cloneCatalog(c.snapshot)
+			snapshot := c.snapshot
 			c.mu.Unlock()
-			return result, nil
+			return cloneCatalog(snapshot), nil
 		}
 		if flight := c.flight; flight != nil {
 			c.metrics.leaseWaiters.Add(1)
@@ -158,9 +158,9 @@ func (c *catalogCache) getLease(ctx context.Context) (*pb.ListProductsResponse, 
 				if flight.valid {
 					c.mu.Lock()
 					if c.snapshot != nil && time.Now().Before(c.expires) {
-						result := cloneCatalog(c.snapshot)
+						snapshot := c.snapshot
 						c.mu.Unlock()
-						return result, nil
+						return cloneCatalog(snapshot), nil
 					}
 					c.mu.Unlock()
 				}

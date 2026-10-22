@@ -18,6 +18,8 @@ import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
 SERVICE = ROOT / "src/productcatalogservice"
+BASELINE = "a0bd7a086fab59c81b73c00e4c3b8d0d62129a7c"
+CATALOG_HASHES = {9: "81ba327e2b676f9e823c605bd7d9cbaae2904a9bbb3ce56c40414a19322bd0a7", 500: "44ddd89e5224e5a50f85ab96e03199c9da3f328f62946b6a410b951f03a69649", 5000: "e8c0d8d50355385602fb7f18a55678871c288b3c3a8873494e1a16328758f1a0"}
 
 
 def port():
@@ -44,17 +46,26 @@ def main():
     parser.add_argument("--profile", action="store_true")
     parser.add_argument("--profile-expiry", action="store_true", help="profile the observed 5000-product/1ms-expiry adverse case")
     parser.add_argument("--k6", action="store_true", help="use k6 native gRPC arrival scheduling and statistics")
+    parser.add_argument("--baseline-server", type=Path)
+    parser.add_argument("--baseline-source", type=Path)
+    parser.add_argument("--baseline-archive", type=Path)
     args = parser.parse_args()
     if args.k6 and args.profile:
         parser.error("k6 measurement and the existing Go reference profile are separate runs")
     if args.profile_expiry and (not args.profile or args.smoke):
         parser.error("--profile-expiry requires --profile and cannot use --smoke")
+    paired = args.baseline_server is not None
+    if any([args.baseline_server, args.baseline_source, args.baseline_archive]) and not all([args.baseline_server, args.baseline_source, args.baseline_archive]):
+        parser.error("all three baseline inputs are required")
+    if paired and (not args.k6 or args.profile):
+        parser.error("paired comparison requires native k6 without profiling")
     args.server, args.client, args.output = args.server.resolve(), args.client.resolve(), args.output.resolve()
     if shutil.disk_usage(ROOT).free < 10 * 1024**3:
         raise RuntimeError("10 GiB disk reserve required")
     args.output.mkdir(parents=True, exist_ok=False)
     result = {"source_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(), "platform": platform.platform(), "cpu_count": os.cpu_count(), "load": os.getloadavg() if hasattr(os, "getloadavg") else None, "cpu": Path("/proc/cpuinfo").read_text() if Path("/proc/cpuinfo").exists() else platform.processor(), "clock_ticks": os.sysconf("SC_CLK_TCK") if hasattr(os, "sysconf") else None, "page_size": os.sysconf("SC_PAGE_SIZE") if hasattr(os, "sysconf") else None, "binary_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in [args.server, args.client]}, "smoke": args.smoke, "profile": args.profile, "samples": [], "events": [], "passed": False}
     owned, logs = [], []
+    servers = {"current": args.server} if not paired else {"baseline": args.baseline_server.resolve(), "candidate": args.server}
     result["load_generator"] = "k6" if args.k6 else "catalogctl"
     if args.profile:
         result["profile_expiry"] = args.profile_expiry
@@ -66,7 +77,7 @@ def main():
         log = (args.output / f"{name}.log").open("wb")
         logs.append(log)
         profile = {"CATALOG_BENCH_PROFILE": str(args.output / f"{name}.pprof")} if args.profile else {}
-        process = subprocess.Popen([str(args.server)], cwd=SERVICE, env=os.environ | {"DISABLE_PROFILER": "1", "ENABLE_TRACING": "0", "EXTRA_LATENCY": "0s"} | env | profile, stdout=log, stderr=log)
+        process = subprocess.Popen([str(servers[build])], cwd=SERVICE, env=os.environ | {"DISABLE_PROFILER": "1", "ENABLE_TRACING": "0", "EXTRA_LATENCY": "0s"} | env | profile, stdout=log, stderr=log)
         owned.append(process)
         return process
 
@@ -110,6 +121,26 @@ def main():
             return response.read().decode()
 
     try:
+        if paired:
+            digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+            source = args.baseline_source.resolve()
+            baseline_service = source / "src/productcatalogservice"
+            runtime_files = sorted(path.relative_to(SERVICE) for path in SERVICE.rglob("*.go") if not path.name.endswith("_test.go"))
+            assert runtime_files == sorted(path.relative_to(baseline_service) for path in baseline_service.rglob("*.go") if not path.name.endswith("_test.go")), "runtime source inventory changed"
+            changed = [str(path) for path in runtime_files if digest(SERVICE/path) != digest(baseline_service/path)]
+            assert changed == ["catalog_cache.go"], f"unexpected runtime changes: {changed}"
+            fixed_inputs = ["src/productcatalogservice/go.mod", "src/productcatalogservice/go.sum", "src/productcatalogservice/products.json", "protos/demo.proto", "scripts/catalog-k6.js", "scripts/catalog-oracle.mjs"]
+            for name in fixed_inputs:
+                assert digest(ROOT/name) == digest(source/name), f"unmatched workload/dependency input: {name}"
+            hashes = {name: digest(binary) for name, binary in servers.items()}
+            assert len(set(hashes.values())) == 2, "baseline and candidate binaries are identical"
+            build_info = {name: subprocess.check_output(["go", "version", "-m", str(binary)], text=True) for name, binary in servers.items()}
+            assert build_info["baseline"].splitlines()[1:] == build_info["candidate"].splitlines()[1:], "unmatched embedded Go build/dependency settings"
+            for info in build_info.values():
+                assert info.splitlines()[0].split()[-1] == "go1.27.3", "unexpected embedded compiler version"
+                assert "-trimpath=true" in info and "vcs.revision" not in info, "require identical normal -trimpath -buildvcs=false builds"
+                assert "-race=true" not in info and "-tags=benchmark" not in info, "instrumented server cannot be measured"
+            result["comparison"] = {"baseline_sha":BASELINE,"archive_sha256":digest(args.baseline_archive),"binary_sha256":hashes,"runtime_source_sha256":{build_name:{str(path):digest(root/path) for path in runtime_files} for build_name,root in [("baseline",baseline_service),("candidate",SERVICE)]},"fixed_input_sha256":{name:digest(ROOT/name) for name in fixed_inputs},"go_version":subprocess.check_output(["go","version"],text=True).strip(),"build_info":build_info,"common_arguments":["build","-trimpath","-buildvcs=false"],"policy":"Same host, independent baseline/candidate normal builds and fresh owned service/database lifecycle per arm; original full native k6 matrix, five reversed rounds, oracle before each trial. Instrumentation disabled."}
         with workspace() as scratch:
             work = Path(scratch)
             sizes = [9] if args.smoke else [9, 500, 5000]
@@ -123,11 +154,13 @@ def main():
                 scenarios += [(500, 3, "50ms", 1000, 60)]
             for count, replicas, ttl, rate, duration in scenarios:
                 for repeat in range(1 if duration == 60 else repeats):
-                    modes = ["none", "ttl", "lease"]
+                    modes = [(mode, build_name) for mode in ["none", "ttl", "lease"] for build_name in servers]
                     if repeat % 2:
                         modes.reverse()
-                    for mode in modes:
+                    for mode, build in modes:
                         label = f"n{count}-r{replicas}-ttl{ttl}-rate{rate}-rep{repeat}-{mode}"
+                        if paired:
+                            label += f"-{build}"
                         fixture = work / f"{label}.json"
                         template = json.loads((SERVICE / "products.json").read_text())["products"][0]
                         products = []
@@ -138,6 +171,8 @@ def main():
                             products.append(product)
                         catalog = {"products": products}
                         fixture.write_text(json.dumps(catalog))
+                        if paired:
+                            assert hashlib.sha256(fixture.read_bytes()).hexdigest() == CATALOG_HASHES[count], "original catalog changed"
                         if args.profile_expiry:
                             assert hashlib.sha256(fixture.read_bytes()).hexdigest() == "e8c0d8d50355385602fb7f18a55678871c288b3c3a8873494e1a16328758f1a0", "original adverse-cell catalog changed"
                         dbport = port()
@@ -217,6 +252,8 @@ def main():
                         assert sample["offered"] == sum(sample["codes"].values())
                         assert sample["correctness_errors"] == 0
                         sample.update(label=label, mode=mode, repeat=repeat, ttl=ttl, replicas=replicas, catalog_sha256=hashlib.sha256(fixture.read_bytes()).hexdigest(), fixture_bytes=fixture.stat().st_size, command=command, metrics_before=before, metrics_after=[metric(admin) for admin in admins], resources=resource_samples)
+                        if paired:
+                            sample["build"] = build
                         sample["generator_started_unix_s"] = load_started_unix
                         sample["final_server_resources"] = {"db":resources(db),"gateways":[resources(p) for p in gateways]}
                         result["samples"].append(sample)
@@ -224,7 +261,12 @@ def main():
                         for process in gateways + [db]:
                             stop(process)
                         print(label, flush=True)
+            if paired:
+                assert len(result["samples"]) == (6 if args.smoke else 1086), "incomplete paired matrix"
             result["passed"] = True
+    except Exception as error:
+        result.setdefault("failure", {"type":type(error).__name__,"message":str(error)})
+        raise
     finally:
         for process in owned:
             stop(process)
@@ -234,6 +276,8 @@ def main():
         groups = {}
         for sample in result["samples"]:
             key = (sample["catalog_products"], sample["replicas"], sample["ttl"], sample["offered_rate"], sample["mode"])
+            if paired:
+                key += (sample["build"],)
             groups.setdefault(str(key), []).append(sample)
         result["summary"] = {key: {"n":len(samples), **{field:{"median":statistics.median(s[field] for s in samples),"min":min(s[field] for s in samples),"max":max(s[field] for s in samples)} for field in ["successful_per_s","p50_ms","p95_ms","p99_ms","generator_lag_p99_ms","rejected","timeouts"] if all(s.get(field) is not None for s in samples)}} for key,samples in groups.items()}
         (args.output / "result.json").write_text(json.dumps(result, indent=2)+"\n")

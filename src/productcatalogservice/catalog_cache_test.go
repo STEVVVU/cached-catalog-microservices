@@ -290,6 +290,56 @@ func TestLeaseCacheCoalescesColdReads(t *testing.T) {
 	}
 }
 
+func TestCacheReturnedCopiesRemainIsolatedDuringInvalidation(t *testing.T) {
+	for _, mode := range []string{"ttl", "lease"} {
+		t.Run(mode, func(t *testing.T) {
+			cache, err := newCatalogCache(mode, time.Minute, func(context.Context) (*pb.ListProductsResponse, error) {
+				catalog := testCatalog("original")
+				catalog.Products[0].Categories = []string{"original"}
+				return catalog, nil
+			}, &catalogMetrics{})
+			if err != nil {
+				t.Fatal(err)
+			}
+			mutate := func() {
+				catalog, err := cache.Get(context.Background())
+				if err != nil {
+					t.Error(err)
+					return
+				}
+				product := catalog.Products[0]
+				if product.Name != "original" || product.PriceUsd.Units != 1 || product.Categories[0] != "original" {
+					t.Error("a returned copy mutated another response or cached snapshot")
+				}
+				product.Name = "caller mutation"
+				product.PriceUsd.Units = 42
+				product.Categories[0] = "caller mutation"
+			}
+			mutate()
+			mutate()
+			var wg sync.WaitGroup
+			for range 8 {
+				wg.Add(1)
+				go func() {
+					defer wg.Done()
+					for range 16 {
+						mutate()
+					}
+				}()
+			}
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
+				for range 32 {
+					cache.Invalidate()
+				}
+			}()
+			wg.Wait()
+			mutate()
+		})
+	}
+}
+
 func TestLeaseCacheCanceledLeaderDoesNotFailLiveWaiter(t *testing.T) {
 	firstStarted := make(chan struct{})
 	secondStarted := make(chan struct{})
