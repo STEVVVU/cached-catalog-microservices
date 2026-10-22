@@ -1,0 +1,44 @@
+name: Catalog k6 benchmark
+on:
+  workflow_dispatch:
+    inputs:
+      smoke:
+        type: boolean
+        default: true
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.27.3'
+          cache-dependency-path: src/productcatalogservice/go.sum
+      - uses: grafana/setup-k6-action@43b9fc21641a76002687994433dd586f56e791b1 # v1.2.2, verified upstream commit
+        with:
+          k6-version: '2.3.0'
+          browser: false
+      - run: node scripts/catalog-oracle.test.mjs
+      - working-directory: src/productcatalogservice
+        run: |
+          go test ./...
+          go build -trimpath -o ../../bin/productcatalogservice .
+          go build -trimpath -o ../../bin/catalogctl ./cmd/catalogctl
+      - name: Record native framework environment
+        run: |
+          mkdir -p reports/evidence
+          { git rev-parse HEAD; go version; k6 version; sha256sum "$(command -v k6)"; uname -a; lscpu; free -b; df -B1 .; uptime; } > reports/evidence/k6-environment.txt
+      - env:
+          SMOKE: ${{ inputs.smoke }}
+        run: |
+          flag=()
+          if [ "$SMOKE" = true ]; then flag+=(--smoke); fi
+          python3 scripts/catalog-benchmark.py --k6 --output reports/evidence/k6 "${flag[@]}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: catalog-k6-${{ github.run_id }}
+          path: reports/evidence

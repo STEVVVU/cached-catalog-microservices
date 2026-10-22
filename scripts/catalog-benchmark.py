@@ -42,13 +42,19 @@ def main():
     parser.add_argument("--client", type=Path, default=ROOT / "bin/catalogctl")
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--profile", action="store_true")
+    parser.add_argument("--k6", action="store_true", help="use k6 native gRPC arrival scheduling and statistics")
     args = parser.parse_args()
+    if args.k6 and args.profile:
+        parser.error("k6 measurement and the existing Go reference profile are separate runs")
     args.server, args.client, args.output = args.server.resolve(), args.client.resolve(), args.output.resolve()
     if shutil.disk_usage(ROOT).free < 10 * 1024**3:
         raise RuntimeError("10 GiB disk reserve required")
     args.output.mkdir(parents=True, exist_ok=False)
     result = {"source_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(), "platform": platform.platform(), "cpu_count": os.cpu_count(), "load": os.getloadavg() if hasattr(os, "getloadavg") else None, "cpu": Path("/proc/cpuinfo").read_text() if Path("/proc/cpuinfo").exists() else platform.processor(), "clock_ticks": os.sysconf("SC_CLK_TCK") if hasattr(os, "sysconf") else None, "page_size": os.sysconf("SC_PAGE_SIZE") if hasattr(os, "sysconf") else None, "binary_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in [args.server, args.client]}, "smoke": args.smoke, "profile": args.profile, "samples": [], "events": [], "passed": False}
     owned, logs = [], []
+    result["load_generator"] = "k6" if args.k6 else "catalogctl"
+    if args.k6:
+        result["k6_version"] = subprocess.check_output(["k6","version"],text=True).strip()
 
     def start(name, env):
         log = (args.output / f"{name}.log").open("wb")
@@ -140,17 +146,26 @@ def main():
                             addresses.append(f"127.0.0.1:{gp}")
                             admins.append(admin)
                             gateway_env.append(env)
+                        if args.k6:
+                            oracle = ctl(["load", "-targets", ",".join(addresses), "-catalog", str(fixture), "-rate", "10", "-duration", "100ms", "-concurrency", "1", "-out", str(args.output / f"{label}.oracle.csv")], addresses[0])
+                            (args.output / f"{label}.oracle.json").write_bytes(oracle)
                         before = [metric(admin) for admin in admins]
                         command = [str(args.client), "load", "-targets", ",".join(addresses), "-catalog", str(fixture), "-rate", str(rate), "-duration", f"{duration}s", "-concurrency", "64", "-out", str(args.output / f"{label}.csv")]
+                        load_env = os.environ.copy()
+                        if args.k6:
+                            summary_path = args.output / f"{label}.k6-summary.json"
+                            load_env.update(K6_NO_USAGE_REPORT="true", CATALOG_TARGETS=",".join(addresses), CATALOG_FIXTURE=str(fixture), CATALOG_PROTO_DIR=str(ROOT / "protos"), CATALOG_RATE=str(rate), CATALOG_DURATION_SECONDS=str(duration), CATALOG_VUS="64", CATALOG_SUMMARY_PATH=str(summary_path))
+                            command = ["k6", "run", "--quiet", "--no-color", "--no-usage-report", "--out", f"json={args.output / (label+'.k6-raw.gz')}", str(ROOT / "scripts/catalog-k6.js")]
                         if args.profile:
                             command += ["-cpu-profile", str(args.output / f"{label}.generator.pprof")]
                             command = ["strace", "-f", "-c", "-o", str(args.output / f"{label}.generator.strace"), *command]
                         log = (args.output / f"{label}.client.stderr").open("wb")
                         logs.append(log)
-                        generator = subprocess.Popen(command, cwd=SERVICE, stdout=subprocess.PIPE, stderr=log)
+                        generator = subprocess.Popen(command, cwd=SERVICE, env=load_env, stdout=subprocess.PIPE, stderr=log)
                         owned.append(generator)
                         resource_samples = []
                         load_started = time.monotonic()
+                        load_started_unix = time.time()
                         gateway_restarted = database_restarted = False
                         deadline = time.monotonic()+duration+15
                         while generator.poll() is None:
@@ -172,13 +187,28 @@ def main():
                                 database_restarted = True
                             time.sleep(.5)
                         stdout = generator.stdout.read()
-                        (args.output / f"{label}.json").write_bytes(stdout)
+                        (args.output / (f"{label}.client.stdout.log" if args.k6 else f"{label}.json")).write_bytes(stdout)
                         if generator.returncode:
+                            result["failure"] = {"label":label,"generator_exit":generator.returncode,"command":command,"stderr":str(args.output / f"{label}.client.stderr"),"native_summary":str(summary_path) if args.k6 else None}
                             raise RuntimeError(f"load generator failed: {label}")
-                        sample = json.loads(stdout)
+                        if args.k6:
+                            native = json.loads(summary_path.read_text())["native"]
+                            metrics = native["metrics"]
+                            value = lambda name: metrics.get(name, {}).get("values", {})
+                            started = value("catalog_started")["count"]
+                            completed = value("catalog_completed")["count"]
+                            successful = value("catalog_successful").get("count", 0)
+                            failed = value("catalog_failed").get("count", 0)
+                            dropped = value("dropped_iterations").get("count", 0)
+                            latency = value("grpc_req_duration{status:0}")
+                            wall = native["state"]["testRunDurationMs"] / 1000
+                            sample = {"engine":"k6", "planned_offers":rate*duration, "offered":started+dropped, "started":started, "successful":successful, "failed":failed, "rejected":dropped, "dropped_iterations":dropped, "timeouts":value("catalog_timeouts").get("count",0), "correctness_errors":value("catalog_correctness_errors").get("count",0), "interrupted":started-completed, "codes":{"OK":successful,"FAILED":failed,"DROPPED":dropped,"INTERRUPTED":started-completed}, "wall_s":wall,"offered_rate":rate,"duration_s":duration,"successful_per_s":successful/wall,"p50_ms":latency.get("med"),"p95_ms":latency.get("p(95)"),"p99_ms":latency.get("p(99)"),"iteration_p99_ms":value("iteration_duration").get("p(99)"),"validation_p99_ms":value("group_duration").get("p(99)"),"generator_lag_p99_ms":None,"catalog_products":count,"latency_policy":"Native successful-RPC duration, with native iteration and validation-group durations retained. Dropped offers have no invented latency. Timeouts count RPC DeadlineExceeded; connection exceptions remain failures."}
+                        else:
+                            sample = json.loads(stdout)
                         assert sample["offered"] == sum(sample["codes"].values())
                         assert sample["correctness_errors"] == 0
                         sample.update(label=label, mode=mode, repeat=repeat, ttl=ttl, replicas=replicas, catalog_sha256=hashlib.sha256(fixture.read_bytes()).hexdigest(), fixture_bytes=fixture.stat().st_size, command=command, metrics_before=before, metrics_after=[metric(admin) for admin in admins], resources=resource_samples)
+                        sample["generator_started_unix_s"] = load_started_unix
                         sample["final_server_resources"] = {"db":resources(db),"gateways":[resources(p) for p in gateways]}
                         result["samples"].append(sample)
                         (args.output / "result.json").write_text(json.dumps(result, indent=2))
@@ -196,7 +226,7 @@ def main():
         for sample in result["samples"]:
             key = (sample["catalog_products"], sample["replicas"], sample["ttl"], sample["offered_rate"], sample["mode"])
             groups.setdefault(str(key), []).append(sample)
-        result["summary"] = {key: {"n":len(samples), **{field:{"median":statistics.median(s[field] for s in samples),"min":min(s[field] for s in samples),"max":max(s[field] for s in samples)} for field in ["successful_per_s","p50_ms","p95_ms","p99_ms","generator_lag_p99_ms","rejected","timeouts"]}} for key,samples in groups.items()}
+        result["summary"] = {key: {"n":len(samples), **{field:{"median":statistics.median(s[field] for s in samples),"min":min(s[field] for s in samples),"max":max(s[field] for s in samples)} for field in ["successful_per_s","p50_ms","p95_ms","p99_ms","generator_lag_p99_ms","rejected","timeouts"] if all(s.get(field) is not None for s in samples)}} for key,samples in groups.items()}
         (args.output / "result.json").write_text(json.dumps(result, indent=2)+"\n")
 
 
