@@ -42,10 +42,13 @@ def main():
     parser.add_argument("--client", type=Path, default=ROOT / "bin/catalogctl")
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--profile", action="store_true")
+    parser.add_argument("--profile-expiry", action="store_true", help="profile the observed 5000-product/1ms-expiry adverse case")
     parser.add_argument("--k6", action="store_true", help="use k6 native gRPC arrival scheduling and statistics")
     args = parser.parse_args()
     if args.k6 and args.profile:
         parser.error("k6 measurement and the existing Go reference profile are separate runs")
+    if args.profile_expiry and (not args.profile or args.smoke):
+        parser.error("--profile-expiry requires --profile and cannot use --smoke")
     args.server, args.client, args.output = args.server.resolve(), args.client.resolve(), args.output.resolve()
     if shutil.disk_usage(ROOT).free < 10 * 1024**3:
         raise RuntimeError("10 GiB disk reserve required")
@@ -53,6 +56,9 @@ def main():
     result = {"source_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(), "platform": platform.platform(), "cpu_count": os.cpu_count(), "load": os.getloadavg() if hasattr(os, "getloadavg") else None, "cpu": Path("/proc/cpuinfo").read_text() if Path("/proc/cpuinfo").exists() else platform.processor(), "clock_ticks": os.sysconf("SC_CLK_TCK") if hasattr(os, "sysconf") else None, "page_size": os.sysconf("SC_PAGE_SIZE") if hasattr(os, "sysconf") else None, "binary_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in [args.server, args.client]}, "smoke": args.smoke, "profile": args.profile, "samples": [], "events": [], "passed": False}
     owned, logs = [], []
     result["load_generator"] = "k6" if args.k6 else "catalogctl"
+    if args.profile:
+        result["profile_expiry"] = args.profile_expiry
+        result["diagnostic_policy"] = "Separate CPU/mutex/block profiles; all instrumented timing excluded from performance comparisons. Expiry profile uses the frozen 5000-product, one-gateway, 1ms TTL, 1000-offer/s adverse cell for a bounded 10s diagnostic window."
     if args.k6:
         result["k6_version"] = subprocess.check_output(["k6","version"],text=True).strip()
 
@@ -112,7 +118,7 @@ def main():
             if args.smoke:
                 scenarios = [(9, 1, "60s", 10, 1)]
             elif args.profile:
-                scenarios = [(500, 1, "60s", 1000, 10)]
+                scenarios = [(5000, 1, "1ms", 1000, 10)] if args.profile_expiry else [(500, 1, "60s", 1000, 10)]
             else:
                 scenarios += [(500, 3, "50ms", 1000, 60)]
             for count, replicas, ttl, rate, duration in scenarios:
@@ -132,6 +138,8 @@ def main():
                             products.append(product)
                         catalog = {"products": products}
                         fixture.write_text(json.dumps(catalog))
+                        if args.profile_expiry:
+                            assert hashlib.sha256(fixture.read_bytes()).hexdigest() == "e8c0d8d50355385602fb7f18a55678871c288b3c3a8873494e1a16328758f1a0", "original adverse-cell catalog changed"
                         dbport = port()
                         dbenv = {"CATALOG_DB_MODE": "1", "CATALOG_DB_BIND_ADDRESS": "127.0.0.1", "CATALOG_DB_PORT": str(dbport), "CATALOG_DB_PATH": str(work / f"{label}.db"), "CATALOG_SEED_PATH": str(fixture)}
                         db = start(f"{label}-db", dbenv)
@@ -158,7 +166,8 @@ def main():
                             command = ["k6", "run", "--quiet", "--no-color", "--no-usage-report", "--out", f"json={args.output / (label+'.k6-raw.gz')}", str(ROOT / "scripts/catalog-k6.js")]
                         if args.profile:
                             command += ["-cpu-profile", str(args.output / f"{label}.generator.pprof")]
-                            command = ["strace", "-f", "-c", "-o", str(args.output / f"{label}.generator.strace"), *command]
+                            if not args.profile_expiry:
+                                command = ["strace", "-f", "-c", "-I2", "--kill-on-exit", "-o", str(args.output / f"{label}.generator.strace"), *command]
                         log = (args.output / f"{label}.client.stderr").open("wb")
                         logs.append(log)
                         generator = subprocess.Popen(command, cwd=SERVICE, env=load_env, stdout=subprocess.PIPE, stderr=log)

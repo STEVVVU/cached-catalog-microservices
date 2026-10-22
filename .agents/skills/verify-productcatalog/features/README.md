@@ -1,5 +1,7 @@
 # Product catalog feature map
 
+- The separate `--profile --profile-expiry` diagnostic repeats the original adverse 5,000-product/one-gateway/1ms-TTL/1,000-offer/s configuration in none/ttl/lease modes, with a ten-second window and original fixture SHA256 guard. The benchmark-tagged server emits closed eight-second CPU, mutex and block profiles; the generator retains its own CPU profile. The workflow renders native pprof source annotations. Normal builds are unchanged. Hosted execution is pending; no instrumented latency enters performance comparisons.
+
 - [Browse and search the product catalog](catalog-browse.md)
 - [Replace the catalog with revision validation](catalog-update.md)
 - [Cache freshness and cold-miss behavior](catalog-cache.md)

@@ -5,6 +5,9 @@ on:
       profile:
         type: boolean
         default: false
+      profile_expiry:
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -25,6 +28,7 @@ jobs:
           PROFILE: ${{ inputs.profile }}
         run: |
           go test ./...
+          if [ "$PROFILE" = true ]; then go test -tags benchmark ./...; fi
           flag=()
           if [ "$PROFILE" = true ]; then flag+=(-tags benchmark); fi
           go build -trimpath "${flag[@]}" -o ../../bin/productcatalogservice .
@@ -35,11 +39,13 @@ jobs:
           { git rev-parse HEAD; go version; uname -a; lscpu; free -b; df -B1 .; uptime; } > reports/evidence/benchmark-environment.txt
       - env:
           PROFILE: ${{ inputs.profile }}
+          PROFILE_EXPIRY: ${{ inputs.profile_expiry }}
         run: |
           flag=()
           if [ "$PROFILE" = true ]; then flag+=(--profile); fi
+          if [ "$PROFILE_EXPIRY" = true ]; then flag+=(--profile-expiry); fi
           python3 scripts/catalog-benchmark.py --output reports/evidence/benchmark "${flag[@]}"
-      - name: Resolve separate CPU profiles to source
+      - name: Resolve separate CPU, mutex and blocking profiles to source
         if: inputs.profile
         run: |
           for profile in reports/evidence/benchmark/*.pprof; do

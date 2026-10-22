@@ -50,6 +50,8 @@ Read `evidence.json` plus the server logs in the named run directory. Each proof
 
 ## Cleanup
 
+For the observed large-catalog expiry failure, build the server with `go build -tags benchmark -trimpath -o ../../bin/productcatalogservice .`, keep the regular `catalogctl` build, and run `python3 scripts/catalog-benchmark.py --profile --profile-expiry --output reports/evidence/expiry-profile`. The hosted workflow exposes both inputs. Only the frozen 5,000-product/one-gateway/1ms-TTL/1,000-offer/s cell runs in none/ttl/lease modes, with the original 50/40/10 mix, 64 workers and queue, and deadlines. It asserts the original catalog SHA256 before launching services. Ten seconds permits eight-second native server CPU/mutex/block profiles to close; generator CPU is retained separately and this mode does not wrap it in strace. All instrumented timing is diagnostic. Inspect `*.pprof` and source-resolved `*.pprof.txt`, outcome CSVs and server metrics before changing cache logic. This path awaits its first hosted profile.
+
 The script tracks each `System.Diagnostics.Process` it started and stops those process objects in `finally`. It removes only its uniquely named temporary directory under the host's temp directory; the evidence directory remains. The script verifies that evidence files still exist after scratch cleanup. It never kills processes by name.
 
 ## Feature map
