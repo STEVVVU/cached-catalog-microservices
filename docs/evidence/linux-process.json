@@ -1,0 +1,197 @@
+{
+  "result": "passed",
+  "failure": null,
+  "started_utc": "20261022T034332Z",
+  "completed_utc": "2026-10-22T03:44:26.3904171Z",
+  "upstream_commit": "3ef9853b1250ebe0dbd010d5de0cc0d366264b44",
+  "go_version": "go version go1.27.3 linux/amd64",
+  "cache_modes": [
+    "none",
+    "ttl",
+    "lease"
+  ],
+  "database_response_delay_for_controlled_races": "500ms, after snapshot capture",
+  "measurements": [
+    {
+      "mode": "ttl",
+      "warm": true,
+      "injected_delay": "0s",
+      "result": {
+        "offered": 100,
+        "completed": 100,
+        "failed": 0,
+        "p50_ms": 0.805322,
+        "p95_ms": 1.546293,
+        "p99_ms": 1.733927
+      }
+    },
+    {
+      "mode": "lease",
+      "warm": true,
+      "injected_delay": "0s",
+      "result": {
+        "offered": 100,
+        "completed": 100,
+        "failed": 0,
+        "p50_ms": 0.8542890000000001,
+        "p95_ms": 1.5116159999999998,
+        "p99_ms": 1.5584310000000001
+      }
+    },
+    {
+      "mode": "none",
+      "warm": true,
+      "injected_delay": "0s",
+      "result": {
+        "offered": 100,
+        "completed": 100,
+        "failed": 0,
+        "p50_ms": 1.970974,
+        "p95_ms": 3.500252,
+        "p99_ms": 3.782682
+      }
+    },
+    {
+      "mode": "lease",
+      "warm": true,
+      "injected_delay": "0s",
+      "result": {
+        "offered": 100,
+        "completed": 100,
+        "failed": 0,
+        "p50_ms": 0.7257579999999999,
+        "p95_ms": 1.803856,
+        "p99_ms": 1.885397
+      }
+    },
+    {
+      "mode": "ttl",
+      "warm": true,
+      "injected_delay": "0s",
+      "result": {
+        "offered": 100,
+        "completed": 100,
+        "failed": 0,
+        "p50_ms": 0.744401,
+        "p95_ms": 1.4967750000000002,
+        "p99_ms": 1.702615
+      }
+    },
+    {
+      "mode": "none",
+      "warm": true,
+      "injected_delay": "0s",
+      "result": {
+        "offered": 100,
+        "completed": 100,
+        "failed": 0,
+        "p50_ms": 1.556167,
+        "p95_ms": 2.756401,
+        "p99_ms": 3.3211109999999997
+      }
+    }
+  ],
+  "proofs": [
+    {
+      "action": "database seed and ListProducts",
+      "command": "catalogctl list (gRPC to 127.0.0.1:35571)",
+      "observed": "received 9 persisted products from revision 1"
+    },
+    {
+      "action": "existing ProductCatalogService journeys",
+      "command": "catalogctl list, get, search over gRPC",
+      "observed": "List=9; Get=Sunglasses; Search=1; DB reads delta=3"
+    },
+    {
+      "action": "validated transactional update",
+      "command": "catalogctl update FILE 1; then list/revision",
+      "observed": "invalid duplicate IDs rejected without revision change; valid write returned revision 2 and same-version read returned P24 updated catalog"
+    },
+    {
+      "action": "bounded backend failure and database restart",
+      "command": "stop exact DB process; List; restart DB on same bbolt file; List/revision",
+      "observed": "error=rpc error: code = Unavailable desc = connection error: desc = \"transport: Error while dialing: dial tcp 127.0.0.1:35571: connect: connection refused\"; failure=5.8ms; revision=2 and updated product persisted after restart"
+    },
+    {
+      "action": "TTL expiry",
+      "command": "warm TTL cache; wait 600ms for configured 400ms TTL; list again",
+      "observed": "gateway backend reads advanced from 1 to 2"
+    },
+    {
+      "action": "TTL stale-fill reproduction",
+      "command": "hold captured backend snapshot; update through loopback admin; read cache before/after TTL expiry",
+      "observed": "same-process cache served revision-2 data after revision-3 write, then refreshed to P24 TTL fresh catalog after expiry"
+    },
+    {
+      "action": "lease fence during stale fill",
+      "command": "start delayed cold read; wait for captured revision 3; replace revision 3; read result",
+      "observed": "returned revision-4 product; fenced fills=1; backend read calls=2"
+    },
+    {
+      "action": "lease cold-miss herd coalescing",
+      "command": "catalogctl bench 40 40 against a 500ms captured-snapshot response delay",
+      "observed": "offered=40 completed=40 failed=0; actual DB reads=1; waiters=39"
+    },
+    {
+      "action": "TTL cold-miss herd baseline",
+      "command": "catalogctl bench 20 20 against the same 500ms response delay",
+      "observed": "offered=20 completed=20 failed=0; actual DB reads=20"
+    },
+    {
+      "action": "cache-process death and rebuild",
+      "command": "warm lease gateway; stop its process; start a fresh lease gateway; ListProducts",
+      "observed": "each process made one backend read to build its own cache"
+    },
+    {
+      "action": "warmed interleaved latency measurements",
+      "command": "run catalogctl bench 100 16 in ttl,lease,none,lease,ttl,none order after one warm request each",
+      "observed": "each run records offered/completed/failed and actual p50/p95/p99 gRPC request latency; no SLO threshold is asserted"
+    }
+  ],
+  "surviving_evidence_files": [
+    "db-1.stderr.log",
+    "db-1.stdout.log",
+    "db-12.stderr.log",
+    "db-12.stdout.log",
+    "db-3.stderr.log",
+    "db-3.stdout.log",
+    "db-5.stderr.log",
+    "db-5.stdout.log",
+    "gateway-lease-10.stderr.log",
+    "gateway-lease-10.stdout.log",
+    "gateway-lease-11.stderr.log",
+    "gateway-lease-11.stdout.log",
+    "gateway-lease-14.stderr.log",
+    "gateway-lease-14.stdout.log",
+    "gateway-lease-16.stderr.log",
+    "gateway-lease-16.stdout.log",
+    "gateway-lease-7.stderr.log",
+    "gateway-lease-7.stdout.log",
+    "gateway-lease-8.stderr.log",
+    "gateway-lease-8.stdout.log",
+    "gateway-none-15.stderr.log",
+    "gateway-none-15.stdout.log",
+    "gateway-none-18.stderr.log",
+    "gateway-none-18.stdout.log",
+    "gateway-none-2.stderr.log",
+    "gateway-none-2.stdout.log",
+    "gateway-ttl-13.stderr.log",
+    "gateway-ttl-13.stdout.log",
+    "gateway-ttl-17.stderr.log",
+    "gateway-ttl-17.stdout.log",
+    "gateway-ttl-4.stderr.log",
+    "gateway-ttl-4.stdout.log",
+    "gateway-ttl-6.stderr.log",
+    "gateway-ttl-6.stdout.log",
+    "gateway-ttl-9.stderr.log",
+    "gateway-ttl-9.stdout.log",
+    "go-build-catalogctl.log",
+    "go-build-server.log",
+    "go-test.log",
+    "lease-fenced-fill-request.stderr.log",
+    "lease-fenced-fill-request.stdout.log",
+    "ttl-stale-fill-request.stderr.log",
+    "ttl-stale-fill-request.stdout.log"
+  ],
+  "evidence_survived_cleanup": true
+}

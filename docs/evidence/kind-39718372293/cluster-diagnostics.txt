@@ -1,0 +1,431 @@
+Cluster: p24-catalog-39718372293-1
+Smoke exit status before cleanup: 0
+Node image: kindest/node:v1.35.8@sha256:07b2536e30b803ed61d1677a79df6115f798ce64c80f9e22f6ed45afd09323c0
+
+NAME                                      STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION     CONTAINER-RUNTIME
+p24-catalog-39718372293-1-control-plane   Ready    control-plane   36s   v1.35.8   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   7.0.0-1017-azure   containerd://2.3.4
+
+apiVersion: v1
+items:
+- apiVersion: storage.k8s.io/v1
+  kind: StorageClass
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"storage.k8s.io/v1","kind":"StorageClass","metadata":{"annotations":{"storageclass.kubernetes.io/is-default-class":"true"},"name":"standard"},"provisioner":"rancher.io/local-path","reclaimPolicy":"Delete","volumeBindingMode":"WaitForFirstConsumer"}
+      storageclass.kubernetes.io/is-default-class: "true"
+    creationTimestamp: "2026-10-22T03:44:46Z"
+    name: standard
+    resourceVersion: "304"
+    uid: b106d1df-322c-4477-9846-1e5ebc3ecf39
+  provisioner: rancher.io/local-path
+  reclaimPolicy: Delete
+  volumeBindingMode: WaitForFirstConsumer
+kind: List
+metadata:
+  resourceVersion: ""
+
+NAME                                         READY   STATUS    RESTARTS   AGE   IP           NODE                                      NOMINATED NODE   READINESS GATES
+pod/catalogdbservice-0                       1/1     Running   0          3s    10.244.0.8   p24-catalog-39718372293-1-control-plane   <none>           <none>
+pod/productcatalogservice-547884f8d6-7c49s   1/1     Running   0          2s    10.244.0.9   p24-catalog-39718372293-1-control-plane   <none>           <none>
+pod/productcatalogservice-5765d7b767-bb696   0/1     Error     0          12s   10.244.0.5   p24-catalog-39718372293-1-control-plane   <none>           <none>
+
+NAME                            TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/catalogdbservice        ClusterIP   10.96.175.20   <none>        3551/TCP   12s   app=catalogdbservice
+service/productcatalogservice   ClusterIP   10.96.118.82   <none>        3550/TCP   12s   app=productcatalogservice
+
+NAME                                   STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+persistentvolumeclaim/catalogdb-data   Bound    pvc-0cdddbac-9b6e-42ae-b7f2-610a8f90856c   1Gi        RWO            standard       <unset>                 12s   Filesystem
+
+NAME                                               POD-SELECTOR           AGE
+networkpolicy.networking.k8s.io/catalogdbservice   app=catalogdbservice   12s
+
+NAME                                READY   AGE   CONTAINERS   IMAGES
+statefulset.apps/catalogdbservice   1/1     12s   server       cached-catalog-microservices/productcatalogservice:p24
+
+NAME                                    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                                   SELECTOR
+deployment.apps/productcatalogservice   1/1     1            1           12s   server       cached-catalog-microservices/productcatalogservice:p24   app=productcatalogservice
+
+LAST SEEN   TYPE     REASON                  OBJECT                                        MESSAGE
+12s         Normal   Scheduled               pod/productcatalogservice-5765d7b767-bb696    Successfully assigned p24-catalog/productcatalogservice-5765d7b767-bb696 to p24-catalog-39718372293-1-control-plane
+12s         Normal   ExternalProvisioning    persistentvolumeclaim/catalogdb-data          Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+12s         Normal   Provisioning            persistentvolumeclaim/catalogdb-data          External provisioner is provisioning volume for claim "p24-catalog/catalogdb-data"
+12s         Normal   ScalingReplicaSet       deployment/productcatalogservice              Scaled up replica set productcatalogservice-5765d7b767 from 0 to 1
+12s         Normal   SuccessfulCreate        replicaset/productcatalogservice-5765d7b767   Created pod: productcatalogservice-5765d7b767-bb696
+12s         Normal   WaitForFirstConsumer    persistentvolumeclaim/catalogdb-data          waiting for first consumer to be created before binding
+11s         Normal   Started                 pod/productcatalogservice-5765d7b767-bb696    Container started
+11s         Normal   Created                 pod/productcatalogservice-5765d7b767-bb696    Container created
+11s         Normal   Pulled                  pod/productcatalogservice-5765d7b767-bb696    Container image "cached-catalog-microservices/productcatalogservice:p24" already present on machine and can be accessed by the pod
+9s          Normal   ProvisioningSucceeded   persistentvolumeclaim/catalogdb-data          Successfully provisioned volume pvc-0cdddbac-9b6e-42ae-b7f2-610a8f90856c
+8s          Normal   Scheduled               pod/catalogdbservice-0                        Successfully assigned p24-catalog/catalogdbservice-0 to p24-catalog-39718372293-1-control-plane
+7s          Normal   Started                 pod/catalogdbservice-0                        Container started
+7s          Normal   Created                 pod/catalogdbservice-0                        Container created
+7s          Normal   Pulled                  pod/catalogdbservice-0                        Container image "cached-catalog-microservices/productcatalogservice:p24" already present on machine and can be accessed by the pod
+5s          Normal   SuccessfulDelete        statefulset/catalogdbservice                  Delete Pod catalogdbservice-0 in StatefulSet catalogdbservice successful
+4s          Normal   Killing                 pod/catalogdbservice-0                        Stopping container server
+3s          Normal   SuccessfulCreate        statefulset/catalogdbservice                  Create Pod catalogdbservice-0 in StatefulSet catalogdbservice successful
+3s          Normal   Scheduled               pod/catalogdbservice-0                        Successfully assigned p24-catalog/catalogdbservice-0 to p24-catalog-39718372293-1-control-plane
+2s          Normal   Scheduled               pod/productcatalogservice-547884f8d6-7c49s    Successfully assigned p24-catalog/productcatalogservice-547884f8d6-7c49s to p24-catalog-39718372293-1-control-plane
+2s          Normal   Started                 pod/catalogdbservice-0                        Container started
+2s          Normal   ScalingReplicaSet       deployment/productcatalogservice              Scaled up replica set productcatalogservice-547884f8d6 from 0 to 1
+2s          Normal   SuccessfulCreate        replicaset/productcatalogservice-547884f8d6   Created pod: productcatalogservice-547884f8d6-7c49s
+2s          Normal   Created                 pod/catalogdbservice-0                        Container created
+2s          Normal   Pulled                  pod/catalogdbservice-0                        Container image "cached-catalog-microservices/productcatalogservice:p24" already present on machine and can be accessed by the pod
+1s          Normal   Pulled                  pod/productcatalogservice-547884f8d6-7c49s    Container image "cached-catalog-microservices/productcatalogservice:p24" already present on machine and can be accessed by the pod
+1s          Normal   Killing                 pod/productcatalogservice-5765d7b767-bb696    Stopping container server
+1s          Normal   SuccessfulDelete        replicaset/productcatalogservice-5765d7b767   Deleted pod: productcatalogservice-5765d7b767-bb696
+1s          Normal   Started                 pod/productcatalogservice-547884f8d6-7c49s    Container started
+1s          Normal   Created                 pod/productcatalogservice-547884f8d6-7c49s    Container created
+1s          Normal   ScalingReplicaSet       deployment/productcatalogservice              Scaled down replica set productcatalogservice-5765d7b767 from 1 to 0
+
+Name:             catalogdbservice-0
+Namespace:        p24-catalog
+Priority:         0
+Service Account:  default
+Node:             p24-catalog-39718372293-1-control-plane/172.18.0.2
+Start Time:       Thu, 22 Oct 2026 03:45:15 +0000
+Labels:           app=catalogdbservice
+                  apps.kubernetes.io/pod-index=0
+                  controller-revision-hash=catalogdbservice-6945989575
+                  statefulset.kubernetes.io/pod-name=catalogdbservice-0
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-10-22T03:45:13Z
+Status:           Running
+IP:               10.244.0.8
+IPs:
+  IP:           10.244.0.8
+Controlled By:  StatefulSet/catalogdbservice
+Containers:
+  server:
+    Container ID:   containerd://6eaee7ed3020451b2a5ac379fe5bcf6bb27f253f8ed94c36eb39b72d6166c630
+    Image:          cached-catalog-microservices/productcatalogservice:p24
+    Image ID:       docker.io/library/import-2026-10-22@sha256:04afad5dafd07fc7085802993b2dd3fbee7490980f5f80ecd7851181f7c8d1e9
+    Port:           3551/TCP (grpc)
+    Host Port:      0/TCP (grpc)
+    State:          Running
+      Started:      Thu, 22 Oct 2026 03:45:16 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  256Mi
+    Requests:
+      cpu:      50m
+      memory:   64Mi
+    Liveness:   grpc <pod>:3551  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:3551  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      CATALOG_DB_MODE:          1
+      CATALOG_DB_BIND_ADDRESS:  0.0.0.0
+      CATALOG_DB_PORT:          3551
+      CATALOG_DB_PATH:          /var/lib/catalog/catalog.db
+      CATALOG_SEED_PATH:        /src/products.json
+      DISABLE_PROFILER:         1
+    Mounts:
+      /var/lib/catalog from catalog-data (rw)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  catalog-data:
+    Type:        PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:   catalogdb-data
+    ReadOnly:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  3s    default-scheduler  Successfully assigned p24-catalog/catalogdbservice-0 to p24-catalog-39718372293-1-control-plane
+  Normal  Pulled     2s    kubelet            spec.containers{server}: Container image "cached-catalog-microservices/productcatalogservice:p24" already present on machine and can be accessed by the pod
+  Normal  Created    2s    kubelet            spec.containers{server}: Container created
+  Normal  Started    2s    kubelet            spec.containers{server}: Container started
+
+
+Name:             productcatalogservice-547884f8d6-7c49s
+Namespace:        p24-catalog
+Priority:         0
+Service Account:  productcatalogservice
+Node:             p24-catalog-39718372293-1-control-plane/172.18.0.2
+Start Time:       Thu, 22 Oct 2026 03:45:16 +0000
+Labels:           app=productcatalogservice
+                  pod-template-hash=547884f8d6
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-10-22T03:45:16Z
+Status:           Running
+IP:               10.244.0.9
+IPs:
+  IP:           10.244.0.9
+Controlled By:  ReplicaSet/productcatalogservice-547884f8d6
+Containers:
+  server:
+    Container ID:   containerd://6f4a2083d13c0fae25a6c5395af2c1c0c3bfd42b3c9266087dc6023bb84c2e0b
+    Image:          cached-catalog-microservices/productcatalogservice:p24
+    Image ID:       docker.io/library/import-2026-10-22@sha256:04afad5dafd07fc7085802993b2dd3fbee7490980f5f80ecd7851181f7c8d1e9
+    Port:           3550/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 22 Oct 2026 03:45:17 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  128Mi
+    Requests:
+      cpu:      100m
+      memory:   64Mi
+    Liveness:   grpc <pod>:3550  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:3550  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      CATALOG_BACKEND_ADDR:     catalogdbservice:3551
+      CATALOG_CACHE_MODE:       lease
+      CATALOG_CACHE_TTL:        2s
+      CATALOG_BACKEND_TIMEOUT:  2s
+      CATALOG_ADMIN_PORT:       3552
+      PORT:                     3550
+      DISABLE_PROFILER:         1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-bxp8z (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-bxp8z:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  2s    default-scheduler  Successfully assigned p24-catalog/productcatalogservice-547884f8d6-7c49s to p24-catalog-39718372293-1-control-plane
+  Normal  Pulled     1s    kubelet            spec.containers{server}: Container image "cached-catalog-microservices/productcatalogservice:p24" already present on machine and can be accessed by the pod
+  Normal  Created    1s    kubelet            spec.containers{server}: Container created
+  Normal  Started    1s    kubelet            spec.containers{server}: Container started
+
+
+Name:             productcatalogservice-5765d7b767-bb696
+Namespace:        p24-catalog
+Priority:         0
+Service Account:  productcatalogservice
+Node:             p24-catalog-39718372293-1-control-plane/172.18.0.2
+Start Time:       Thu, 22 Oct 2026 03:45:06 +0000
+Labels:           app=productcatalogservice
+                  pod-template-hash=5765d7b767
+Annotations:      <none>
+Status:           Failed
+IP:               10.244.0.5
+IPs:
+  IP:           10.244.0.5
+Controlled By:  ReplicaSet/productcatalogservice-5765d7b767
+Containers:
+  server:
+    Container ID:   containerd://e3f4da649563e52b2b20cb5ca4f58bb94e6d1ce8e219619b60c96995adc43b98
+    Image:          cached-catalog-microservices/productcatalogservice:p24
+    Image ID:       docker.io/library/import-2026-10-22@sha256:04afad5dafd07fc7085802993b2dd3fbee7490980f5f80ecd7851181f7c8d1e9
+    Port:           3550/TCP
+    Host Port:      0/TCP
+    State:          Terminated
+      Reason:       Error
+      Exit Code:    143
+      Started:      Thu, 22 Oct 2026 03:45:07 +0000
+      Finished:     Thu, 22 Oct 2026 03:45:17 +0000
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     200m
+      memory:  128Mi
+    Requests:
+      cpu:      100m
+      memory:   64Mi
+    Liveness:   grpc <pod>:3550  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:3550  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      CATALOG_BACKEND_ADDR:     catalogdbservice:3551
+      CATALOG_CACHE_MODE:       lease
+      CATALOG_CACHE_TTL:        2s
+      CATALOG_BACKEND_TIMEOUT:  2s
+      CATALOG_ADMIN_PORT:       3552
+      PORT:                     3550
+      DISABLE_PROFILER:         1
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rz64j (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-rz64j:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  12s   default-scheduler  Successfully assigned p24-catalog/productcatalogservice-5765d7b767-bb696 to p24-catalog-39718372293-1-control-plane
+  Normal  Pulled     11s   kubelet            spec.containers{server}: Container image "cached-catalog-microservices/productcatalogservice:p24" already present on machine and can be accessed by the pod
+  Normal  Created    11s   kubelet            spec.containers{server}: Container created
+  Normal  Started    11s   kubelet            spec.containers{server}: Container started
+  Normal  Killing    1s    kubelet            spec.containers{server}: Stopping container server
+
+
+Name:          catalogdb-data
+Namespace:     p24-catalog
+StorageClass:  standard
+Status:        Bound
+Volume:        pvc-0cdddbac-9b6e-42ae-b7f2-610a8f90856c
+Labels:        <none>
+Annotations:   pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+               volume.beta.kubernetes.io/storage-provisioner: rancher.io/local-path
+               volume.kubernetes.io/selected-node: p24-catalog-39718372293-1-control-plane
+               volume.kubernetes.io/storage-provisioner: rancher.io/local-path
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:      1Gi
+Access Modes:  RWO
+VolumeMode:    Filesystem
+Used By:       catalogdbservice-0
+Events:
+  Type    Reason                 Age   From                                                                                                Message
+  ----    ------                 ----  ----                                                                                                -------
+  Normal  WaitForFirstConsumer   12s   persistentvolume-controller                                                                         waiting for first consumer to be created before binding
+  Normal  ExternalProvisioning   12s   persistentvolume-controller                                                                         Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+  Normal  Provisioning           12s   rancher.io/local-path_local-path-provisioner-67b778fdf6-ck4g9_c9401093-13a7-456b-b8dd-fdd7ba01c875  External provisioner is provisioning volume for claim "p24-catalog/catalogdb-data"
+  Normal  ProvisioningSucceeded  9s    rancher.io/local-path_local-path-provisioner-67b778fdf6-ck4g9_c9401093-13a7-456b-b8dd-fdd7ba01c875  Successfully provisioned volume pvc-0cdddbac-9b6e-42ae-b7f2-610a8f90856c
+
+
+Name:               catalogdbservice
+Namespace:          p24-catalog
+CreationTimestamp:  Thu, 22 Oct 2026 03:45:06 +0000
+Selector:           app=catalogdbservice
+Labels:             app=catalogdbservice
+Annotations:        <none>
+Replicas:           1 desired | 1 total
+Update Strategy:    RollingUpdate
+  Partition:        0
+Pods Status:        1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:       app=catalogdbservice
+  Annotations:  kubectl.kubernetes.io/restartedAt: 2026-10-22T03:45:13Z
+  Containers:
+   server:
+    Image:      cached-catalog-microservices/productcatalogservice:p24
+    Port:       3551/TCP (grpc)
+    Host Port:  0/TCP (grpc)
+    Limits:
+      cpu:     500m
+      memory:  256Mi
+    Requests:
+      cpu:      50m
+      memory:   64Mi
+    Liveness:   grpc <pod>:3551  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:3551  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      CATALOG_DB_MODE:          1
+      CATALOG_DB_BIND_ADDRESS:  0.0.0.0
+      CATALOG_DB_PORT:          3551
+      CATALOG_DB_PATH:          /var/lib/catalog/catalog.db
+      CATALOG_SEED_PATH:        /src/products.json
+      DISABLE_PROFILER:         1
+    Mounts:
+      /var/lib/catalog from catalog-data (rw)
+  Volumes:
+   catalog-data:
+    Type:          PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:     catalogdb-data
+    ReadOnly:      false
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Volume Claims:     <none>
+Events:
+  Type    Reason            Age               From                    Message
+  ----    ------            ----              ----                    -------
+  Normal  SuccessfulDelete  5s                statefulset-controller  Delete Pod catalogdbservice-0 in StatefulSet catalogdbservice successful
+  Normal  SuccessfulCreate  3s (x2 over 12s)  statefulset-controller  Create Pod catalogdbservice-0 in StatefulSet catalogdbservice successful
+
+
+Name:                   productcatalogservice
+Namespace:              p24-catalog
+CreationTimestamp:      Thu, 22 Oct 2026 03:45:06 +0000
+Labels:                 app=productcatalogservice
+Annotations:            deployment.kubernetes.io/revision: 2
+Selector:               app=productcatalogservice
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:           app=productcatalogservice
+  Annotations:      kubectl.kubernetes.io/restartedAt: 2026-10-22T03:45:16Z
+  Service Account:  productcatalogservice
+  Containers:
+   server:
+    Image:      cached-catalog-microservices/productcatalogservice:p24
+    Port:       3550/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     200m
+      memory:  128Mi
+    Requests:
+      cpu:      100m
+      memory:   64Mi
+    Liveness:   grpc <pod>:3550  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:3550  delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      CATALOG_BACKEND_ADDR:     catalogdbservice:3551
+      CATALOG_CACHE_MODE:       lease
+      CATALOG_CACHE_TTL:        2s
+      CATALOG_BACKEND_TIMEOUT:  2s
+      CATALOG_ADMIN_PORT:       3552
+      PORT:                     3550
+      DISABLE_PROFILER:         1
+    Mounts:                     <none>
+  Volumes:                      <none>
+  Node-Selectors:               <none>
+  Tolerations:                  <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  productcatalogservice-5765d7b767 (0/0 replicas created)
+NewReplicaSet:   productcatalogservice-547884f8d6 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  12s   deployment-controller  Scaled up replica set productcatalogservice-5765d7b767 from 0 to 1
+  Normal  ScalingReplicaSet  2s    deployment-controller  Scaled up replica set productcatalogservice-547884f8d6 from 0 to 1
+  Normal  ScalingReplicaSet  1s    deployment-controller  Scaled down replica set productcatalogservice-5765d7b767 from 1 to 0
+
+[pod/catalogdbservice-0/server] {"message":"starting durable catalog gRPC server at 0.0.0.0:3551 using /var/lib/catalog/catalog.db","severity":"info","timestamp":"2026-10-22T03:45:16.124121333Z"}
+
+[pod/productcatalogservice-547884f8d6-7c49s/server] {"message":"Tracing disabled.","severity":"info","timestamp":"2026-10-22T03:45:17.4719403Z"}
+[pod/productcatalogservice-547884f8d6-7c49s/server] {"message":"Profiling disabled.","severity":"info","timestamp":"2026-10-22T03:45:17.472042111Z"}
+[pod/productcatalogservice-547884f8d6-7c49s/server] {"message":"starting grpc server at :3550","severity":"info","timestamp":"2026-10-22T03:45:17.47235514Z"}
+[pod/productcatalogservice-547884f8d6-7c49s/server] {"message":"catalog admin and metrics listening on 127.0.0.1:3552","severity":"info","timestamp":"2026-10-22T03:45:17.47274984Z"}
+[pod/productcatalogservice-5765d7b767-bb696/server] {"message":"Tracing disabled.","severity":"info","timestamp":"2026-10-22T03:45:07.500244408Z"}
+[pod/productcatalogservice-5765d7b767-bb696/server] {"message":"Profiling disabled.","severity":"info","timestamp":"2026-10-22T03:45:07.500400751Z"}
+[pod/productcatalogservice-5765d7b767-bb696/server] {"message":"starting grpc server at :3550","severity":"info","timestamp":"2026-10-22T03:45:07.500750751Z"}
+[pod/productcatalogservice-5765d7b767-bb696/server] {"message":"catalog admin and metrics listening on 127.0.0.1:3552","severity":"info","timestamp":"2026-10-22T03:45:07.501393677Z"}

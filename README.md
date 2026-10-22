@@ -43,4 +43,6 @@ The lease design is informed by Nishtala et al., [Scaling Memcache at Facebook (
 
 ## Verification evidence
 
-The [native Windows process result](docs/evidence/windows-process.json) records the executed journey and observed cache behavior. Hosted Linux race checks and the disposable Kubernetes journey are pending. The small warmed latency samples do not establish an SLO or a general performance advantage.
+The [Windows process result](docs/evidence/windows-process.json) and [Linux process result](docs/evidence/linux-process.json) record the real journeys and observed cache behavior. Linux tests, race detection, vet, formatting and process verification passed in [run 39718372237](https://github.com/STEVVVU/cached-catalog-microservices/actions/runs/39718372237).
+
+The disposable Kubernetes journey passed in [run 39718372293](https://github.com/STEVVVU/cached-catalog-microservices/actions/runs/39718372293). Its [retained results](docs/evidence/kind-39718372293/) show 40/40 gRPC requests completed, a catalog update to revision 2, the same data after database and gateway pod restarts, a bound PVC, internal services, and cluster cleanup. Only the seven catalog resources were applied. The complete 11-service storefront was not deployed in this check. Small synthetic latency samples do not establish an SLO or a general performance advantage.

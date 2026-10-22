@@ -1,0 +1,27 @@
+# TYPE catalog_requests_started_total counter
+catalog_requests_started_total 1
+# TYPE catalog_requests_completed_total counter
+catalog_requests_completed_total 1
+# TYPE catalog_requests_failed_total counter
+catalog_requests_failed_total 0
+# TYPE catalog_backend_reads_total counter
+catalog_backend_reads_total 1
+# TYPE catalog_cache_hits_total counter
+catalog_cache_hits_total 0
+# TYPE catalog_cache_misses_total counter
+catalog_cache_misses_total 1
+# TYPE catalog_lease_waiters_total counter
+catalog_lease_waiters_total 0
+# TYPE catalog_fenced_fills_total counter
+catalog_fenced_fills_total 0
+# TYPE catalog_request_duration_seconds histogram
+catalog_request_duration_seconds_bucket{le="0.0005"} 0
+catalog_request_duration_seconds_bucket{le="0.001"} 1
+catalog_request_duration_seconds_bucket{le="0.005"} 1
+catalog_request_duration_seconds_bucket{le="0.01"} 1
+catalog_request_duration_seconds_bucket{le="0.05"} 1
+catalog_request_duration_seconds_bucket{le="0.1"} 1
+catalog_request_duration_seconds_bucket{le="0.5"} 1
+catalog_request_duration_seconds_bucket{le="+Inf"} 1
+catalog_request_duration_seconds_sum 0.000718587
+catalog_request_duration_seconds_count 1
