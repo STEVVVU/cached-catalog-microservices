@@ -145,14 +145,17 @@ catalog_ready() { "$work_dir/catalogctl" list >/dev/null; }
 start_port_forward deployment/productcatalogservice "3550:3550 3552:3552" gateway_ready
 
 initial="$("$work_dir/catalogctl" list)"
+printf '%s\n' "$initial" >"$evidence_dir/initial-catalog.json"
 product_id="$(jq -er '.products[0].id' <<<"$initial")"
 product_name="$(jq -er '.products[0].name' <<<"$initial")"
 [[ "$(jq -er '.products | length' <<<"$initial")" -gt 0 ]]
 get_result="$("$work_dir/catalogctl" get "$product_id")"
 jq -e --arg id "$product_id" '.id == $id' <<<"$get_result" >/dev/null
 search_result="$("$work_dir/catalogctl" search "$product_name")"
-jq -e --arg id "$product_id" 'any(.products[]; .id == $id)' <<<"$search_result" >/dev/null
+printf '%s\n' "$search_result" >"$evidence_dir/search-result.json"
+jq -e --arg id "$product_id" 'any(.results[]; .id == $id)' <<<"$search_result" >/dev/null
 benchmark="$("$work_dir/catalogctl" bench 40 8)"
+printf '%s\n' "$benchmark" >"$evidence_dir/benchmark.json"
 jq -e '.offered == 40 and .completed == 40 and .failed == 0' <<<"$benchmark" >/dev/null
 
 python3 - "$service_dir/products.json" "$work_dir/updated-products.json" <<'PY'
@@ -167,6 +170,7 @@ destination.write_text(json.dumps(catalog), encoding="utf-8")
 PY
 revision="$("$work_dir/catalogctl" revision | jq -er '.revision')"
 update_result="$("$work_dir/catalogctl" update "$work_dir/updated-products.json" "$revision")"
+printf '%s\n' "$update_result" >"$evidence_dir/update-result.json"
 new_revision="$(jq -er '.revision' <<<"$update_result")"
 [[ "$new_revision" -gt "$revision" ]]
 updated_list="$("$work_dir/catalogctl" list)"
@@ -189,6 +193,7 @@ for _ in $(seq 1 100); do
   sleep 0.1
 done
 [[ -n "$database_after_restart" ]]
+printf '%s\n' "$database_after_restart" >"$evidence_dir/database-after-restart.json"
 kill "$port_forward_pid" 2>/dev/null || true
 wait "$port_forward_pid" 2>/dev/null || true
 port_forward_pid=""
@@ -197,11 +202,13 @@ kubectl -n "$namespace" rollout restart deployment/productcatalogservice
 kubectl -n "$namespace" rollout status deployment/productcatalogservice --timeout=180s
 start_port_forward deployment/productcatalogservice "3550:3550 3552:3552" gateway_ready
 persisted_list="$("$work_dir/catalogctl" list)"
+printf '%s\n' "$persisted_list" >"$evidence_dir/gateway-after-restart.json"
 jq -e '.products[0].name == "P24 kind persisted catalog update"' <<<"$persisted_list" >/dev/null
 persisted_revision="$("$work_dir/catalogctl" revision | jq -er '.revision')"
 [[ "$persisted_revision" == "$new_revision" ]]
 [[ "$(kubectl -n "$namespace" get pvc catalogdb-data -o jsonpath='{.metadata.uid}')" == "$catalog_pvc_uid" ]]
 metrics="$(curl --fail --silent "$CATALOGCTL_ADMIN_URL/metrics")"
+printf '%s\n' "$metrics" >"$evidence_dir/metrics.txt"
 grep -q '^catalog_requests_started ' <<<"$metrics"
 
 if [[ -n "${GITHUB_STEP_SUMMARY:-}" ]]; then
