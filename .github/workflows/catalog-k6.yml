@@ -5,12 +5,15 @@ on:
       smoke:
         type: boolean
         default: true
+      focused_cache:
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
   benchmark:
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: ${{ inputs.focused_cache && 20 || 120 }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v6
@@ -29,15 +32,28 @@ jobs:
           go test ./...
           go build -trimpath -o ../../bin/productcatalogservice .
           go build -trimpath -o ../../bin/catalogctl ./cmd/catalogctl
+      - name: Verify product catalog lifecycle
+        if: ${{ inputs.focused_cache }}
+        shell: pwsh
+        run: ./.agents/skills/verify-productcatalog/verify.ps1
+      - name: Run product catalog race tests
+        if: ${{ inputs.focused_cache }}
+        working-directory: src/productcatalogservice
+        run: go test -race ./...
       - name: Record native framework environment
         run: |
           mkdir -p reports/evidence
           { git rev-parse HEAD; go version; k6 version; sha256sum "$(command -v k6)"; uname -a; lscpu; free -b; df -B1 .; uptime; } > reports/evidence/k6-environment.txt
       - env:
           SMOKE: ${{ inputs.smoke }}
+          FOCUSED_CACHE: ${{ inputs.focused_cache }}
         run: |
           flag=()
-          if [ "$SMOKE" = true ]; then flag+=(--smoke); fi
+          if [ "$FOCUSED_CACHE" = true ]; then
+            flag+=(--focused-cache)
+          elif [ "$SMOKE" = true ]; then
+            flag+=(--smoke)
+          fi
           python3 scripts/catalog-benchmark.py --k6 --output reports/evidence/k6 "${flag[@]}"
       - uses: actions/upload-artifact@v4
         if: always()
