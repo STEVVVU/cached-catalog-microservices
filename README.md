@@ -1,8 +1,133 @@
 # Cached Catalog Microservices
 
+## Contents
+
+- [Architecture and execution guide](#architecture-and-execution-guide)
+- [Local service configuration](#local-service-configuration)
+- [Kubernetes](#kubernetes)
+- [Verification evidence](#verification-evidence)
+- [Reproduce sustained catalog measurements](#reproduce-sustained-catalog-measurements)
+
+## Architecture and execution guide
+
+This repository retains the upstream Online Boutique storefront and adds an optional persistent product-catalog backend with `none`, `ttl`, and `lease` gateway cache modes. Other storefront services remain upstream scope. The default catalog path still reads `products.json`; the database and gateway path starts only when configured.
+
+The diagram places the catalog extension among the existing service boundaries.
+
+```mermaid
+flowchart LR
+Storefront["Existing storefront clients"] --> Gateway["Product catalog gateway"]
+Gateway --> Cache["Per-process cache policy"]
+Cache --> Database["Catalog database gRPC service"]
+Database --> Bolt["bbolt snapshot and revision"]
+Admin["Loopback catalogctl admin"] --> Gateway
+Gateway --> Storefront
+```
+
+Read RPCs reach the gateway, which reads the backend or serves a [catalog snapshot](#catalog-snapshot) according to the selected cache mode. The database returns the snapshot and [revision](#catalog-revision) together. An update validates the full catalog, optionally checks the [expected revision](#expected-revision), and atomically replaces both fields in bbolt. The initiating gateway invalidates its local cache. Other gateways may serve an older snapshot until a successful refresh, so TTL is a configured freshness interval rather than a strict writer-relative staleness guarantee. [Lease mode](#fill-lease) coalesces cold fills and fences stale fills against local invalidation.
+
+```mermaid
+sequenceDiagram
+participant Client as "Catalog client"
+participant Gateway as "Gateway and cache"
+participant DB as "Catalog database"
+participant Bolt as "bbolt store"
+Client->>Gateway: "List, Get, or Search"
+alt "fresh cache entry"
+Gateway-->>Client: "Return cached result"
+else "cache miss or mode none"
+Gateway->>DB: "Read snapshot and revision"
+DB->>Bolt: "Read transaction"
+Bolt-->>DB: "Snapshot and revision"
+DB-->>Gateway: "Catalog response"
+      opt "lease mode"
+        Gateway->>Gateway: "Publish only if fill token is current"
+      end
+Gateway-->>Client: "Return result"
+end
+Client->>Gateway: "Replace catalog with optional expected revision"
+Gateway->>DB: "Validate and replace"
+DB->>Bolt: "Write snapshot and next revision atomically"
+Bolt-->>DB: "Commit or persistence error"
+DB-->>Gateway: "Revision or explicit error"
+Gateway->>Gateway: "Invalidate local cache"
+```
+
+| Subsystem | Responsibility and owned invariant | Source |
+| --- | --- | --- |
+| Gateway RPC and startup | Preserve ProductCatalogService RPCs and select file-backed or configured backend mode | [`catalog_gateway.go`](src/productcatalogservice/catalog_gateway.go) |
+| Cache policy | Own per-process snapshots, TTL expiry, lease fill coalescing, and generation invalidation | [`catalog_cache.go`](src/productcatalogservice/catalog_cache.go) |
+| Database RPC service | Read snapshots and revisions; implement admin updates and backend-read counters | [`catalogdb_service.go`](src/productcatalogservice/catalogdb_service.go) |
+| Persistent store | Validate products; atomically write snapshot plus revision in bbolt | [`catalog_store.go`](src/productcatalogservice/catalog_store.go) |
+| Kubernetes overlay | Add internal database, persistent volume, and gateway configuration | [`kustomize/overlays/catalog-cache/`](kustomize/overlays/catalog-cache/) |
+
+### Follow a catalog request
+
+1. The gateway starts in the original file-backed mode unless `CATALOG_BACKEND_ADDR` is set.
+2. A List, Get, or Search call checks the selected cache policy. `none` calls the backend; TTL serves an unexpired snapshot; lease mode coalesces concurrent fills.
+3. On a miss, the database reads snapshot and revision from bbolt and returns both. Lease mode publishes a fill only if its local generation remains current; TTL mode does not use that generation fence.
+4. An admin replacement validates product fields and limits. A mismatched expected revision returns an explicit conflict.
+5. bbolt commits the new snapshot and incremented revision in one write transaction. The initiating gateway invalidates its local cache. Other replicas need a successful refresh after expiry; expiry alone does not ensure convergence, and a late TTL-mode read can republish older data.
+6. Backend and persistence failures remain explicit errors rather than successful responses.
+
+<a id="catalog-snapshot"></a>
+<details><summary>What is a catalog snapshot?</summary>
+
+A catalog snapshot is the complete product list returned by one backend read. The database returns its revision alongside the data so a caller can identify the version it received.
+</details>
+
+<a id="catalog-revision"></a>
+<details><summary>What is a catalog revision?</summary>
+
+A catalog revision is a positive integer incremented with each successful replacement. An update based on revision 1 is rejected if another writer has already advanced the stored revision.
+</details>
+
+<a id="ttl-cache"></a>
+<details><summary>What is a TTL cache?</summary>
+
+A TTL cache reuses a snapshot until its time-to-live expires. After a successful refresh, that interval controls reuse; it is not a strict writer-relative staleness guarantee when reads fail or an older read completes late.
+</details>
+
+<a id="fill-lease"></a>
+<details><summary>What is a fill lease?</summary>
+
+A fill lease lets concurrent cache misses share one in-flight backend read. The implementation uses a generation check so an old read cannot publish after local invalidation.
+</details>
+
+<a id="generation-fence"></a>
+<details><summary>What is a generation fence?</summary>
+
+A generation fence rejects the result of a read started before the cache generation changed. It prevents an older in-flight fill from overwriting newer local cache state after an update.
+</details>
+
+<a id="expected-revision"></a>
+<details><summary>What is an expected-revision check?</summary>
+
+An expected-revision check makes a replacement conditional on the version the caller read. A mismatch returns a conflict instead of overwriting another update.
+</details>
+
+<a id="bbolt-transaction"></a>
+<details><summary>What is a bbolt transaction?</summary>
+
+A bbolt transaction groups database changes into one commit. The store writes catalog bytes and the next revision together, so a failed update does not intentionally advance only one field.
+</details>
+
+### Design choices and limits
+
+These rationales are inferred from current code unless the repository's tracked notes record otherwise.
+
+| Choice | Current behavior and rationale | Alternative and cost to reconsider |
+| --- | --- | --- |
+| Preserve file-backed default | Existing deployments keep upstream behavior unless configured. | Making the database mandatory would break current startup expectations. |
+| Keep existing catalog RPCs | Storefront callers continue using the same ProductCatalogService contract. | A new API would force client changes and broaden compatibility work. |
+| Keep cache state per gateway | Avoids adding a distributed cache dependency. | Shared caching could reduce duplicate reads but adds a service and failure mode. |
+| Pair revision with atomic snapshot write | Gives callers a conflict check and keeps stored version paired with contents. | Last-write-wins is simpler but hides concurrent updates. |
+| Bound remote staleness by TTL | Local invalidation is immediate; other gateways refresh after expiry. | Global invalidation requires coordination and changes availability costs. |
+| Keep admin listener on loopback | Limits unauthenticated writes to the local namespace. | Remote administration needs authentication and network restrictions. |
+
 An Apache-2.0 extension of Google's Online Boutique that makes its existing product catalog durable and observable, then compares three real read paths: uncached, TTL, and bounded lease-based caching. The lease path coalesces concurrent cold fills and fences stale in-flight snapshots after local catalog writes.
 
-The app remains the complete upstream 11-service, multi-language Online Boutique. The existing `ProductCatalogService` gRPC API and storefront are unchanged. A separate bbolt-backed catalog process serves that API through the original Go product-catalog service; writes are validated and revision-checked. Each gateway owns its cache, so TTL bounds cross-replica staleness while lease fencing protects writes within one gateway. This is not a claim of global linearizability.
+The app remains the complete upstream 11-service, multi-language Online Boutique. The existing `ProductCatalogService` gRPC API and storefront are unchanged. A separate bbolt-backed catalog process serves that API through the original Go product-catalog service; writes are validated and revision-checked. Each gateway owns its cache. TTL controls reuse after successful refreshes but is not a strict writer-relative staleness bound; lease fencing protects against stale fills within one gateway. This is not a claim of global linearizability.
 
 ## Verify locally
 
