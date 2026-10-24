@@ -51,6 +51,8 @@ The disposable Kubernetes journey passed in [run 39718372293](https://github.com
 
 The latest [same-host native k6 comparison](docs/benchmarks/2026-10-22-matched-k6.md) completed all 1,086 trials: five repeats across 108 configuration/mode groups per build plus six restart/stability trials. The AMD EPYC runner exposed four logical CPUs shared by the generator, gateways and durable database. Both builds produced zero exact-response mismatches, but the comparison **did not establish a performance improvement or service capacity**.
 
+A later focused native k6 campaign completed all 15 cells and is documented in [the 24 October audit](docs/benchmarks/2026-10-24-focused-k6.md). Its strict 2,000-request audit remains inconclusive: seven cells matched the planned count, while eight contain 2,001 successful requests after a terminal scheduled arrival. The corrected audit still reports 32 errors. This result does not confirm the Go-driver measurements below.
+
 | Recorded outcomes | Baseline | Copy-outside-lock candidate |
 | --- | ---: | ---: |
 | Exact-checked successful operations | 2,657,306 | 2,661,921 |

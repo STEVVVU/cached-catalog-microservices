@@ -47,7 +47,7 @@ def complete_focused_receipt(output):
                 for name, count in (("catalog_successful", 2000), ("catalog_correctness_errors", 0), ("catalog_completed", 2000)):
                     if count:
                         point(name, count)
-                point("catalog_rpc_codes", 2000, {"code": "0"})
+                point("catalog_rpc_codes", 2000, {"code": "OK"})
                 for name in benchmark.FOCUSED_TRENDS:
                     for _ in range(2000):
                         point(name.split("{")[0], 1.0, {"status": "0"} if name.startswith("grpc_req_duration") else {})
@@ -123,6 +123,38 @@ class FocusedCacheReceiptTests(unittest.TestCase):
         raw.write_bytes(b"")
         errors = benchmark.focused_cache_receipt_errors(self.result, self.output)
         self.assertTrue(any("raw trend" in error or "stream contains no metric points" in error for error in errors))
+
+    def test_extra_native_iteration_is_not_accepted(self):
+        sample = self.result["samples"][0]
+        raw = self.output / f"{sample['label']}.k6-raw.gz"
+        with gzip.open(raw, "at", encoding="utf-8") as stream:
+            stream.write(json.dumps({"type": "Point", "metric": "catalog_started", "data": {"value": 1, "tags": {"method": "ListProducts"}}}) + "\n")
+        errors = benchmark.focused_cache_receipt_errors(self.result, self.output)
+        self.assertTrue(any("counts do not match the focused plan" in error for error in errors))
+
+    def test_non_ok_native_rpc_code_is_not_accepted(self):
+        raw = self.output / f"{self.result['samples'][0]['label']}.k6-raw.gz"
+        with gzip.open(raw, "rt", encoding="utf-8") as stream:
+            records = [json.loads(line) for line in stream]
+        for record in records:
+            if record.get("metric") == "catalog_rpc_codes":
+                record["data"]["tags"]["code"] = "Unavailable"
+        with gzip.open(raw, "wt", encoding="utf-8") as stream:
+            stream.writelines(json.dumps(record) + "\n" for record in records)
+        errors = benchmark.focused_cache_receipt_errors(self.result, self.output)
+        self.assertTrue(any("counts do not match the focused plan" in error for error in errors))
+
+    def test_persistence_accepts_linux_load_average_tuple(self):
+        for status in ("inconclusive", "complete"):
+            with self.subTest(status=status):
+                result = {"measurement_status": status, "load": (0.1, 0.2, 0.3)}
+                benchmark.persist_focused_cache_result(result, self.output)
+                self.assertEqual([0.1, 0.2, 0.3], json.loads((self.output / "result.json").read_text())["load"])
+
+    def test_persistence_rejects_changed_readback(self):
+        with patch.object(Path, "read_text", return_value="{}"):
+            with self.assertRaisesRegex(RuntimeError, "failed to persist inconclusive"):
+                benchmark.persist_focused_cache_result({"measurement_status": "inconclusive"}, self.output)
 
     def test_truncated_native_stream_is_not_accepted(self):
         raw = self.output / f"{self.result['samples'][0]['label']}.k6-raw.gz"

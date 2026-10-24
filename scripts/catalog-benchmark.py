@@ -109,6 +109,14 @@ def focused_cache_receipt_errors(result, output):
     return errors
 
 
+def persist_focused_cache_result(result, output):
+    serialized = json.dumps(result, indent=2) + "\n"
+    result_path = output / "result.json"
+    result_path.write_text(serialized, encoding="utf-8")
+    if result_path.read_text(encoding="utf-8") != serialized:
+        raise RuntimeError(f"failed to persist {result['measurement_status']} focused-cache result")
+
+
 def audit_focused_cache_sample(sample, output):
     label = sample["label"]
     errors = []
@@ -185,7 +193,7 @@ def audit_focused_cache_sample(sample, output):
     if completed != metrics["catalog_completed"]["values"]["count"]:
         errors.append(f"{label}: raw completion count disagrees with native summary")
     expected_counts = {"started": 2000, "successful": 2000, "failed": 0, "timeouts": 0, "correctness_errors": 0, "dropped_iterations": 0}
-    if counter_values != expected_counts or completed != 2000 or raw_methods != {"ListProducts": 1000, "GetProduct": 800, "SearchProducts": 200} or raw_codes != {"0": 2000}:
+    if counter_values != expected_counts or completed != 2000 or raw_methods != {"ListProducts": 1000, "GetProduct": 800, "SearchProducts": 200} or raw_codes != {"OK": 2000}:
         errors.append(f"{label}: raw outcome, completion, RPC-code, or method counts do not match the focused plan")
     sample_counts = {**counter_values, "interrupted": counter_values["started"] - completed, "offered": counter_values["started"] + counter_values["dropped_iterations"], "planned_offers": native_workload.get("planned_offers")}
     sample_counts["rejected"] = counter_values["dropped_iterations"]
@@ -522,17 +530,11 @@ def main():
         if result["focused_cache_receipt_errors"]:
             result["failure"] = {"type": "incomplete-focused-cache-receipt", "message": "; ".join(result["focused_cache_receipt_errors"])}
             result["passed"] = False
-            result_path = args.output / "result.json"
-            result_path.write_text(json.dumps(result, indent=2)+"\n")
-            if json.loads(result_path.read_text(encoding="utf-8")) != result:
-                raise RuntimeError("failed to persist inconclusive focused-cache result")
+            persist_focused_cache_result(result, args.output)
             raise RuntimeError(result["failure"]["message"])
         result["measurement_status"] = "complete"
         result["passed"] = True
-        result_path = args.output / "result.json"
-        result_path.write_text(json.dumps(result, indent=2)+"\n")
-        if json.loads(result_path.read_text(encoding="utf-8")) != result:
-            raise RuntimeError("failed to persist complete focused-cache result")
+        persist_focused_cache_result(result, args.output)
 
 
 if __name__ == "__main__":

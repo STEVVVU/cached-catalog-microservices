@@ -1,0 +1,346 @@
+{
+  "source_sha": "76861f69ed94de3e896da3f55d2f99918da4d5d1",
+  "original_errors": [
+    "n500-r1-ttl60s-rate100-rep0-none: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep0-ttl: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep0-lease: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep1-lease: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep1-ttl: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep1-ttl: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep1-ttl: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep1-ttl: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep1-none: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep2-none: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep2-none: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-none: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-none: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-ttl: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep2-lease: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep2-lease: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-lease: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-lease: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-lease: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep3-lease: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-lease: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-lease: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-ttl: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep3-ttl: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-ttl: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-ttl: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-none: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep3-none: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-none: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-none: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-none: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep4-none: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-none: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-none: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-ttl: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep4-lease: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep4-lease: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-lease: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-lease: raw trend group_duration count disagrees with native summary or plan"
+  ],
+  "corrected_audit_errors": [
+    "n500-r1-ttl60s-rate100-rep1-ttl: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep1-ttl: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep1-ttl: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep1-ttl: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-none: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep2-none: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-none: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-none: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-lease: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep2-lease: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-lease: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep2-lease: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-lease: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep3-lease: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-lease: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-lease: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-ttl: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep3-ttl: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-ttl: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-ttl: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-none: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep3-none: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-none: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep3-none: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-none: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep4-none: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-none: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-none: raw trend group_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-lease: raw outcome, completion, RPC-code, or method counts do not match the focused plan",
+    "n500-r1-ttl60s-rate100-rep4-lease: raw trend grpc_req_duration{status:0} count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-lease: raw trend iteration_duration count disagrees with native summary or plan",
+    "n500-r1-ttl60s-rate100-rep4-lease: raw trend group_duration count disagrees with native summary or plan"
+  ],
+  "original_result_preserved": true,
+  "cells": [
+    {
+      "label": "n500-r1-ttl60s-rate100-rep0-none",
+      "started": 2000,
+      "successful": 2000,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2000
+      },
+      "observed_method_counts": {
+        "ListProducts": 1000,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep0-ttl",
+      "started": 2000,
+      "successful": 2000,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2000
+      },
+      "observed_method_counts": {
+        "ListProducts": 1000,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep0-lease",
+      "started": 2000,
+      "successful": 2000,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2000
+      },
+      "observed_method_counts": {
+        "ListProducts": 1000,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep1-lease",
+      "started": 2000,
+      "successful": 2000,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2000
+      },
+      "observed_method_counts": {
+        "ListProducts": 1000,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep1-ttl",
+      "started": 2001,
+      "successful": 2001,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2001
+      },
+      "observed_method_counts": {
+        "ListProducts": 1001,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep1-none",
+      "started": 2000,
+      "successful": 2000,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2000
+      },
+      "observed_method_counts": {
+        "ListProducts": 1000,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep2-none",
+      "started": 2001,
+      "successful": 2001,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2001
+      },
+      "observed_method_counts": {
+        "ListProducts": 1001,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep2-ttl",
+      "started": 2000,
+      "successful": 2000,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2000
+      },
+      "observed_method_counts": {
+        "ListProducts": 1000,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep2-lease",
+      "started": 2001,
+      "successful": 2001,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2001
+      },
+      "observed_method_counts": {
+        "ListProducts": 1001,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep3-lease",
+      "started": 2001,
+      "successful": 2001,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2001
+      },
+      "observed_method_counts": {
+        "ListProducts": 1001,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep3-ttl",
+      "started": 2001,
+      "successful": 2001,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2001
+      },
+      "observed_method_counts": {
+        "ListProducts": 1001,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep3-none",
+      "started": 2001,
+      "successful": 2001,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2001
+      },
+      "observed_method_counts": {
+        "ListProducts": 1001,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep4-none",
+      "started": 2001,
+      "successful": 2001,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2001
+      },
+      "observed_method_counts": {
+        "ListProducts": 1001,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep4-ttl",
+      "started": 2000,
+      "successful": 2000,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2000
+      },
+      "observed_method_counts": {
+        "ListProducts": 1000,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    },
+    {
+      "label": "n500-r1-ttl60s-rate100-rep4-lease",
+      "started": 2001,
+      "successful": 2001,
+      "failed": 0,
+      "timeouts": 0,
+      "dropped_iterations": 0,
+      "native_rpc_codes": {
+        "OK": 2001
+      },
+      "observed_method_counts": {
+        "ListProducts": 1001,
+        "GetProduct": 800,
+        "SearchProducts": 200
+      }
+    }
+  ],
+  "source_sha256": {
+    "src/productcatalogservice/benchmark_profile.go": "63f98bf62e244daf584a221db57a6f1f6b3c3b858fc5dd41c87e92044215a1ca",
+    "src/productcatalogservice/catalog_admin_http.go": "0926ce5300fddc46a03a47ce566c35613ab0b0d43cf451197d2770ff56bbd8c8",
+    "src/productcatalogservice/catalog_cache.go": "c62171d91876c3af0ee09d29cbd973fd43790dba68934b2d6b9023703f9d3505",
+    "src/productcatalogservice/catalog_gateway.go": "bd10eefc87b7c9aaa8da6e9e97c1298e0987999885484851be26619400e998ad",
+    "src/productcatalogservice/catalog_loader.go": "5fd3f8f01641acf9e3fd3c03790b1665dc90dd6d6c14d9917794e588464aca96",
+    "src/productcatalogservice/catalog_signal_unix.go": "b8cc684d6fa7e0a04cfae6c713ef5a230c70b13ee3817c92754406e4b922ea96",
+    "src/productcatalogservice/catalog_signal_windows.go": "b33cc3ffd55339940aa9903f12b842ca478ae05afd0d4965838abf182c21eac7",
+    "src/productcatalogservice/catalog_store.go": "9125d15972f4d7f3f1438b9e830c4e055e5634131ad9815d9389d035005ab999",
+    "src/productcatalogservice/catalogdb_service.go": "9f917e8468e511be74b5cdbc1e834ac98e1da05b864a1bd82b487df3b38c5f64",
+    "src/productcatalogservice/cmd/catalogctl/load.go": "aef487aa5fa40c98d07038c581be9e2f65e20ed454c1da3959872a1e66300a6b",
+    "src/productcatalogservice/cmd/catalogctl/main.go": "5d4c9778c9f89b1bac872d9369d6bc21e1752344d843f201feedee9b60288485",
+    "src/productcatalogservice/genproto/catalog_admin.pb.go": "2b2bfac98045a464e82b5fa7a0cae3625ccd8ae8bceafdb35fc59729f103f964",
+    "src/productcatalogservice/genproto/catalog_admin_grpc.pb.go": "4f152dc17ea896dfbd1a431c40a1ac1c7a01fcb1a088dc4e81abeddf55750c4b",
+    "src/productcatalogservice/genproto/demo.pb.go": "799971d468d1e66e0d7fce8930ce74f8f1c894bf8425c50cad44c2a9b40cd9af",
+    "src/productcatalogservice/genproto/demo_grpc.pb.go": "70bb93b42e93399bf30d9971b6568244d0fa2eb1cb4757f967354810601dc916",
+    "src/productcatalogservice/product_catalog.go": "0ad7a92ba93945f53e0d647e0da9140d18e2137170c16b208f3ffc8aaafdb40c",
+    "src/productcatalogservice/server.go": "3c058594132ad66928be8a89cb2e9adbfceb9bae77092915236305d1cbe399e2",
+    "src/productcatalogservice/go.mod": "1dcd102acfbc1e360c15afd8233f813d481f0628de51f81c254bf9bbd3749568",
+    "src/productcatalogservice/go.sum": "98fdfa35f6d2a5cc77c9cca946ffd85d5825b02ac27eb8cf5d3281e5a72f8cfd",
+    "src/productcatalogservice/products.json": "766cd816fb1721ec0ce8d9261214fb5e10f6b89ce70600e2d20f149c7b5afffa"
+  },
+  "original_result_sha256": "04e82c03be0ec1427e7989dd7ed4349411bd9d8b677d71cf32210fc27f4c8344",
+  "original_result_retained_at": "GitHub Actions run 40126825830 artifact; see benchmark report",
+  "raw_gzip_retained_at": "GitHub Actions run 40126825830 artifact; see benchmark report"
+}

@@ -1,0 +1,190 @@
+{
+  "native": {
+    "root_group": {
+      "id": "d41d8cd98f00b204e9800998ecf8427e",
+      "groups": [
+        {
+          "name": "catalog-validation",
+          "path": "::catalog-validation",
+          "id": "5a756287fb60b713bf33da8771b33d8c",
+          "groups": [],
+          "checks": []
+        }
+      ],
+      "checks": [],
+      "name": "",
+      "path": ""
+    },
+    "options": {
+      "noColor": true,
+      "summaryTrendStats": [
+        "med",
+        "min",
+        "max",
+        "p(95)",
+        "p(99)",
+        "count"
+      ],
+      "summaryTimeUnit": ""
+    },
+    "state": {
+      "isStdErrTTY": false,
+      "testRunDurationMs": 20011.547285,
+      "isStdOutTTY": false
+    },
+    "metrics": {
+      "grpc_req_duration": {
+        "type": "trend",
+        "contains": "time",
+        "values": {
+          "p(95)": 4.308461,
+          "p(99)": 6.922317,
+          "count": 2001,
+          "med": 1.922589,
+          "min": 0.347784,
+          "max": 23.679738
+        }
+      },
+      "catalog_successful": {
+        "type": "counter",
+        "contains": "default",
+        "values": {
+          "count": 2001,
+          "rate": 99.99226803915778
+        }
+      },
+      "data_received": {
+        "type": "counter",
+        "contains": "data",
+        "values": {
+          "count": 84543578,
+          "rate": 4224739.686339552
+        }
+      },
+      "iterations": {
+        "contains": "default",
+        "values": {
+          "count": 2001,
+          "rate": 99.99226803915778
+        },
+        "type": "counter"
+      },
+      "catalog_correctness_errors": {
+        "type": "counter",
+        "contains": "default",
+        "values": {
+          "count": 0,
+          "rate": 0
+        },
+        "thresholds": {
+          "count==0": {
+            "ok": true
+          }
+        }
+      },
+      "catalog_started": {
+        "type": "counter",
+        "contains": "default",
+        "values": {
+          "count": 2001,
+          "rate": 99.99226803915778
+        }
+      },
+      "data_sent": {
+        "contains": "data",
+        "values": {
+          "count": 250663,
+          "rate": 12525.917982758325
+        },
+        "type": "counter"
+      },
+      "iteration_duration": {
+        "type": "trend",
+        "contains": "time",
+        "values": {
+          "p(99)": 31.40697,
+          "count": 2001,
+          "med": 10.240528,
+          "min": 0.577401,
+          "max": 44.18325,
+          "p(95)": 28.199049
+        }
+      },
+      "vus": {
+        "values": {
+          "value": 1,
+          "min": 0,
+          "max": 2
+        },
+        "type": "gauge",
+        "contains": "default"
+      },
+      "catalog_rpc_codes": {
+        "type": "counter",
+        "contains": "default",
+        "values": {
+          "rate": 99.99226803915778,
+          "count": 2001
+        }
+      },
+      "group_duration": {
+        "type": "trend",
+        "contains": "time",
+        "values": {
+          "med": 4.986428,
+          "min": 0.024846,
+          "max": 30.930907,
+          "p(95)": 13.862265,
+          "p(99)": 15.141484,
+          "count": 2001
+        }
+      },
+      "catalog_completed": {
+        "type": "counter",
+        "contains": "default",
+        "values": {
+          "count": 2001,
+          "rate": 99.99226803915778
+        }
+      },
+      "vus_max": {
+        "type": "gauge",
+        "contains": "default",
+        "values": {
+          "value": 64,
+          "min": 64,
+          "max": 64
+        }
+      },
+      "grpc_req_duration{status:0}": {
+        "type": "trend",
+        "contains": "time",
+        "values": {
+          "p(99)": 6.922317,
+          "count": 2001,
+          "med": 1.922589,
+          "min": 0.347784,
+          "max": 23.679738,
+          "p(95)": 4.308461
+        },
+        "thresholds": {
+          "min>=0": {
+            "ok": true
+          }
+        }
+      }
+    }
+  },
+  "workload": {
+    "rate": 100,
+    "seconds": 20,
+    "vus": 64,
+    "targets": [
+      "127.0.0.1:43875"
+    ],
+    "products": 500,
+    "planned_offers": 2000,
+    "mix": "50% List, 40% Get, 10% Search among started iterations",
+    "latency_policy": "Native successful-RPC duration, with native iteration_duration retaining connection and validation overhead. Dropped iterations have no latency. No scheduled timestamp is inferred from iteration ordinal. Timeouts count explicit RPC DeadlineExceeded; connection exceptions remain failures."
+  }
+}

@@ -8,6 +8,9 @@ on:
       - 'kustomize/overlays/catalog-cache*/**'
       - '.agents/skills/verify-productcatalog/**'
       - 'scripts/catalog-cache-kind-smoke.sh'
+      - 'scripts/catalog-benchmark.py'
+      - 'scripts/test_catalog_benchmark.py'
+      - 'scripts/catalog-oracle*.mjs'
       - '.github/workflows/go-productcatalog.yml'
   push:
     branches: [main]
@@ -17,6 +20,9 @@ on:
       - 'kustomize/overlays/catalog-cache*/**'
       - '.agents/skills/verify-productcatalog/**'
       - 'scripts/catalog-cache-kind-smoke.sh'
+      - 'scripts/catalog-benchmark.py'
+      - 'scripts/test_catalog_benchmark.py'
+      - 'scripts/catalog-oracle*.mjs'
       - '.github/workflows/go-productcatalog.yml'
   workflow_dispatch:
 
@@ -49,6 +55,11 @@ jobs:
             printf 'Go files need gofmt:\n%s\n' "$files"
             exit 1
           fi
+      - name: Check benchmark receipt audit and protobuf oracle
+        working-directory: .
+        run: |
+          python3 -m unittest discover -s scripts -p test_catalog_benchmark.py -v
+          node --test scripts/catalog-oracle.test.mjs
       - name: Test
         run: go test -count=1 ./...
       - name: Race detector
