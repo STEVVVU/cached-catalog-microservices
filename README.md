@@ -11,6 +11,365 @@
 
 ## Architecture and execution guide
 
+<!-- execution-flow:start -->
+### Execution flow
+
+Start with the primary path, then expand a detailed workflow. Select a numbered node to see its operation, implementation techniques, and source. Solid arrows show the named control, data, or lifecycle handoff; dotted arrows show error paths. Separate entry points are named in each workflow.
+
+<a id="review-walkthrough"></a>
+
+#### Walk through one concrete example
+
+A client issues a catalog read through the configured TTL cache after the requested entry is absent from the local cache.
+
+**Trace.** [Dispatch public catalog RPC](#flow-step-catalog-request) → [Choose uncached, TTL, or lease read](#flow-step-cache-mode) → [Fetch a durable catalog snapshot](#flow-step-fetch-snapshot) → [Publish only current lease fill](#flow-step-publish-fill) → [Return defensive catalog copy](#flow-step-copy-response).
+
+**Result and boundary.** The backend fetches a durable snapshot, publishes the TTL fill, and returns a defensive copy. TTL fills have no generation fencing, and update invalidation is local to one gateway, so a fill can race with an update and other gateways may retain their entries.
+
+<details>
+<summary>Implementation decisions to explain</summary>
+
+**Why return a defensive copy of the catalog snapshot?** Callers can receive the result without mutating the cached snapshot shared by other requests. Copying costs allocation and data copying.
+
+[Immutable snapshots with defensive copy-out](#technique-immutable-snapshot-copy-out).
+
+**What boundary matters when a TTL fill races an update?** The TTL path publishes without generation fencing, so an older fetch can be stored after a newer update. This refresh mode trades stronger race protection for a simpler expiry-based cache.
+
+[Time-to-live snapshot reuse](#technique-ttl-cache-refresh).
+
+</details>
+
+#### Primary execution flow
+
+The configured product catalog request path chooses the backend and cache mode, reads or fills a snapshot from bbolt, and returns the existing catalog RPC response. Admin writes and verification and deployment modes are shown as separate paths.
+
+```mermaid
+flowchart TD
+    n1["1. Select configured backend and<br/>cache mode"]
+    click n1 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-select-backend" "Open step, techniques, and source" _top
+    n2["2. Dispatch public catalog RPC"]
+    click n2 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-catalog-request" "Open step, techniques, and source" _top
+    n3["3. Choose uncached, TTL, or<br/>lease read"]
+    click n3 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-cache-mode" "Open step, techniques, and source" _top
+    n4["4. Fetch a durable catalog<br/>snapshot"]
+    click n4 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-fetch-snapshot" "Open step, techniques, and source" _top
+    n5["5. Return defensive catalog copy"]
+    click n5 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-copy-response" "Open step, techniques, and source" _top
+    n6["6. Publish only current lease<br/>fill"]
+    click n6 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-publish-fill" "Open step, techniques, and source" _top
+    n16["16. Return read failure"]
+    click n16 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-read-error" "Open step, techniques, and source" _top
+    n1 -->|"service registered with selected<br/>backend/cache"| n2
+    n2 -->|"readCatalog delegates to configured<br/>cache"| n3
+    n3 -->|"miss or mode none invokes fetch"| n4
+    n4 -->|"lease fetch completes with captured<br/>token"| n6
+    n6 -->|"valid fill or cache hit returns clone"| n5
+    n3 -->|"TTL or lease cache hit"| n5
+    n4 -->|"TTL fill succeeds"| n5
+    n6 -->|"successful lease fill fenced by<br/>invalidation; retry"| n3
+    n3 -.->|"waiting request context canceled"| n16
+    n4 -.->|"backend fetch fails"| n16
+```
+
+**Detailed workflows.** [Serve a catalog read through the selected cache](#flow-workflow-catalog-read) · [Validate and commit an internal catalog update](#flow-workflow-admin-write) · [Check responses and account for scheduled native load](#flow-workflow-oracle-and-load) · [Compose the catalog cache Kubernetes overlay](#flow-workflow-overlay-configuration) · [Durable backend startup](#flow-workflow-database-startup).
+
+<a id="flow-workflow-catalog-read"></a>
+
+<details>
+<summary>Serve a catalog read through the selected cache</summary>
+
+Starts at ProductCatalogService List, Get, or Search. Cache none, TTL, and lease are selected in configuration; lease coalesces cold misses and generation-fences publication.
+
+```mermaid
+flowchart TD
+    n2["2. Dispatch public catalog RPC"]
+    click n2 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-catalog-request" "Open step, techniques, and source" _top
+    n3["3. Choose uncached, TTL, or<br/>lease read"]
+    click n3 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-cache-mode" "Open step, techniques, and source" _top
+    n4["4. Fetch a durable catalog<br/>snapshot"]
+    click n4 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-fetch-snapshot" "Open step, techniques, and source" _top
+    n6["6. Publish only current lease<br/>fill"]
+    click n6 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-publish-fill" "Open step, techniques, and source" _top
+    n5["5. Return defensive catalog copy"]
+    click n5 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-copy-response" "Open step, techniques, and source" _top
+    n16["16. Return read failure"]
+    click n16 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-read-error" "Open step, techniques, and source" _top
+    n2 -->|"readCatalog delegates to cache"| n3
+    n3 -->|"cache miss or uncached mode"| n4
+    n4 -->|"lease mode fetch completion"| n6
+    n6 -->|"current snapshot returned by clone"| n5
+    n3 -->|"TTL or lease cache hit"| n5
+    n4 -->|"TTL fill succeeds"| n5
+    n6 -->|"successful lease fill fenced by<br/>invalidation; retry"| n3
+    n3 -.->|"waiting request context canceled"| n16
+    n4 -.->|"backend fetch fails"| n16
+```
+
+</details>
+
+<a id="flow-workflow-admin-write"></a>
+
+<details>
+<summary>Validate and commit an internal catalog update</summary>
+
+Starts at loopback PUT /admin/catalog. The handler validates one bounded JSON object, calls CatalogAdminService, commits snapshot and revision in bbolt, then invalidates the local cache after success.
+
+```mermaid
+flowchart TD
+    n8["8. Serve loopback admin and<br/>metrics HTTP"]
+    click n8 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-admin-adapter" "Open step, techniques, and source" _top
+    n9["9. Validate catalog update<br/>request"]
+    click n9 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-validate-update" "Open step, techniques, and source" _top
+    n10["10. Commit snapshot and revision<br/>atomically"]
+    click n10 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-atomic-cas" "Open step, techniques, and source" _top
+    n11["11. Invalidate local cache after<br/>committed update"]
+    click n11 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-invalidate-after-write" "Open step, techniques, and source" _top
+    n12["12. Map admin failures to HTTP<br/>status"]
+    click n12 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-admin-http-errors" "Open step, techniques, and source" _top
+    n8 -->|"PUT /admin/catalog"| n9
+    n9 -->|"valid request reaches admin RPC and<br/>store"| n10
+    n10 -->|"RPC commit succeeded"| n11
+    n9 -.->|"malformed or oversized request"| n12
+    n10 -.->|"RPC conflict or backend error"| n12
+```
+
+</details>
+
+<a id="flow-workflow-oracle-and-load"></a>
+
+<details>
+<summary>Check responses and account for scheduled native load</summary>
+
+catalogctl provides command-driven exact-response checks. The separate k6 script issues scheduled native gRPC load and records outcome counters; the Python benchmark audits captured samples.
+
+```mermaid
+flowchart TD
+    n13["13. Compare catalogctl responses<br/>with protobuf oracle"]
+    click n13 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-catalogctl-oracle" "Open step, techniques, and source" _top
+    n14["14. Run scheduled native gRPC<br/>load audit"]
+    click n14 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-native-k6" "Open step, techniques, and source" _top
+```
+
+</details>
+
+<a id="flow-workflow-overlay-configuration"></a>
+
+<details>
+<summary>Compose the catalog cache Kubernetes overlay</summary>
+
+The Kustomize overlay is an independent deployment configuration. It has no runtime handoff from catalog requests or catalogctl.
+
+```mermaid
+flowchart TD
+    n15["15. Configure internal catalog<br/>cache deployment"]
+    click n15 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-deploy-overlay" "Open step, techniques, and source" _top
+```
+
+</details>
+
+<a id="flow-workflow-database-startup"></a>
+
+<details>
+<summary>Durable backend startup</summary>
+
+CATALOG_DB_MODE selects an independent backend process. It opens/seeds the store before registering gRPC services; normal snapshot requests use store.Read without reopening.
+
+```mermaid
+flowchart TD
+    n7["7. Open or seed durable catalog"]
+    click n7 href "https://github.com/STEVVVU/cached-catalog-microservices#flow-step-open-store" "Open step, techniques, and source" _top
+```
+
+</details>
+
+#### Steps, techniques, and source
+
+These source traces cover the active scope below. They explain implementation behavior; benchmark results and their limits remain in the measurement sections.
+
+<a id="flow-step-select-backend"></a>
+
+##### 1. Select configured backend and cache mode
+
+**Component.** catalog_gateway.go:newProductCatalogService. An empty CATALOG_BACKEND_ADDR keeps the original file-backed service unless a cache mode was explicitly set, which errors. A configured address creates the gRPC client, bounds timeout and TTL values, and accepts none, ttl, or lease cache modes.
+
+**Techniques at this step.** [Configured backend mode selection](#technique-backend-mode-selection).
+
+**Source.** [`src/productcatalogservice/catalog_gateway.go:32`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_gateway.go#L32). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-catalog-request"></a>
+
+##### 2. Dispatch public catalog RPC
+
+**Component.** product_catalog.go:ListProducts,GetProduct,SearchProducts. The existing ProductCatalogService methods track the request and call readCatalog, then apply the existing list, ID scan, or case-insensitive name/description scan. The generated public gRPC contract remains the same.
+
+**Techniques at this step.** [Catalog scan for Get and Search](#technique-catalog-read-scan) · [Existing gRPC contract preservation](#technique-grpc-contract-preservation).
+
+**Source.** [`src/productcatalogservice/product_catalog.go:56`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/product_catalog.go#L56). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-cache-mode"></a>
+
+##### 3. Choose uncached, TTL, or lease read
+
+**Component.** catalog_cache.go:Get,getTTL,getLease. Mode none calls the fetcher directly. TTL returns an unexpired snapshot or performs a fetch; lease mode additionally coalesces concurrent cold misses and lets waiters cancel through their request contexts. Generation fencing applies to lease mode. TTL fills publish without a generation check; invalidation affects this gateway instance only.
+
+**Techniques at this step.** [Time-to-live snapshot reuse](#technique-ttl-cache-refresh) · [Lease-based cold-miss coalescing](#technique-lease-cold-miss-coalescing) · [Canceled owner recovery](#technique-owner-cancellation-recovery).
+
+**Source.** [`src/productcatalogservice/catalog_cache.go:105`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_cache.go#L105) · [`src/productcatalogservice/catalog_cache.go:115`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_cache.go#L115) · [`src/productcatalogservice/catalog_cache.go:136`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_cache.go#L136). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-fetch-snapshot"></a>
+
+##### 4. Fetch a durable catalog snapshot
+
+**Component.** catalog_gateway.go:newProductCatalogService; catalogdb_service.go:snapshot; catalog_store.go:Read. The cache fetch closure applies a backend timeout and calls ListProducts. The database service checks context, reads snapshot and revision in one bbolt view transaction, and returns explicit gRPC errors on cancellation or storage failure.
+
+**Techniques at this step.** [Snapshot backend reads](#technique-snapshot-read-sharing).
+
+**Source.** [`src/productcatalogservice/catalog_gateway.go:52`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_gateway.go#L52) · [`src/productcatalogservice/catalogdb_service.go:38`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalogdb_service.go#L38) · [`src/productcatalogservice/catalog_store.go:98`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_store.go#L98) · [`src/productcatalogservice/catalogdb_service.go:43`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalogdb_service.go#L43). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-copy-response"></a>
+
+##### 5. Return defensive catalog copy
+
+**Component.** catalog_cache.go:cloneCatalog. Cache hits and successful fills return proto.Clone copies so callers do not receive the shared cached protobuf object.
+
+**Techniques at this step.** [Immutable snapshots with defensive copy-out](#technique-immutable-snapshot-copy-out).
+
+**Source.** [`src/productcatalogservice/catalog_cache.go:225`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_cache.go#L225). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-publish-fill"></a>
+
+##### 6. Publish only current lease fill
+
+**Component.** catalog_cache.go:getLease,Invalidate. A lease owner captures the current generation in its flight token. On completion it publishes only when the token still matches; invalidation increments generation and clears the snapshot, so a stale successful fill loops instead of replacing newer state.
+
+**Techniques at this step.** [Generation-fenced fill publication](#technique-generation-fenced-fill).
+
+**Source.** [`src/productcatalogservice/catalog_cache.go:136`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_cache.go#L136) · [`src/productcatalogservice/catalog_cache.go:202`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_cache.go#L202). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-open-store"></a>
+
+##### 7. Open or seed durable catalog
+
+**Component.** catalog_store.go:openCatalogStore. The store creates a private parent directory and opens bbolt. Existing databases must contain a snapshot and valid positive revision; only a newly created database is seeded, validated, marshaled, and written with revision 1 in one update transaction.
+
+**Techniques at this step.** [First-start seeding and restart recovery](#technique-startup-seeding-and-recovery) · [Catalog boundary validation](#technique-boundary-validation).
+
+**Source.** [`src/productcatalogservice/catalog_store.go:41`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_store.go#L41). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-admin-adapter"></a>
+
+##### 8. Serve loopback admin and metrics HTTP
+
+**Component.** catalog_gateway.go:startCatalogAdminHTTP; catalog_admin_http.go:ServeHTTP. The adapter binds only 127.0.0.1 and routes metrics, revision, stats, and catalog PUT paths. Unknown methods or paths return 404; admin requests receive bounded contexts.
+
+**Techniques at this step.** [Loopback HTTP admin adapter](#technique-loopback-admin-adapter).
+
+**Source.** [`src/productcatalogservice/catalog_gateway.go:84`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_gateway.go#L84) · [`src/productcatalogservice/catalog_admin_http.go:41`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_admin_http.go#L41). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-validate-update"></a>
+
+##### 9. Validate catalog update request
+
+**Component.** catalog_admin_http.go:replaceCatalog; catalog_store.go:validateCatalog. The HTTP handler caps the body at 8 MiB, rejects unknown fields and trailing JSON, decodes protobuf JSON, then calls the admin RPC. The store validates nonempty bounded catalogs, size, and product fields before encoding or writing.
+
+**Techniques at this step.** [Catalog boundary validation](#technique-boundary-validation) · [Existing gRPC contract preservation](#technique-grpc-contract-preservation).
+
+**Source.** [`src/productcatalogservice/catalog_admin_http.go:86`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_admin_http.go#L86) · [`src/productcatalogservice/catalog_store.go:186`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_store.go#L186). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-atomic-cas"></a>
+
+##### 10. Commit snapshot and revision atomically
+
+**Component.** catalog_store.go:Replace; catalogdb_service.go:ReplaceCatalog. Replace runs a bbolt update transaction, checks an optional expected revision, rejects revision exhaustion, then writes snapshot and incremented revision together. A mismatch maps to gRPC Aborted; validation and storage errors remain explicit.
+
+**Techniques at this step.** [Atomic snapshot and revision transaction](#technique-atomic-snapshot-revision) · [Expected-revision compare and swap](#technique-optimistic-revision-cas).
+
+**Source.** [`src/productcatalogservice/catalog_store.go:123`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_store.go#L123) · [`src/productcatalogservice/catalogdb_service.go:98`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalogdb_service.go#L98). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-invalidate-after-write"></a>
+
+##### 11. Invalidate local cache after committed update
+
+**Component.** catalog_admin_http.go:replaceCatalog; catalog_cache.go:Invalidate. After the admin RPC succeeds, the HTTP handler increments the local cache generation and clears its cached snapshot, then returns the committed revision. Failed updates do not reach invalidation.
+
+**Techniques at this step.** [Generation-fenced fill publication](#technique-generation-fenced-fill).
+
+**Source.** [`src/productcatalogservice/catalog_admin_http.go:119`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_admin_http.go#L119) · [`src/productcatalogservice/catalog_cache.go:202`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_cache.go#L202). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-admin-http-errors"></a>
+
+##### 12. Map admin failures to HTTP status
+
+**Component.** catalog_admin_http.go:httpStatus. InvalidArgument maps to 400, revision conflict Aborted maps to 409, and unavailable or deadline errors map to 503. Other errors map to 500; malformed or oversized JSON returns 400 or 413 before the RPC.
+
+**Techniques at this step.** [Loopback HTTP admin adapter](#technique-loopback-admin-adapter).
+
+**Source.** [`src/productcatalogservice/catalog_admin_http.go:135`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_admin_http.go#L135). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-catalogctl-oracle"></a>
+
+##### 13. Compare catalogctl responses with protobuf oracle
+
+**Component.** cmd/catalogctl/main.go:run,callCatalog; cmd/catalogctl/load.go:loadCatalog. catalogctl commands call the existing gRPC client and compare parsed protobuf responses against fixture expectations. The load command records scheduled samples and checks semantic response content; this is verification behavior, not production RPC behavior.
+
+**Techniques at this step.** [Exact protobuf semantic response oracle](#technique-protobuf-semantic-response-oracle).
+
+**Source.** [`src/productcatalogservice/cmd/catalogctl/main.go:91`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/cmd/catalogctl/main.go#L91) · [`src/productcatalogservice/cmd/catalogctl/load.go:33`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/cmd/catalogctl/load.go#L33). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-native-k6"></a>
+
+##### 14. Run scheduled native gRPC load audit
+
+**Component.** scripts/catalog-k6.js:options,default,handleSummary. k6 uses configured rate, duration, VUs, and targets to issue native gRPC catalog calls, counts started/completed/success/failure/correctness/timeout outcomes, and writes a summary. The Python audit consumes recorded output and checks the focused cache sample; it does not drive production traffic by itself.
+
+**Techniques at this step.** [Scheduled native gRPC load accounting](#technique-native-scheduled-load-accounting).
+
+**Source.** [`scripts/catalog-k6.js:33`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/scripts/catalog-k6.js#L33) · [`scripts/catalog-k6.js:78`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/scripts/catalog-k6.js#L78) · [`scripts/catalog-benchmark.py:120`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/scripts/catalog-benchmark.py#L120). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-deploy-overlay"></a>
+
+##### 15. Configure internal catalog cache deployment
+
+**Component.** kustomize/overlays/catalog-cache/kustomization.yaml:resources. The overlay composes the base with catalogdb and network-policy resources, applies the catalog image and patches, and removes the frontend external resource. This manifest composition is a deployment configuration path, not a runtime call from the service.
+
+**Techniques at this step.** [Internal services with persistent volume](#technique-internal-service-and-persistent-volume-overlay).
+
+**Source.** [`kustomize/overlays/catalog-cache/kustomization.yaml:5`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/kustomize/overlays/catalog-cache/kustomization.yaml#L5). [Back to execution flow](#execution-flow).
+
+<a id="flow-step-read-error"></a>
+
+##### 16. Return read failure
+
+**Component.** productCatalog and catalogCache. Backend failures and canceled lease waiters return explicit errors through readCatalog to the gRPC method. A waiting lease caller retries when the fill owner was canceled; the canceled owner itself returns its error.
+
+Terminal propagation of existing backend and context errors; the coalescing and cancellation mechanism belongs to cache-mode.
+
+**Source.** [`src/productcatalogservice/catalog_cache.go:148`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/catalog_cache.go#L148) · [`src/productcatalogservice/product_catalog.go:94`](https://github.com/STEVVVU/cached-catalog-microservices/blob/main/src/productcatalogservice/product_catalog.go#L94). [Back to execution flow](#execution-flow).
+
+<details>
+<summary>Scope and subsystem coverage</summary>
+
+Product catalog backend selection and gRPC reads, bbolt storage and revision writes, TTL/lease cache paths, loopback admin adapter, catalogctl exact-response and native k6 audit, and the catalog-cache Kubernetes overlay.
+
+- **Gateway and catalog reads.** Configured backend modes lead to the existing public RPC methods and the shared durable snapshot read. [Step 1](#flow-step-select-backend), [Step 2](#flow-step-catalog-request), [Step 4](#flow-step-fetch-snapshot).
+- **Cache concurrency and freshness.** TTL reuse, lease coalescing and owner cancellation, immutable copy-out, and generation fencing are attached to their code paths. [Step 3](#flow-step-cache-mode), [Step 5](#flow-step-copy-response), [Step 6](#flow-step-publish-fill), [Step 11](#flow-step-invalidate-after-write), [Step 16](#flow-step-read-error).
+- **Persistent storage and updates.** Startup seed/reopen behavior, validation, and snapshot-plus-revision transaction are separate store operations. [Step 7](#flow-step-open-store), [Step 9](#flow-step-validate-update), [Step 10](#flow-step-atomic-cas).
+- **Admin and RPC compatibility.** The loopback adapter writes through the additive admin protobuf contract while public catalog methods remain intact. [Step 8](#flow-step-admin-adapter), [Step 2](#flow-step-catalog-request), [Step 9](#flow-step-validate-update), [Step 12](#flow-step-admin-http-errors).
+- **Exact-response oracle and native load audit.** CLI semantic oracle and scheduled native k6 driver remain separate verification paths. [Step 13](#flow-step-catalogctl-oracle), [Step 14](#flow-step-native-k6).
+- **Internal Kubernetes deployment boundary.** The overlay has its own configuration workflow and is not presented as a runtime stage. [Step 15](#flow-step-deploy-overlay).
+
+Outside this flow audit:
+
+- `src/cartservice and other upstream services`. They are preserved upstream services outside the P24 catalog extension scope.
+- `src/productcatalogservice/catalog_loader.go AlloyDB branch`. The mapped configured bbolt gateway/backend path does not use this optional legacy loader.
+
+</details>
+
+<!-- execution-flow:end -->
+
+<details>
+<summary>Subsystem technique index</summary>
+
 ### Subsystem map
 
 Select a subsystem in the diagram to open its techniques, tradeoffs, and code references. The numbered links provide the same navigation. This map groups components; the execution diagrams show their runtime flow.
@@ -42,6 +401,8 @@ click s6 href "https://github.com/STEVVVU/cached-catalog-microservices#subsystem
 This repository retains the upstream Online Boutique storefront and adds an optional persistent product-catalog backend with `none`, `ttl`, and `lease` gateway cache modes. Other storefront services remain upstream scope. The default catalog path still reads `products.json`; the database and gateway path starts only when configured.
 
 The diagram places the catalog extension among the existing service boundaries.
+
+</details>
 
 <details>
 <summary>Expand flow diagram 1</summary>
